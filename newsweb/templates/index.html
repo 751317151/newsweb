@@ -1,0 +1,735 @@
+<!--
+ * @Author: 华豪
+ * @Date: 2019-10-25 09:42:46
+ * @E-Mail: hh@huahaohh.cn
+ * @LastEditors: 华豪
+ * @LastEditTime: 2019-11-25 18:58:37
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="stylesheet" href="static/css/bgsize.css" />		
+    <link rel="stylesheet" href="static/css/main.css" />
+    <link rel="stylesheet" href="static/css/shutter.css">
+    <link rel="stylesheet" href="static/css/sports.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/velocity.js"></script>
+    <script src="static/js/shutter.js"></script> 
+    <script>
+    $(function () {
+    $('.shutter').shutter({
+        shutterW: 1000, // 容器宽度
+        shutterH: 358, // 容器高度
+        isAutoPlay: true, // 是否自动播放
+        playInterval: 3000, // 自动播放时间
+        curDisplay: 3, // 当前显示页
+        fullPage: false // 是否全屏展示
+    });
+    });
+    </script>
+
+</head>
+<body>
+    <div class="contaiter">		
+        <!--下面是导航菜单-->
+        <div class="navigator" >
+            <ul id="nav">
+                <li><a href="/" class="selected">首页</a></li> &nbsp;&nbsp;
+                <li><a href="#">国内</a></li>&nbsp;&nbsp;
+                <li><a href="#">国际</a></li>&nbsp;&nbsp;
+                <li><a href="#">娱乐</a></li>&nbsp;&nbsp;
+                <li><a href="sports">体育</a></li>&nbsp;&nbsp;
+                <li><a href="#">科技</a></li>&nbsp;&nbsp;
+                <li><a href="#">军事</a></li>&nbsp;&nbsp;
+                <li><a href="#">互联网</a></li>&nbsp;&nbsp;
+            </ul>
+        </div>
+        <!--下面是图片轮换-->
+        <div class="shutter">
+            <div class="shutter-img">
+                {% for img_news in img_news %}
+                    <a href="{{ img_news.urls }}" data-shutter-title="{{ img_news.titles }}" target="_blank" style="cursor: pointer;"><img src="{{ img_news.imgurls }}"></a>
+                {% endfor %}
+            </div>
+            <ul class="shutter-btn">
+            <li class="prev"></li>
+            <li class="next"></li>
+            </ul>
+            <!-- 设置默认第一张 -->
+            <div class="shutter-desc">  
+            <a href="{{ img_news.3.urls }}" target="_blank"><p>{{ img_news.3.titles }}</p></a>
+            </div>
+        </div>
+        <div id="body">
+            <div class="column clearfix" id="focus-top" style="margin-top: 12px; margin-bottom: 31px;">
+                <div class="l-left-col">
+                    <div class="b-left">
+                        <hr/>
+                        <ul class="ulist">
+                            {% if hot_pane_news1 %}
+                            {% for news in hot_pane_news1 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <hr/>
+                        <ul class="ulist">
+                            {% if hot_pane_news21 %}
+                            {% for news in hot_pane_news21 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <ul class="ulist">
+                            {% if hot_pane_news22 %}
+                            {% for news in hot_pane_news22 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <ul class="ulist">
+                            {% if hot_pane_news23 %}
+                            {% for news in hot_pane_news23 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <ul class="ulist">
+                            {% if hot_pane_news24 %}
+                            {% for news in hot_pane_news24 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <ul class="ulist">
+                            {% if hot_pane_news25 %}
+                            {% for news in hot_pane_news25 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="b-right mod">
+                        <h3>热搜新闻词</h3>
+                        <span>HOT WORDS</span><hr/>
+                        <ol class="ulist2">
+                            {% if hot_news %}
+                            {% for news in hot_news %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ol>
+                        <h3 class="ulist3">时事在线</h3>
+                        <span>NEWS ONLINE</span><hr/>
+                        <ol class="ulist2 ulist_online">
+                            {% if online_news1 %}
+                            {% for news in online_news1 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ol>
+                        <ol class="ulist2 ulist_online">
+                            {% if online_news2 %}
+                            {% for news in online_news2 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ol>
+                        <ol class="ulist2 ulist_online">
+                            {% if online_news3 %}
+                            {% for news in online_news3 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <!-- 国内 -->
+            <div class="civilnews">
+                <div class="column clearfix">
+                    <div class="column-title-home">
+                        <div class="column-title-border">
+                            <h2>
+                                <a href="#">国内</a>
+                                <span class="cname">China</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="l-left-col1 col-mod">
+                        <ul class="ulist focuslistnews">
+                            {% if hot_China_news1 %}
+                            {% for news in hot_China_news1 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <ul class="ulist focuslistnews">
+                            {% if hot_China_news2 %}
+                            {% for news in hot_China_news2 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="l-middle-col">
+                        <div class="mod">
+                            <div class="hd">
+                                <h3>国内图片</h3>
+                            </div>
+                            <div class="bd">
+                                <div class="imagearea">
+                                    <div class="imagearea-top">
+                                        <div class="image-mask-item">
+                                            {% if hot_China_pic_news %}
+                                                <a href="{{ hot_China_pic_news.0.urls }}" target="_blank" class="item-image" title="{{ hot_China_pic_news.0.titles }}"><img referrer-policy="no-referrer" src="{{ hot_China_pic_news.0.imgurls }}"></a>
+                                                <a href="{{ hot_China_pic_news.0.urls }}" target="_blank" class="item-title" title="{{ hot_China_pic_news.0.titles }}">{{ hot_China_pic_news.0.titles }}</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="imagearea-bottom">
+                                        <div class="image-list-item">
+                                            {% if hot_China_pic_news %}
+                                                <a href="{{ hot_China_pic_news.1.urls }}" target="_blank" title="{{ hot_China_pic_news.1.titles }}"><img referrer-policy="no-referrer" src="{{ hot_China_pic_news.1.imgurls }}"></a>
+                                                <a href="{{ hot_China_pic_news.1.urls }}" target="_blank" class="txt" title="{{ hot_China_pic_news.1.titles }}">{{ hot_China_pic_news.1.titles }}</a>
+                                            {% endif %}
+                                        </div>
+                                        <div class="image-list-item">
+                                            {% if hot_China_pic_news %}
+                                                <a href="{{ hot_China_pic_news.2.urls }}" target="_blank" title="{{ hot_China_pic_news.2.titles }}"><img referrer-policy="no-referrer" src="{{ hot_China_pic_news.2.imgurls }}"></a>
+                                                <a href="{{ hot_China_pic_news.2.urls }}" target="_blank" class="txt" title="{{ hot_China_pic_news.2.titles }}">{{ hot_China_pic_news.2.titles }}</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-right-col">
+                        <div class="mod" id="aside-civil-pic">
+                            <div class="hd">
+                                <h3>图文资讯</h3>
+                            </div>
+                            <div class="bd">
+                                <div class="image-list">
+                                    <div class="image-list-wrapper">
+                                        <div class="image-list-item">
+                                            {% if hot_China_pic_news %}
+                                                <a href="{{ hot_China_pic_news.3.urls }}" target="_blank" title="{{ hot_China_pic_news.3.titles }}"><img referrer-policy="no-referrer" src="{{ hot_China_pic_news.3.imgurls }}"></a>
+                                                <a href="{{ hot_China_pic_news.3.urls }}" target="_blank" class="txt" title="{{ hot_China_pic_news.3.titles }}">{{ hot_China_pic_news.3.titles }}</a>
+                                            {% endif %}
+                                        </div>
+                                        <div class="image-list-item">
+                                            {% if hot_China_pic_news %}
+                                                <a href="{{ hot_China_pic_news.4.urls }}" target="_blank" title="{{ hot_China_pic_news.4.titles }}"><img referrer-policy="no-referrer" src="{{ hot_China_pic_news.4.imgurls }}"></a>
+                                                <a href="{{ hot_China_pic_news.4.urls }}" target="_blank" class="txt" title="{{ hot_China_pic_news.4.titles }}">{{ hot_China_pic_news.4.titles }}</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mod tbox">
+                            <div class="hd">
+                                <h3>热门点击</h3>
+                            </div>
+                            <div class="bd">
+                                <ol class="olist">
+                                    {% if hot_China_click_news %}
+                                    {% for news in hot_China_click_news %}
+                                        <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 国际 -->
+            <div class="internationalNews">
+                <div class="column clearfix">
+                    <div class="column-title-home">
+                        <div class="column-title-border">
+                            <h2>
+                                <a href="#">国际</a>
+                                <span class="cname">World</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="l-left-col1 col-mod">
+                        <ul class="ulist focuslistnews">
+                            {% if hot_world_news1 %}
+                            {% for news in hot_world_news1 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <ul class="ulist focuslistnews">
+                            {% if hot_world_news2 %}
+                            {% for news in hot_world_news2 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="l-middle-col">
+                        <div class="mod">
+                            <div class="hd">
+                                <h3>国际图片</h3>
+                            </div>
+                            <div class="bd">
+                                <div class="imagearea">
+                                    <div class="imagearea-top">
+                                        <div class="image-mask-item">
+                                            {% if hot_world_pic_news %}
+                                                <a href="{{ hot_world_pic_news.0.urls }}" target="_blank" class="item-image" title="{{ hot_world_pic_news.0.titles }}"><img referrer-policy="no-referrer" src="{{ hot_world_pic_news.0.imgurls }}"></a>
+                                                <a href="{{ hot_world_pic_news.0.urls }}" target="_blank" class="item-title" title="{{ hot_world_pic_news.0.titles }}">{{ hot_world_pic_news.0.titles }}</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="imagearea-bottom">
+                                            <div class="image-list-item">
+                                                {% if hot_world_pic_news %}
+                                                    <a href="{{ hot_world_pic_news.1.urls }}" target="_blank" title="{{ hot_world_pic_news.1.titles }}"><img referrer-policy="no-referrer" src="{{ hot_world_pic_news.1.imgurls }}"></a>
+                                                    <a href="{{ hot_world_pic_news.1.urls }}" target="_blank" class="txt" title="{{ hot_China_pic_news.1.titles }}">{{ hot_world_pic_news.1.titles }}</a>
+                                                {% endif %}
+                                            </div>
+                                            <div class="image-list-item">
+                                                {% if hot_world_pic_news %}
+                                                    <a href="{{ hot_world_pic_news.2.urls }}" target="_blank" title="{{ hot_world_pic_news.2.titles }}"><img referrer-policy="no-referrer" src="{{ hot_world_pic_news.2.imgurls }}"></a>
+                                                    <a href="{{ hot_world_pic_news.2.urls }}" target="_blank" class="txt" title="{{ hot_world_pic_news.2.titles }}">{{ hot_world_pic_news.2.titles }}</a>
+                                                {% endif %}
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-right-col">
+                        <div class="mod">
+                            <div class="hd line">
+                                <h3>环球视野</h3>
+                            </div>
+                            <div class="bd">
+                                <div class="image-list">
+                                    <div class="image-list-wrapper">
+                                            <div class="image-list-item">
+                                                {% if hot_world_pic_news %}
+                                                    <a href="{{ hot_world_pic_news.3.urls }}" target="_blank" title="{{ hot_world_pic_news.3.titles }}"><img referrer-policy="no-referrer" src="{{ hot_world_pic_news.3.imgurls }}"></a>
+                                                    <a href="{{ hot_world_pic_news.3.urls }}" target="_blank" class="txt" title="{{ hot_world_pic_news.3.titles }}">{{ hot_world_pic_news.3.titles }}</a>
+                                                {% endif %}
+                                            </div>
+                                            <div class="image-list-item">
+                                                {% if hot_world_pic_news %}
+                                                    <a href="{{ hot_world_pic_news.4.urls }}" target="_blank" title="{{ hot_world_pic_news.4.titles }}"><img referrer-policy="no-referrer" src="{{ hot_world_pic_news.4.imgurls }}"></a>
+                                                    <a href="{{ hot_world_pic_news.4.urls }}" target="_blank" class="txt" title="{{ hot_world_pic_news.4.titles }}">{{ hot_world_pic_news.4.titles }}</a>
+                                                {% endif %}
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mod tbox">
+                            <div class="hd">
+                                <h3>国际热搜词</h3>
+                            </div>
+                            <div class="bd">
+                                <ol class="olist hotwords-list">
+                                    {% if hot_world_click_news1 %}
+                                    {% for news in hot_world_click_news1 %}
+                                        <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ol>
+                                <ol class="olist hotwords-list">
+                                    {% if hot_world_click_news2 %}
+                                    {% for news in hot_world_click_news2 %}
+                                        <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 娱乐 -->
+            <div class="EnterNews">
+                <div class="column clearfix">
+                    <div class="column-title-home">
+                        <div class="column-title-border">
+                            <h2>
+                                <a href="#">娱乐</a>
+                                <span class="cname">Entertainment</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="l-left-col1 col-mod">
+                        <ul class="ulist focuslistnews">
+                            {% if hot_world_news1 %}
+                            {% for news in hot_world_news1 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <ul class="ulist focuslistnews">
+                            {% if hot_world_news2 %}
+                            {% for news in hot_world_news2 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="l-middle-col">
+                        <div class="mod">
+                            <div class="hd">
+                                <h3>娱乐图片</h3>
+                            </div>
+                            <div class="bd">
+                                <div class="imagearea">
+                                    <div class="imagearea-top">
+                                        <div class="image-mask-item">
+                                            {% if hot_enter_pic_news %}
+                                                <a href="{{ hot_enter_pic_news.0.urls }}" target="_blank" class="item-image" title="{{ hot_enter_pic_news.0.titles }}"><img referrer-policy="no-referrer" src="{{ hot_enter_pic_news.0.imgurls }}"></a>
+                                                <a href="{{ hot_enter_pic_news.0.urls }}" target="_blank" class="item-title" title="{{ hot_enter_pic_news.0.titles }}">{{ hot_enter_pic_news.0.titles }}</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="imagearea-bottom">
+                                        <div class="image-list-item">
+                                            {% if hot_enter_pic_news %}
+                                                <a href="{{ hot_enter_pic_news.1.urls }}" target="_blank" title="{{ hot_enter_pic_news.1.titles }}"><img referrer-policy="no-referrer" src="{{ hot_enter_pic_news.1.imgurls }}"></a>
+                                                <a href="{{ hot_enter_pic_news.1.urls }}" target="_blank" class="txt" title="{{ hot_enter_pic_news.1.titles }}">{{ hot_enter_pic_news.1.titles }}</a>
+                                            {% endif %}
+                                        </div>
+                                        <div class="image-list-item">
+                                            {% if hot_enter_pic_news %}
+                                                <a href="{{ hot_enter_pic_news.2.urls }}" target="_blank" title="{{ hot_enter_pic_news.2.titles }}"><img referrer-policy="no-referrer" src="{{ hot_enter_pic_news.2.imgurls }}"></a>
+                                                <a href="{{ hot_enter_pic_news.2.urls }}" target="_blank" class="txt" title="{{ hot_enter_pic_news.2.titles }}">{{ hot_enter_pic_news.2.titles }}</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-right-col">
+                        <div class="mod">
+                            <div class="hd line">
+                                <h3>明星</h3>
+                            </div>
+                            <div class="bd">
+                                <div class="image-list">
+                                    <div class="image-list-wrapper">
+                                        <div class="image-list-item">
+                                            {% if hot_enter_pic_news %}
+                                                <a href="{{ hot_enter_pic_news.3.urls }}" target="_blank" title="{{ hot_enter_pic_news.3.titles }}"><img referrer-policy="no-referrer" src="{{ hot_enter_pic_news.3.imgurls }}"></a>
+                                                <a href="{{ hot_enter_pic_news.3.urls }}" target="_blank" class="txt" title="{{ hot_enter_pic_news.3.titles }}">{{ hot_enter_pic_news.3.titles }}</a>
+                                            {% endif %}
+                                        </div>
+                                        <div class="image-list-item">
+                                            {% if hot_enter_pic_news %}
+                                                <a href="{{ hot_enter_pic_news.4.urls }}" target="_blank" title="{{ hot_enter_pic_news.4.titles }}"><img referrer-policy="no-referrer" src="{{ hot_enter_pic_news.4.imgurls }}"></a>
+                                                <a href="{{ hot_enter_pic_news.4.urls }}" target="_blank" class="txt" title="{{ hot_enter_pic_news.4.titles }}">{{ hot_enter_pic_news.4.titles }}</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mod tbox" id="yule-aside-hotwords">
+                            <div class="bd">
+                                <ul class="ulist">
+                                    {% if hot_enter_click_news %}
+                                    {% for news in hot_enter_click_news %}
+                                        <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column clearfix">
+                    <div class="mod pic-wall" id="sports-picwall">
+                        <div class="bd">
+                            <div class="image-list">
+                                <div class="image-list-wrapper">
+                                    {% if hot_enter_div_pic_news %}
+                                    {% for news in hot_enter_div_pic_news %}
+                                        <div class="image-list-item">
+                                            <a href="{{ news.urls}}" target="_blank" title="{{ news.titles }}"><img referrer-policy="no-referrer" src="{{ news.imgurls }}"></a>
+                                            <a href="{{ news.urls }}" target="_blank" class="txt" title="{{ news.titles }}">{{ news.titles }}</a>
+                                        </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 体育 -->
+            <div class="SportNews">
+                <div class="column clearfix">
+                    <div class="column-title-home">
+                        <div class="column-title-border">
+                            <h2>
+                                <a href="#">体育</a>
+                                <span class="cname">Sports</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="l-left-col1 col-mod">
+                        <ul class="ulist focuslistnews"></ul>
+                        <ul class="ulist focuslistnews"></ul>
+                    </div>
+                    <div class="l-middle-col">
+                        <div class="mod">
+                            <div class="hd">
+                                <h3>体育图片</h3>
+                            </div>
+                            <div class="bd">
+                                <div class="imagearea">
+                                    <div class="imagearea-top">
+                                        <div class="image-mask-item">
+
+                                        </div>
+                                    </div>
+                                    <div class="imagearea-bottom">
+                                        <div class="image-list-item">
+                                            
+                                        </div>
+                                        <div class="image-list-item">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-right-col">
+                        <div class="mod rbox">
+                            <div class="hd line">
+                                <h3>NBA</h3>
+                            </div>
+                            <div class="bd">
+                                <div class="image-list">
+                                    <div class="image-list-wrapper">
+                                        <div class="image-list-item">
+
+                                        </div>
+                                        <div class="image-list-item">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mod tbox">
+                            <div class="hd line">
+                                <h3>体育话题</h3>
+                            </div>
+                            <div class="bd">
+                                <ul class="ulist"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 科技 -->
+            <div class="TechNews">
+                <div class="column clearfix">
+                    <div class="column-title-home">
+                        <div class="column-title-border">
+                            <h2>
+                                <a href="#">科技</a>
+                                <span class="cname">Technology</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="l-left-col1 col-mod">
+                        <ul class="ulist focuslistnews"></ul>
+                        <ul class="ulist focuslistnews"></ul>
+                    </div>
+                    <div class="l-middle-col">
+                        <div class="mod">
+                            <div class="hd">
+                                <h3>科技图片</h3>
+                            </div>
+                            <div class="bd">
+                                <div class="imagearea">
+                                    <div class="imagearea-top">
+                                        <div class="image-mask-item">
+
+                                        </div>
+                                    </div>
+                                    <div class="imagearea-bottom">
+                                        <div class="image-list-item">
+                                            
+                                        </div>
+                                        <div class="image-list-item">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-right-col">
+                        <div class="mod tbox">
+                            <div class="hd line">
+                                <h3>科技数码</h3>
+                            </div>
+                            <div class="bd">
+                                <div class="topic-pic">
+                                    
+                                </div>
+                                <div class="topic-txt">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mod">
+                            <div class="bd">
+                                <ul class="ulist"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 军事 -->
+            <div class="MilitaryNews">
+                <div class="column clearfix">
+                    <div class="column-title-home">
+                        <div class="column-title-border">
+                            <h2>
+                                <a href="#">军事</a>
+                                <span class="cname">Military</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="l-left-col1 col-mod">
+                        <ul class="ulist focuslistnews"></ul>
+                        <ul class="ulist focuslistnews"></ul>
+                    </div>
+                    <div class="l-middle-col">
+                        <div class="mod">
+                            <div class="hd">
+                                <h3>军事图片</h3>
+                            </div>
+                            <div class="bd">
+                                <div class="imagearea">
+                                    <div class="imagearea-top">
+                                        <div class="image-mask-item">
+
+                                        </div>
+                                    </div>
+                                    <div class="imagearea-bottom">
+                                        <div class="image-list-item">
+                                            
+                                        </div>
+                                        <div class="image-list-item">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-right-col">
+                        <div class="mod tbox">
+                            <div class="hd">
+                                <h3>热门点击</h3>
+                            </div>
+                            <div class="bd">
+                                <ol class="olist">
+
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="mod tbox">
+                            <div class="hd line">
+                                <h3>中国军情</h3>
+                            </div>
+                            <div class="bd">
+                                <ul class="ulist"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 互联网 -->
+            <div class="InternetNews">
+                <div class="column clearfix">
+                    <div class="column-title-home">
+                        <div class="column-title-border">
+                            <h2>
+                                <a href="#">互联网</a>
+                                <span class="cname">Internet</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="l-left-col1 col-mod">
+                        <ul class="ulist focuslistnews"></ul>
+                        <ul class="ulist focuslistnews"></ul>
+                    </div>
+                    <div class="l-middle-col">
+                        <div class="mod">
+                            <div class="hd">
+                                <h3>互联网图片</h3>
+                            </div>
+                            <div class="bd">
+                                <div class="imagearea">
+                                    <div class="imagearea-top">
+                                        <div class="image-mask-item">
+
+                                        </div>
+                                    </div>
+                                    <div class="imagearea-bottom">
+                                        <div class="image-list-item">
+                                            
+                                        </div>
+                                        <div class="image-list-item">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="l-right-col">
+                        <div class="mod tbox">
+                            <div class="hd line">
+                                <h3>公司动态</h3>
+                            </div>
+                            <div class="bd">
+                                <ul class="ulist"></ul>
+                            </div>
+                        </div>
+                        <div class="mod tbox">
+                            <div class="hd line">
+                                <h3>人物动态</h3>
+                            </div>
+                            <div class="bd">
+                                <ul class="ulist"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table width="1024px" bgcolor="bisque" align="center">		
+            <tr height="60px" bgcolor="aquamarine" align="center">      	
+                <td style="font-size: 2em;">hh@huahaohh.cn</td>
+            </tr>
+        </table>
+    </div> 
+</body>
+</html>

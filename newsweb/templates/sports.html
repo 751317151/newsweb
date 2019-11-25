@@ -1,0 +1,345 @@
+<!--
+ * @Author: 华豪
+ * @Date: 2019-10-25 09:42:46
+ * @E-Mail: hh@huahaohh.cn
+ * @LastEditors: 华豪
+ * @LastEditTime: 2019-11-24 15:10:59
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>体育</title>
+    <link rel="stylesheet" href="static/css/bgsize.css" />		
+    <link rel="stylesheet" href="static/css/main.css" />
+    <link rel="stylesheet" href="static/css/shutter.css">
+    <link rel="stylesheet" href="static/css/sports.css">
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/velocity.js"></script>
+    <script src="static/js/shutter.js"></script> 
+    <script>
+    $(function () {
+    $('.shutter').shutter({
+        shutterW: 1000, // 容器宽度
+        shutterH: 358, // 容器高度
+        isAutoPlay: true, // 是否自动播放
+        playInterval: 3000, // 自动播放时间
+        curDisplay: 3, // 当前显示页
+        fullPage: false // 是否全屏展示
+    });
+    });
+    </script>
+
+</head>
+<body>
+    <div class="contaiter">		
+        <!--下面是导航菜单-->
+        <div class="navigator" >
+            <ul id="nav">
+                <li><a href="/">首页</a></li> &nbsp;&nbsp;
+                <li><a href="#">国内</a></li>&nbsp;&nbsp;
+                <li><a href="#">国际</a></li>&nbsp;&nbsp;
+                <li><a href="#">娱乐</a></li>&nbsp;&nbsp;
+                <li><a href="sports" class="selected">体育</a></li>&nbsp;&nbsp;
+                <li><a href="#">科技</a></li>&nbsp;&nbsp;
+                <li><a href="#">军事</a></li>&nbsp;&nbsp;
+                <li><a href="#">互联网</a></li>&nbsp;&nbsp;
+            </ul>
+        </div>
+        <!--下面是图片轮换-->
+        <div class="shutter">
+            <div class="shutter-img">
+                {% for img_news in img_news %}
+                    <a href="{{ img_news.urls }}" data-shutter-title="{{ img_news.titles }}" target="_blank" style="cursor: pointer;"><img src="{{ img_news.imgurls }}"></a>
+                {% endfor %}
+            </div>
+            <ul class="shutter-btn">
+            <li class="prev"></li>
+            <li class="next"></li>
+            </ul>
+            <!-- 设置默认第一张 -->
+            <div class="shutter-desc">  
+            <a href="{{ img_news.3.urls }}" target="_blank"><p>{{ img_news.3.titles }}</p></a>
+            </div>
+        </div>
+        <div class="column clearfix">
+            <div class="l-left-col">
+                <div class="b-left">
+                    <hr/>
+                    <ul class="ulist">
+                        {% if news1 %}
+                        {% for news in news1 %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul>
+                    <hr/>
+                    <ul class="ulist">
+                        {% if news2 %}
+                        {% for news in news2 %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="b-right mod">
+                    <h3>体育热搜词</h3>
+                    <span>SPORTS HOTWORDS</span><hr/>
+                    <ol class="ulist2">
+                        {% if news3 %}
+                        {% for news in news3 %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ol>
+                    <div class="schedule">
+                        <ul>
+                            <li><a href="http://www.baidu.com/s?wd=%D3%A2%B3%AC%C8%FC%B3%CC%B1%ED" target="_blank">英超赛程表</a></li>
+                            <li><a href="http://www.baidu.com/s?wd=%CE%F7%BC%D7%C8%FC%B3%CC%B1%ED" target="_blank">西甲赛程表</a></li>
+                            <li><a href="http://www.baidu.com/s?wd=%D2%E2%BC%D7%C8%FC%B3%CC%B1%ED" target="_blank">意甲赛程表</a></li>
+                            <li><a href="http://www.baidu.com/s?wd=%B5%C2%BC%D7%C8%FC%B3%CC%B1%ED" target="_blank">德甲赛程表</a></li>
+                            <li><a href="https://www.baidu.com/s?wd=%E6%AC%A7%E5%86%A0%E8%B5%9B%E7%A8%8B%E8%A1%A8" target="_blank">欧冠赛程表</a></li>
+                            <li><a href="http://www.baidu.com/s?wd=NBA%C8%FC%B3%CC%B1%ED" target="_blank">NBA赛程表</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 国际足球 -->
+        <div class="column clearfix">
+            <div class="l-left-col">
+                <div class="column-title">
+                    <div class="column-title-border">
+                        <h2>
+                            <span class="subtitle">国际足球</span>
+                            <span class="cname">WORLD FOOTBALL</span>
+                        </h2>
+                        <h2 style="float: right;margin-right: 158px;">
+                            <span class="subtitle">明星新闻</span>
+                            <span class="cname">STAR NEWS</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="b-left">
+                    <ul class="ulist">
+                        {% if world_football_news1 %}
+                        {% for news in world_football_news1 %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul>
+                    <ul class="ulist">
+                        {% if world_football_news2 %}
+                        {% for news in world_football_news2 %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul> 
+                </div>
+                <div class="b-right mod2">
+                    <ol class="ulist2">
+                        {% if star_news %}
+                        {% for news in star_news %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- 国内足球 -->
+        <div class="column clearfix">
+            <div class="l-left-col">
+                <div class="column-title">
+                    <div class="column-title-border">
+                        <h2>
+                            <span class="subtitle">国内足球</span>
+                            <span class="cname">CHINA FOOTBALL</span>
+                        </h2>
+                        <h2 style="float: right;margin-right: 158px;">
+                            <span class="subtitle">球员动态</span>
+                            <span class="cname">PLAYERS DYNAMIC</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="b-left">
+                    <ul class="ulist">
+                        {% if china_football_news1 %}
+                        {% for news in china_football_news1 %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul>
+                    <ul class="ulist">
+                        {% if china_football_news2 %}
+                        {% for news in china_football_news2 %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul> 
+                </div>
+                <div class="b-right mod2">
+                    <ol class="ulist2">
+                        {% if player_news %}
+                        {% for news in player_news %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- NBA -->
+        <div class="column clearfix">
+            <div class="l-left-col">
+                <div class="column-title">
+                    <div class="column-title-border">
+                        <h2>
+                            <span class="subtitle">NBA</span>
+                            <span class="cname">NBA</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="b-left">
+                    <ul class="ulist">
+                        {% if NBA_news1 %}
+                        {% for news in NBA_news1 %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul>
+                    <ul class="ulist">
+                        {% if NBA_news2 %}
+                        {% for news in NBA_news2 %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul> 
+                </div>
+            </div>
+        </div>
+        <!-- CBA -->
+        <div class="column clearfix">
+            <div class="l-left-col">
+                <div class="column-title">
+                    <div class="column-title-border">
+                        <h2>
+                            <span class="subtitle">CBA</span>
+                            <span class="cname">CBA</span>
+                        </h2>
+                        <h2 style="float: right;margin-right: 158px;">
+                            <span class="subtitle">焦点赛事</span>
+                            <span class="cname">FOCAL EVENTS</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="b-left">
+                    <ul class="ulist">
+                        {% if CBA_news1 %}
+                        {% for news in CBA_news1 %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul>
+                    <ul class="ulist">
+                        {% if CBA_news2 %}
+                        {% for news in CBA_news2 %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul> 
+                </div>
+                <div class="b-right mod2">
+                    <ol class="ulist2">
+                        {% if focus_events %}
+                        {% for news in focus_events %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- 综合体育 -->
+        <div class="column clearfix">
+            <div class="l-left-col">
+                <div class="column-title">
+                    <div class="column-title-border">
+                        <h2>
+                            <span class="subtitle">综合体育</span>
+                            <span class="cname">MORE SPORTS</span>
+                        </h2>
+                        <h2 style="float: right;margin-right: 158px;">
+                            <span class="subtitle">热门文章</span>
+                            <span class="cname">HOT ARTICLES</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="b-left">
+                    <ul class="ulist">
+                        {% if other_sports_news1 %}
+                        {% for news in other_sports_news1 %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul>
+                    <ul class="ulist">
+                        {% if other_sports_news2 %}
+                        {% for news in other_sports_news2 %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul> 
+                </div>
+                <div class="b-right mod2">
+                    <ol class="ulist2">
+                        {% if hot_articles %}
+                        {% for news in hot_articles %}
+                            <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                        {% endfor %}
+                        {% endif %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- 最新新闻 -->
+        <div class="column clearfix">
+            <div class="l-left-col">
+                <div class="column-title">
+                    <div class="column-title-border">
+                        <h2>
+                            <span class="subtitle">最新新闻</span>
+                            <span class="cname">LATEST NEWS</span>
+                        </h2>
+                    </div>
+                </div>
+                <div id="latest-news">
+                    <ul class="ulist" style="margin-right: 150px;">
+                        {% if latest_news1 %}
+                            {% for news in latest_news1 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                    <ul class="ulist">
+                        {% if latest_news2 %}
+                            {% for news in latest_news2 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+        <table width="1024px" bgcolor="bisque" align="center">		
+            <tr height="60px" bgcolor="aquamarine" align="center">      	
+                <td style="font-size: 2em;">hh@huahaohh.cn</td>
+            </tr>
+        </table>
+    </div> 
+</body>
+</html>
