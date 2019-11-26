@@ -3,27 +3,45 @@
 @Date: 2019-11-25 17:37:09
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-11-25 18:36:56
+@LastEditTime: 2019-11-26 15:18:21
 '''
-<div class="imagearea-top">
-    <div class="image-mask-item">
-        {% if hot_enter_pic_news %}
-            <a href="{{ hot_enter_pic_news.0.urls }}" target="_blank" class="item-image" title="{{ hot_enter_pic_news.0.titles }}"><img referrer-policy="no-referrer" src="{{ hot_enter_pic_news.0.imgurls }}"></a>
-            <a href="{{ hot_enter_pic_news.0.urls }}" target="_blank" class="item-title" title="{{ hot_enter_pic_news.0.titles }}">{{ hot_enter_pic_news.0.titles }}</a>
-        {% endif %}
-    </div>
-</div>
-<div class="imagearea-bottom">
-    <div class="image-list-item">
-        {% if hot_enter_pic_news %}
-            <a href="{{ hot_enter_pic_news.1.urls }}" target="_blank" title="{{ hot_enter_pic_news.1.titles }}"><img referrer-policy="no-referrer" src="{{ hot_enter_pic_news.1.imgurls }}"></a>
-            <a href="{{ hot_enter_pic_news.1.urls }}" target="_blank" class="txt" title="{{ hot_enter_pic_news.1.titles }}">{{ hot_enter_pic_news.1.titles }}</a>
-        {% endif %}
-    </div>
-    <div class="image-list-item">
-        {% if hot_enter_pic_news %}
-            <a href="{{ hot_enter_pic_news.2.urls }}" target="_blank" title="{{ hot_enter_pic_news.2.titles }}"><img referrer-policy="no-referrer" src="{{ hot_enter_pic_news.2.imgurls }}"></a>
-            <a href="{{ hot_enter_pic_news.2.urls }}" target="_blank" class="txt" title="{{ hot_enter_pic_news.2.titles }}">{{ hot_enter_pic_news.2.titles }}</a>
-        {% endif %}
-    </div>
-</div>
+def hot_sports_news():
+    url = "http://news.baidu.com/widget?id=SportNews"
+
+    data = requests.get(url,headers=headers).text
+    # print(data)
+    data1 = etree.HTML(data)
+    # print(data)
+    hot_sports_news_url = data1.xpath('//*[@id="tiyu"]/div[2]//a/@href')
+    hot_sports_news_title = data1.xpath('//*[@id="tiyu"]/div[2]//a/text()')
+
+    # for i in range(len(hot_sports_news_url)):
+    #     print(hot_sports_news_title[i],hot_sports_news_url[i])
+    #     cur.execute("insert into index_index values (default,'%s','%s','hot_sports_news',0)"%(hot_sports_news_title[i],hot_sports_news_url[i]))
+    #     conn.commit()
+
+    hot_sports_pic_news_url = data1.xpath('//*[@id="tiyu"]/div[3]/div/div[2]/div//a//@href')
+    hot_sports_pic_news_title = data1.xpath('//*[@id="tiyu"]/div[3]/div/div[2]/div//a//text()')
+    hot_sports_pic_news_imgurl = data1.xpath('//*[@id="tiyu"]/div[3]/div/div[2]/div//a//img/@src')
+
+    for i in range(len(hot_sports_pic_news_imgurl)):
+        print(hot_sports_pic_news_title[i],hot_sports_pic_news_url[i*2],hot_sports_pic_news_imgurl[i])
+    #     cur.execute("insert into index_index values (default,'%s','%s','hot_sports_pic_news','%s')"%(hot_sports_pic_news_title[i],hot_sports_pic_news_url[i*2],hot_sports_pic_news_imgurl[i]))
+    #     conn.commit()
+
+    hot_sports_pic_news_url = data1.xpath('//*[@id="tiyu"]/div[4]/div/div[2]/div//a//@href')
+    hot_sports_pic_news_title = data1.xpath('//*[@id="tiyu"]/div[4]/div/div[2]/div//a//text()')
+    hot_sports_pic_news_imgurl = data1.xpath('//*[@id="tiyu"]/div[4]/div/div[2]/div//a//img/@src')
+
+    for i in range(len(hot_sports_pic_news_imgurl)):
+        print(hot_sports_pic_news_title[i],hot_sports_pic_news_url[i*2],hot_sports_pic_news_imgurl[i])
+    #     cur.execute("insert into index_index values (default,'%s','%s','hot_sports_pic_news','%s')"%(hot_sports_pic_news_title[i],hot_sports_pic_news_url[i*2],hot_sports_pic_news_imgurl[i]))
+    #     conn.commit()
+
+    hot_sports_click_news_title = data1.xpath('//*[@id="civil-aside-tophit"]/div[2]/ol//a/text()')
+    hot_sports_click_news_url = data1.xpath('//*[@id="civil-aside-tophit"]/div[2]/ol//a/@href')
+
+    # for i in range(len(hot_sports_click_news_title)):
+    #     print(hot_sports_click_news_title[i],hot_sports_click_news_url[i])
+    #     cur.execute("insert into index_index values (default,'%s','%s','hot_sports_click_news',0)"%(hot_sports_click_news_title[i],hot_sports_click_news_url[i]))
+    #     conn.commit()

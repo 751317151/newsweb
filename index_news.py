@@ -3,7 +3,7 @@
 @Date: 2019-11-12 14:32:09
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-11-25 18:50:08
+@LastEditTime: 2019-11-26 17:42:58
 '''
 
 import requests
@@ -218,10 +218,156 @@ def hot_enter_news():
         # cur.execute("insert into index_index values (default,'%s','%s','hot_enter_div_pic_news','%s')"%(hot_enter_div_pic_news_title[i],hot_enter_div_pic_news_url[i*2],hot_enter_div_pic_news_imgurl[i]))
         # conn.commit()
 
+def hot_sports_news():
+    url = "http://news.baidu.com/widget?id=SportNews"
+
+    data = requests.get(url,headers=headers).text
+    # print(data)
+    data1 = etree.HTML(data)
+    # print(data)
+    hot_sports_news_url = data1.xpath('//*[@id="tiyu"]/div[2]//a/@href')
+    hot_sports_news_title = data1.xpath('//*[@id="tiyu"]/div[2]//a/text()')
+
+    for i in range(len(hot_sports_news_url)):
+        print(hot_sports_news_title[i],hot_sports_news_url[i])
+        # cur.execute("insert into index_index values (default,'%s','%s','hot_sports_news',0)"%(hot_sports_news_title[i],hot_sports_news_url[i]))
+        # conn.commit()
+
+    hot_sports_pic_news_url = data1.xpath('//*[@id="tiyu"]/div[3]/div/div[2]/div//a//@href')
+    hot_sports_pic_news_title = data1.xpath('//*[@id="tiyu"]/div[3]/div/div[2]/div//a//text()')
+    hot_sports_pic_news_imgurl = data1.xpath('//*[@id="tiyu"]/div[3]/div/div[2]/div//a//img/@src')
+
+    for i in range(len(hot_sports_pic_news_imgurl)):
+        print(hot_sports_pic_news_title[i],hot_sports_pic_news_url[i*2],hot_sports_pic_news_imgurl[i])
+        # cur.execute("insert into index_index values (default,'%s','%s','hot_sports_pic_news','%s')"%(hot_sports_pic_news_title[i],hot_sports_pic_news_url[i*2],hot_sports_pic_news_imgurl[i]))
+        # conn.commit()
+
+    hot_sports_pic_news_url = data1.xpath('//*[@id="tiyu"]/div[4]/div/div[2]/div//a//@href')
+    hot_sports_pic_news_title = data1.xpath('//*[@id="tiyu"]/div[4]/div/div[2]/div//a//text()')
+    hot_sports_pic_news_imgurl = data1.xpath('//*[@id="tiyu"]/div[4]/div/div[2]/div//a//img/@src')
+
+    for i in range(len(hot_sports_pic_news_imgurl)):
+        print(hot_sports_pic_news_title[i],hot_sports_pic_news_url[i*2],hot_sports_pic_news_imgurl[i])
+        # cur.execute("insert into index_index values (default,'%s','%s','hot_sports_pic_news','%s')"%(hot_sports_pic_news_title[i],hot_sports_pic_news_url[i*2],hot_sports_pic_news_imgurl[i]))
+        # conn.commit()
+
+    hot_sports_click_news_title = data1.xpath('//*[@id="sports-aside-cell"]/div[2]/ul//a/text()')
+    hot_sports_click_news_url = data1.xpath('//*[@id="sports-aside-cell"]/div[2]/ul//a/@href')
+
+    for i in range(len(hot_sports_click_news_title)):
+        print(hot_sports_click_news_title[i],hot_sports_click_news_url[i])
+        # cur.execute("insert into index_index values (default,'%s','%s','hot_sports_click_news',0)"%(hot_sports_click_news_title[i],hot_sports_click_news_url[i]))
+        # conn.commit()
+
+def hot_tech_news():
+    url = "http://news.baidu.com/widget?id=TechNews"
+
+    data = requests.get(url,headers=headers).text
+    # print(data)
+    data1 = etree.HTML(data)
+    # print(data)
+    hot_tech_news_url = data1.xpath('//*[@id="col-tech"]/div[2]//a/@href')
+    hot_tech_news_title = data1.xpath('//*[@id="col-tech"]/div[2]//a/text()')
+
+    for i in range(len(hot_tech_news_url)):
+        print(hot_tech_news_title[i],hot_tech_news_url[i])
+        # cur.execute("insert into index_index values (default,'%s','%s','hot_tech_news',0)"%(hot_tech_news_title[i],hot_tech_news_url[i]))
+        # conn.commit()
+
+    hot_tech_pic_news_url = data1.xpath('//*[@id="col-tech"]/div[3]/div/div[2]/div//a//@href')
+    hot_tech_pic_news_title = data1.xpath('//*[@id="col-tech"]/div[3]/div/div[2]/div//a//text()')
+    hot_tech_pic_news_imgurl = data1.xpath('//*[@id="col-tech"]/div[3]/div/div[2]/div//a//img/@src')
+
+    for i in range(len(hot_tech_pic_news_imgurl)):
+        print(hot_tech_pic_news_title[i],hot_tech_pic_news_url[i*2],hot_tech_pic_news_imgurl[i])
+        # cur.execute("insert into index_index values (default,'%s','%s','hot_tech_pic_news','%s')"%(hot_tech_pic_news_title[i],hot_tech_pic_news_url[i*2],hot_tech_pic_news_imgurl[i]))
+        # conn.commit()
+
+    hot_tech_topic_pic_news_url = data1.xpath('//*[@id="tech-aside-cell"]/div[2]/div/div[1]/a/@href')
+    hot_tech_topic_pic_news_title = data1.xpath('//*[@id="tech-aside-cell"]/div[2]/div/div[2]/h4/a/text()')
+    hot_tech_topic_pic_news_imgurl = data1.xpath('//*[@id="tech-aside-cell"]/div[2]/div/div[1]/a/img/@src')
+    for i in range(len(hot_tech_topic_pic_news_url)):
+        print(hot_tech_topic_pic_news_title[i],hot_tech_topic_pic_news_url[i],hot_tech_topic_pic_news_imgurl[i])
+        # cur.execute("insert into index_index values (default,'%s','%s','hot_tech_topic_pic_news','%s')"%(hot_tech_topic_pic_news_title[i],hot_tech_topic_pic_news_url[i],hot_tech_topic_pic_news_imgurl[i]))
+        # conn.commit()
+    
+    hot_tech_click_news_title = data1.xpath('//*[@id="tech-aside-zrdl"]/div/ul//a/text()')
+    hot_tech_click_news_url = data1.xpath('//*[@id="tech-aside-zrdl"]/div/ul//a/@href')
+    for i in range(len(hot_tech_click_news_title)):
+        print(hot_tech_click_news_title[i],hot_tech_click_news_url[i])
+        # cur.execute("insert into index_index values (default,'%s','%s','hot_tech_click_news',0)"%(hot_tech_click_news_title[i],hot_tech_click_news_url[i]))
+        # conn.commit()
+
+def hot_military_news():
+    url = "http://news.baidu.com/widget?id=MilitaryNews"
+
+    data = requests.get(url,headers=headers).text
+    # print(data)
+    data1 = etree.HTML(data)
+    # print(data)
+    hot_military_news_url = data1.xpath('//*[@id="junshi"]/div[2]//a/@href')
+    hot_military_news_title = data1.xpath('//*[@id="junshi"]/div[2]//a/text()')
+
+    for i in range(len(hot_military_news_url)):
+        print(hot_military_news_title[i],hot_military_news_url[i])
+        # cur.execute("insert into index_index values (default,'%s','%s','hot_military_news',0)"%(hot_military_news_title[i],hot_military_news_url[i]))
+        # conn.commit()
+
+    hot_military_pic_news_url = data1.xpath('//*[@id="junshi"]/div[3]/div/div[2]/div//a//@href')
+    hot_military_pic_news_title = data1.xpath('//*[@id="junshi"]/div[3]/div/div[2]/div//a//text()')
+    hot_military_pic_news_imgurl = data1.xpath('//*[@id="junshi"]/div[3]/div/div[2]/div//a//img/@src')
+
+    for i in range(len(hot_military_pic_news_imgurl)):
+        print(hot_military_pic_news_title[i],hot_military_pic_news_url[i*2],hot_military_pic_news_imgurl[i])
+        # cur.execute("insert into index_index values (default,'%s','%s','hot_military_pic_news','%s')"%(hot_military_pic_news_title[i],hot_military_pic_news_url[i*2],hot_military_pic_news_imgurl[i]))
+        # conn.commit()
+    
+    hot_military_click_news_title = data1.xpath('//*[@id="junshi"]/div[4]//a/text()')
+    hot_military_click_news_url = data1.xpath('//*[@id="junshi"]/div[4]//a/@href')
+    for i in range(len(hot_military_click_news_url)):
+        print(hot_military_click_news_title[i],hot_military_click_news_url[i])
+        # cur.execute("insert into index_index values (default,'%s','%s','hot_military_click_news',0)"%(hot_military_click_news_title[i],hot_military_click_news_url[i]))
+        # conn.commit()
+
+def hot_internet_news():
+    url = "http://news.baidu.com/widget?id=InternetNews"
+
+    data = requests.get(url,headers=headers).text
+    # print(data)
+    data1 = etree.HTML(data)
+    # print(data)
+    hot_internet_news_url = data1.xpath('//*[@id="hulianwang"]/div[2]//a/@href')
+    hot_internet_news_title = data1.xpath('//*[@id="hulianwang"]/div[2]//a/text()')
+
+    for i in range(len(hot_internet_news_url)):
+        print(hot_internet_news_title[i],hot_internet_news_url[i])
+        # cur.execute("insert into index_index values (default,'%s','%s','hot_internet_news',0)"%(hot_internet_news_title[i],hot_internet_news_url[i]))
+        # conn.commit()
+
+    hot_internet_pic_news_url = data1.xpath('//*[@id="hulianwang"]/div[3]/div/div[2]/div//a//@href')
+    hot_internet_pic_news_title = data1.xpath('//*[@id="hulianwang"]/div[3]/div/div[2]/div//a//text()')
+    hot_internet_pic_news_imgurl = data1.xpath('//*[@id="hulianwang"]/div[3]/div/div[2]/div//a//img/@src')
+
+    for i in range(len(hot_internet_pic_news_imgurl)):
+        print(hot_internet_pic_news_title[i],hot_internet_pic_news_url[i*2],hot_internet_pic_news_imgurl[i])
+        # cur.execute("insert into index_index values (default,'%s','%s','hot_internet_pic_news','%s')"%(hot_internet_pic_news_title[i],hot_internet_pic_news_url[i*2],hot_internet_pic_news_imgurl[i]))
+        # conn.commit()
+    
+    hot_internet_click_news_title = data1.xpath('//*[@id="hulianwang"]/div[4]//a/text()')
+    hot_internet_click_news_url = data1.xpath('//*[@id="hulianwang"]/div[4]//a/@href')
+    for i in range(len(hot_internet_click_news_url)):
+        print(hot_internet_click_news_title[i],hot_internet_click_news_url[i])
+        # cur.execute("insert into index_index values (default,'%s','%s','hot_internet_click_news',0)"%(hot_internet_click_news_title[i],hot_internet_click_news_url[i]))
+        # conn.commit()
 
 if __name__ == '__main__':
     # hot_news()
     # hot_pane_news()
     # hot_China_news()
     # hot_world_news()
-    hot_enter_news()
+    # hot_enter_news()
+    # hot_sports_news()
+    # hot_tech_news()
+    # hot_military_news()
+    hot_internet_news()
+    

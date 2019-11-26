@@ -3,7 +3,7 @@
 @Date: 2019-11-12 14:16:16
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-11-25 18:51:14
+@LastEditTime: 2019-11-26 17:45:26
 '''
 from django.shortcuts import render
 from index.models import index
@@ -31,6 +31,24 @@ def index_news(request):
         hot_enter_pic_news = index.objects.filter(abs_titles='hot_enter_pic_news')
         hot_enter_click_news = index.objects.filter(abs_titles='hot_enter_click_news')
         hot_enter_div_pic_news = index.objects.filter(abs_titles='hot_enter_div_pic_news')
+        # 体育
+        hot_sports_news = index.objects.filter(abs_titles='hot_sports_news')
+        hot_sports_pic_news = index.objects.filter(abs_titles='hot_sports_pic_news')
+        hot_sports_click_news = index.objects.filter(abs_titles='hot_sports_click_news')
+        # 科技
+        hot_tech_news = index.objects.filter(abs_titles='hot_tech_news')
+        hot_tech_pic_news = index.objects.filter(abs_titles='hot_tech_pic_news')
+        hot_tech_topic_pic_news = index.objects.filter(abs_titles='hot_tech_topic_pic_news')
+        hot_tech_click_news = index.objects.filter(abs_titles='hot_tech_click_news')
+        # 军事
+        hot_military_news = index.objects.filter(abs_titles='hot_military_news')
+        hot_military_pic_news = index.objects.filter(abs_titles='hot_military_pic_news')
+        hot_military_click_news = index.objects.filter(abs_titles='hot_military_click_news')
+
+        # 互联网
+        hot_internet_news = index.objects.filter(abs_titles='hot_internet_news')
+        hot_internet_pic_news = index.objects.filter(abs_titles='hot_internet_pic_news')
+        hot_internet_click_news = index.objects.filter(abs_titles='hot_internet_click_news')
 
         contex = {
             # 热点
@@ -62,6 +80,29 @@ def index_news(request):
             'hot_enter_pic_news':hot_enter_pic_news,
             'hot_enter_click_news':hot_enter_click_news,
             'hot_enter_div_pic_news':hot_enter_div_pic_news,
+            # 体育
+            'hot_sports_news1':hot_sports_news[:6],
+            'hot_sports_news2':hot_sports_news[6:],
+            'hot_sports_pic_news':hot_sports_pic_news,
+            'hot_sports_click_news':hot_sports_click_news,
+            # 科技
+            'hot_tech_news1':hot_tech_news[:6],
+            'hot_tech_news2':hot_tech_news[6:],
+            'hot_tech_pic_news':hot_tech_pic_news,
+            'hot_tech_topic_pic_news':hot_tech_topic_pic_news,
+            'hot_tech_click_news':hot_tech_click_news,
+            # 军事
+            'hot_military_news1':hot_military_news[:6],
+            'hot_military_news2':hot_military_news[6:],
+            'hot_military_pic_news':hot_military_pic_news,
+            'hot_military_click_news1':hot_military_click_news[:5],
+            'hot_military_click_news2':hot_military_click_news[5:],
+            # 互联网
+            'hot_internet_news1':hot_internet_news[:6],
+            'hot_internet_news2':hot_internet_news[6:],
+            'hot_internet_pic_news':hot_internet_pic_news,
+            'hot_internet_click_news1':hot_internet_click_news[:4],
+            'hot_internet_click_news2':hot_internet_click_news[4:],
         }
 
         return render(request,"index.html",contex)

@@ -3,7 +3,7 @@
  * @Date: 2019-10-25 09:42:46
  * @E-Mail: hh@huahaohh.cn
  * @LastEditors: 华豪
- * @LastEditTime: 2019-11-25 18:58:37
+ * @LastEditTime: 2019-11-26 17:49:16
  -->
 <!DOCTYPE html>
 <html>
@@ -487,8 +487,20 @@
                         </div>
                     </div>
                     <div class="l-left-col1 col-mod">
-                        <ul class="ulist focuslistnews"></ul>
-                        <ul class="ulist focuslistnews"></ul>
+                        <ul class="ulist focuslistnews">
+                            {% if hot_sports_news1 %}
+                            {% for news in hot_sports_news1 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <ul class="ulist focuslistnews">
+                            {% if hot_sports_news2 %}
+                            {% for news in hot_sports_news2 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
                     </div>
                     <div class="l-middle-col">
                         <div class="mod">
@@ -499,15 +511,24 @@
                                 <div class="imagearea">
                                     <div class="imagearea-top">
                                         <div class="image-mask-item">
-
+                                            {% if hot_sports_pic_news %}
+                                                <a href="{{ hot_sports_pic_news.0.urls }}" target="_blank" class="item-image" title="{{ hot_sports_pic_news.0.titles }}"><img referrer-policy="no-referrer" src="{{ hot_sports_pic_news.0.imgurls }}"></a>
+                                                <a href="{{ hot_sports_pic_news.0.urls }}" target="_blank" class="item-title" title="{{ hot_sports_pic_news.0.titles }}">{{ hot_sports_pic_news.0.titles }}</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                     <div class="imagearea-bottom">
                                         <div class="image-list-item">
-                                            
+                                            {% if hot_sports_pic_news %}
+                                                <a href="{{ hot_sports_pic_news.1.urls }}" target="_blank" title="{{ hot_sports_pic_news.1.titles }}"><img referrer-policy="no-referrer" src="{{ hot_sports_pic_news.1.imgurls }}"></a>
+                                                <a href="{{ hot_sports_pic_news.1.urls }}" target="_blank" class="txt" title="{{ hot_sports_pic_news.1.titles }}">{{ hot_sports_pic_news.1.titles }}</a>
+                                            {% endif %}
                                         </div>
                                         <div class="image-list-item">
-                                            
+                                            {% if hot_sports_pic_news %}
+                                                <a href="{{ hot_sports_pic_news.2.urls }}" target="_blank" title="{{ hot_sports_pic_news.2.titles }}"><img referrer-policy="no-referrer" src="{{ hot_sports_pic_news.2.imgurls }}"></a>
+                                                <a href="{{ hot_sports_pic_news.2.urls }}" target="_blank" class="txt" title="{{ hot_sports_pic_news.2.titles }}">{{ hot_sports_pic_news.2.titles }}</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -523,10 +544,16 @@
                                 <div class="image-list">
                                     <div class="image-list-wrapper">
                                         <div class="image-list-item">
-
+                                            {% if hot_sports_pic_news %}
+                                                <a href="{{ hot_sports_pic_news.3.urls }}" target="_blank" title="{{ hot_sports_pic_news.3.titles }}"><img referrer-policy="no-referrer" src="{{ hot_sports_pic_news.3.imgurls }}"></a>
+                                                <a href="{{ hot_sports_pic_news.3.urls }}" target="_blank" class="txt" title="{{ hot_sports_pic_news.3.titles }}">{{ hot_sports_pic_news.3.titles }}</a>
+                                            {% endif %}
                                         </div>
                                         <div class="image-list-item">
-
+                                            {% if hot_sports_pic_news %}
+                                                <a href="{{ hot_sports_pic_news.4.urls }}" target="_blank" title="{{ hot_sports_pic_news.4.titles }}"><img referrer-policy="no-referrer" src="{{ hot_sports_pic_news.4.imgurls }}"></a>
+                                                <a href="{{ hot_sports_pic_news.4.urls }}" target="_blank" class="txt" title="{{ hot_sports_pic_news.4.titles }}">{{ hot_sports_pic_news.4.titles }}</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -537,7 +564,13 @@
                                 <h3>体育话题</h3>
                             </div>
                             <div class="bd">
-                                <ul class="ulist"></ul>
+                                <ul class="ulist">
+                                    {% if hot_sports_click_news %}
+                                    {% for news in hot_sports_click_news %}
+                                        <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -555,8 +588,20 @@
                         </div>
                     </div>
                     <div class="l-left-col1 col-mod">
-                        <ul class="ulist focuslistnews"></ul>
-                        <ul class="ulist focuslistnews"></ul>
+                        <ul class="ulist focuslistnews">
+                            {% if hot_tech_news1 %}
+                            {% for news in hot_tech_news1 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <ul class="ulist focuslistnews">
+                            {% if hot_tech_news2 %}
+                            {% for news in hot_tech_news2 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
                     </div>
                     <div class="l-middle-col">
                         <div class="mod">
@@ -567,15 +612,24 @@
                                 <div class="imagearea">
                                     <div class="imagearea-top">
                                         <div class="image-mask-item">
-
+                                            {% if hot_tech_pic_news %}
+                                                <a href="{{ hot_tech_pic_news.0.urls }}" target="_blank" class="item-image" title="{{ hot_tech_pic_news.0.titles }}"><img referrer-policy="no-referrer" src="{{ hot_tech_pic_news.0.imgurls }}"></a>
+                                                <a href="{{ hot_tech_pic_news.0.urls }}" target="_blank" class="item-title" title="{{ hot_tech_pic_news.0.titles }}">{{ hot_tech_pic_news.0.titles }}</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                     <div class="imagearea-bottom">
                                         <div class="image-list-item">
-                                            
+                                            {% if hot_tech_pic_news %}
+                                                <a href="{{ hot_tech_pic_news.1.urls }}" target="_blank" title="{{ hot_tech_pic_news.1.titles }}"><img referrer-policy="no-referrer" src="{{ hot_tech_pic_news.1.imgurls }}"></a>
+                                                <a href="{{ hot_tech_pic_news.1.urls }}" target="_blank" class="txt" title="{{ hot_tech_pic_news.1.titles }}">{{ hot_tech_pic_news.1.titles }}</a>
+                                            {% endif %}
                                         </div>
                                         <div class="image-list-item">
-                                            
+                                            {% if hot_tech_pic_news %}
+                                                <a href="{{ hot_tech_pic_news.2.urls }}" target="_blank" title="{{ hot_tech_pic_news.2.titles }}"><img referrer-policy="no-referrer" src="{{ hot_tech_pic_news.2.imgurls }}"></a>
+                                                <a href="{{ hot_tech_pic_news.2.urls }}" target="_blank" class="txt" title="{{ hot_tech_pic_news.2.titles }}">{{ hot_tech_pic_news.2.titles }}</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -588,17 +642,31 @@
                                 <h3>科技数码</h3>
                             </div>
                             <div class="bd">
-                                <div class="topic-pic">
-                                    
-                                </div>
-                                <div class="topic-txt">
-
+                                <div class="topic clearfix">
+                                    <div class="topic-pic">
+                                        {% if hot_tech_topic_pic_news %}
+                                            <a href="{{ hot_tech_topic_pic_news.0.urls }}" target="_blank"><img referrer-policy="no-referrer" src="{{ hot_tech_topic_pic_news.0.imgurls }}" class="mil"></a>
+                                        {% endif %}
+                                    </div>
+                                    <div class="topic-txt">
+                                        <h4 style="height: 64px;">
+                                            {% if hot_tech_topic_pic_news %}
+                                                <a href="{{ hot_tech_topic_pic_news.0.urls }}" target="_blank">{{ hot_tech_topic_pic_news.0.titles }}</a>
+                                            {% endif %}
+                                        </h4>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="mod">
+                        <div class="mod" id="tech-aside-zrdl">
                             <div class="bd">
-                                <ul class="ulist"></ul>
+                                <ul class="ulist">
+                                    {% if hot_tech_click_news %}
+                                    {% for news in hot_tech_click_news %}
+                                        <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -616,8 +684,20 @@
                         </div>
                     </div>
                     <div class="l-left-col1 col-mod">
-                        <ul class="ulist focuslistnews"></ul>
-                        <ul class="ulist focuslistnews"></ul>
+                        <ul class="ulist focuslistnews">
+                            {% if hot_military_news1 %}
+                            {% for news in hot_military_news1 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <ul class="ulist focuslistnews">
+                            {% if hot_military_news2 %}
+                            {% for news in hot_military_news2 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
                     </div>
                     <div class="l-middle-col">
                         <div class="mod">
@@ -627,16 +707,25 @@
                             <div class="bd">
                                 <div class="imagearea">
                                     <div class="imagearea-top">
-                                        <div class="image-mask-item">
-
-                                        </div>
+                                            <div class="image-mask-item">
+                                                {% if hot_military_pic_news %}
+                                                    <a href="{{ hot_military_pic_news.0.urls }}" target="_blank" class="item-image" title="{{ hot_military_pic_news.0.titles }}"><img referrer-policy="no-referrer" src="{{ hot_military_pic_news.0.imgurls }}"></a>
+                                                    <a href="{{ hot_military_pic_news.0.urls }}" target="_blank" class="item-title" title="{{ hot_military_pic_news.0.titles }}">{{ hot_military_pic_news.0.titles }}</a>
+                                                {% endif %}
+                                            </div>
                                     </div>
                                     <div class="imagearea-bottom">
                                         <div class="image-list-item">
-                                            
+                                            {% if hot_military_pic_news %}
+                                                <a href="{{ hot_military_pic_news.1.urls }}" target="_blank" title="{{ hot_military_pic_news.1.titles }}"><img referrer-policy="no-referrer" src="{{ hot_military_pic_news.1.imgurls }}"></a>
+                                                <a href="{{ hot_military_pic_news.1.urls }}" target="_blank" class="txt" title="{{ hot_military_pic_news.1.titles }}">{{ hot_military_pic_news.1.titles }}</a>
+                                            {% endif %}
                                         </div>
                                         <div class="image-list-item">
-                                            
+                                            {% if hot_military_pic_news %}
+                                                <a href="{{ hot_military_pic_news.2.urls }}" target="_blank" title="{{ hot_military_pic_news.2.titles }}"><img referrer-policy="no-referrer" src="{{ hot_military_pic_news.2.imgurls }}"></a>
+                                                <a href="{{ hot_military_pic_news.2.urls }}" target="_blank" class="txt" title="{{ hot_military_pic_news.2.titles }}">{{ hot_military_pic_news.2.titles }}</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -650,7 +739,11 @@
                             </div>
                             <div class="bd">
                                 <ol class="olist">
-
+                                    {% if hot_military_click_news1 %}
+                                    {% for news in hot_military_click_news1 %}
+                                        <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
                                 </ol>
                             </div>
                         </div>
@@ -659,7 +752,13 @@
                                 <h3>中国军情</h3>
                             </div>
                             <div class="bd">
-                                <ul class="ulist"></ul>
+                                <ul class="ulist">
+                                    {% if hot_military_click_news2 %}
+                                    {% for news in hot_military_click_news2 %}
+                                        <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -677,8 +776,20 @@
                         </div>
                     </div>
                     <div class="l-left-col1 col-mod">
-                        <ul class="ulist focuslistnews"></ul>
-                        <ul class="ulist focuslistnews"></ul>
+                        <ul class="ulist focuslistnews">
+                            {% if hot_internet_news1 %}
+                            {% for news in hot_internet_news1 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <ul class="ulist focuslistnews">
+                            {% if hot_internet_news2 %}
+                            {% for news in hot_internet_news2 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
                     </div>
                     <div class="l-middle-col">
                         <div class="mod">
@@ -689,15 +800,24 @@
                                 <div class="imagearea">
                                     <div class="imagearea-top">
                                         <div class="image-mask-item">
-
+                                            {% if hot_internet_pic_news %}
+                                                <a href="{{ hot_internet_pic_news.0.urls }}" target="_blank" class="item-image" title="{{ hot_internet_pic_news.0.titles }}"><img referrer-policy="no-referrer" src="{{ hot_internet_pic_news.0.imgurls }}"></a>
+                                                <a href="{{ hot_internet_pic_news.0.urls }}" target="_blank" class="item-title" title="{{ hot_internet_pic_news.0.titles }}">{{ hot_internet_pic_news.0.titles }}</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                     <div class="imagearea-bottom">
                                         <div class="image-list-item">
-                                            
+                                            {% if hot_internet_pic_news %}
+                                                <a href="{{ hot_internet_pic_news.1.urls }}" target="_blank" title="{{ hot_internet_pic_news.1.titles }}"><img referrer-policy="no-referrer" src="{{ hot_internet_pic_news.1.imgurls }}"></a>
+                                                <a href="{{ hot_internet_pic_news.1.urls }}" target="_blank" class="txt" title="{{ hot_internet_pic_news.1.titles }}">{{ hot_internet_pic_news.1.titles }}</a>
+                                            {% endif %}
                                         </div>
                                         <div class="image-list-item">
-                                            
+                                            {% if hot_internet_pic_news %}
+                                                <a href="{{ hot_internet_pic_news.2.urls }}" target="_blank" title="{{ hot_internet_pic_news.2.titles }}"><img referrer-policy="no-referrer" src="{{ hot_internet_pic_news.2.imgurls }}"></a>
+                                                <a href="{{ hot_internet_pic_news.2.urls }}" target="_blank" class="txt" title="{{ hot_internet_pic_news.2.titles }}">{{ hot_internet_pic_news.2.titles }}</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -710,7 +830,13 @@
                                 <h3>公司动态</h3>
                             </div>
                             <div class="bd">
-                                <ul class="ulist"></ul>
+                                <ul class="ulist">
+                                    {% if hot_internet_click_news1 %}
+                                    {% for news in hot_internet_click_news1 %}
+                                        <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
                             </div>
                         </div>
                         <div class="mod tbox">
@@ -718,7 +844,13 @@
                                 <h3>人物动态</h3>
                             </div>
                             <div class="bd">
-                                <ul class="ulist"></ul>
+                                <ul class="ulist">
+                                    {% if hot_internet_click_news2 %}
+                                    {% for news in hot_internet_click_news2 %}
+                                        <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
                             </div>
                         </div>
                     </div>
