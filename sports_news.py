@@ -3,7 +3,7 @@
 @Date: 2019-10-24 11:34:26
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-11-12 14:32:54
+@LastEditTime: 2019-11-28 15:35:24
 '''
 
 import requests
@@ -14,12 +14,15 @@ import pymysql
 conn = pymysql.connect("127.0.0.1", 'hh', '92868520', 'newsweb')
 cur = conn.cursor()
 
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36'
+}
 
 # 热点新闻
 def top_news():
     url = "https://news.baidu.com/sports"
     # 基本新闻
-    data = requests.get(url).text
+    data = requests.get(url,headers=headers).text
     data1 = etree.HTML(data)
 
     top_sports_news_url = data1.xpath('//*[@id="col_focus"]/div[1]//a/@href')
@@ -27,6 +30,7 @@ def top_news():
 
     for i in range(20):
         print(top_sports_news_url[i],top_sports_news_title[i])
+        # top_sports_news_url[i] = top_sports_news_url[i].replace(" ",",")
         # cur.execute('insert into sports_sports values (default,"%s","%s",0,0)'%(top_sports_news_title[i],top_sports_news_url[i]))
         # conn.commit()
 
@@ -57,12 +61,13 @@ def top_news():
 
     for i in range(12):
         print(NBA_news_title[i],NBA_news_url[i])
+        # NBA_news_title[i] = NBA_news_title[i].replace(" ",",")
         # cur.execute('insert into sports_sports values (default,"%s","%s","NBA_news",0)'%(NBA_news_title[i],NBA_news_url[i]))
         # conn.commit()
 
 def world_football():
     url = 'https://news.baidu.com/widget?id=WorldSoccerNews&channel=sports&t=1573377253196'
-    data = requests.get(url,verify=False).text
+    data = requests.get(url,headers=headers,verify=False).text
     data1 = etree.HTML(data)
     # print(data)
     world_football_url = data1.xpath('//*[@id="col_internal"]/div[1]/div[2]//a/@href')
@@ -74,17 +79,19 @@ def world_football():
     # print(world_football_url,world_football_title)
     for i in range(12):
         print(world_football_title[i],world_football_url[i])
+        # world_football_title[i] = world_football_title[i].replace(" ",",")
         # cur.execute('insert into sports_sports values (default,"%s","%s","world_football",0)'%(world_football_title[i],world_football_url[i]))
         # conn.commit()
     
     for i in range(8):
         print(star_news_title[i],star_news_url[i])
+        # star_news_title[i] = star_news_title[i].replace(" ",",")
         # cur.execute('insert into sports_sports values (default,"%s","%s","star_news",0)'%(star_news_title[i],star_news_url[i]))
         # conn.commit()
 
 def china_football():
     url = 'http://news.baidu.com/widget?id=ChinaSoccerNews&channel=sports&t=1573456554645'
-    data = requests.get(url,verify=False).text
+    data = requests.get(url,headers=headers,verify=False).text
     data1 = etree.HTML(data)
     # print(data)
     china_football_url = data1.xpath('//*[@id="col_civil"]/div[1]/div[2]//a/@href')
@@ -96,17 +103,19 @@ def china_football():
     # print(world_football_url,world_football_title)
     for i in range(12):
         print(china_football_title[i],china_football_url[i])
+        # china_football_title[i] = china_football_title[i].replace(" ",",")
         # cur.execute('insert into sports_sports values (default,"%s","%s","china_football",0)'%(china_football_title[i],china_football_url[i]))
         # conn.commit()
     
     for i in range(8):
         print(player_news_title[i],player_news_url[i])
+        # player_news_title[i] = player_news_title[i].replace(" ",",")
         # cur.execute('insert into sports_sports values (default,"%s","%s","player_news",0)'%(player_news_title[i],player_news_url[i]))
         # conn.commit()
 
 def CBA():
     url = 'http://news.baidu.com/widget?id=CbaNews&channel=sports&t=1573459692944'
-    data = requests.get(url,verify=False).text
+    data = requests.get(url,headers=headers,verify=False).text
     data1 = etree.HTML(data)
     # print(data)
     CBA_news_url = data1.xpath('//*[@id="col_cba"]/div[1]/div[2]//a/@href')
@@ -118,17 +127,19 @@ def CBA():
     # print(world_football_url,world_football_title)
     for i in range(12):
         print(CBA_news_title[i],CBA_news_url[i])
+        # CBA_news_title[i] = CBA_news_title[i].replace(",")
         # cur.execute('insert into sports_sports values (default,"%s","%s","CBA_news",0)'%(CBA_news_title[i],CBA_news_url[i]))
         # conn.commit()
     
     for i in range(8):
         print(focus_events_title[i],focus_events_url[i])
+        # focus_events_title[i] = focus_events_title[i].replace(" ",",")
         # cur.execute('insert into sports_sports values (default,"%s","%s","focus_events",0)'%(focus_events_title[i],focus_events_url[i]))
         # conn.commit()
 
 def other_sports():
     url = 'http://news.baidu.com/widget?id=OtherNews&channel=sports&t=1573459692963'
-    data = requests.get(url,verify=False).text
+    data = requests.get(url,headers=headers,verify=False).text
     data1 = etree.HTML(data)
     # print(data)
     other_sports_url = data1.xpath('//*[@id="col_integrated"]/div[1]/div[2]//a/@href')
@@ -140,17 +151,19 @@ def other_sports():
     # print(world_football_url,world_football_title)
     for i in range(12):
         print(other_sports_title[i],other_sports_url[i])
+        # other_sports_title[i] = other_sports_title[i].replace(" ",",")
         # cur.execute('insert into sports_sports values (default,"%s","%s","other_sports",0)'%(other_sports_title[i],other_sports_url[i]))
         # conn.commit()
     
     for i in range(8):
         print(hot_articles_title[i],hot_articles_url[i])
+        # hot_articles_title[i] = hot_articles_title[i].replace(" ",",")
         # cur.execute('insert into sports_sports values (default,"%s","%s","hot_articles",0)'%(hot_articles_title[i],hot_articles_url[i]))
         # conn.commit()
 
 def latest_news():
     url = 'http://news.baidu.com/widget?id=LatestNews&channel=sports&t=1573462748116'
-    data = requests.get(url,verify=False).text
+    data = requests.get(url,headers=headers,verify=False).text
     data1 = etree.HTML(data)
 
     latest_news_url = data1.xpath('//*[@id="latest-news"]//a/@href')
@@ -158,6 +171,7 @@ def latest_news():
 
     for i in range(len(latest_news_url)):
         print(latest_news_title[i],latest_news_url[i])
+        # latest_news_title[i] = latest_news_title[i].replace(" ",",")
         # cur.execute('insert into sports_sports values (default,"%s","%s","latest_news",0)'%(latest_news_title[i],latest_news_url[i]))
         # conn.commit()
 

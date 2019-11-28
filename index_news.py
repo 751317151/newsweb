@@ -3,7 +3,7 @@
 @Date: 2019-11-12 14:32:09
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-11-26 17:42:58
+@LastEditTime: 2019-11-28 15:34:45
 '''
 
 import requests
@@ -22,7 +22,7 @@ headers = {
 def hot_news():
     url = "http://news.baidu.com/"
 
-    data = requests.get(url).text
+    data = requests.get(url,headers=headers).text
     # print(data)
     data1 = etree.HTML(data)
     # print(data)
@@ -31,6 +31,7 @@ def hot_news():
 
     for i in range(len(hot_news_url)):
         print(hot_news_url[i],hot_news_title[i],len(hot_news_url[i]))
+        # hot_news_title[i] = hot_news_title[i].replace(" ",",")
         # cur.execute('insert into index_index values (default,"%s","%s","hot_news",0)'%(hot_news_title[i],hot_news_url[i]))
         # conn.commit()
 
@@ -64,6 +65,7 @@ def hot_news():
     # print(hot_pane_news_title,hot_pane_news_url)
     for i in range(len(hot_pane_news_url)):
         print(hot_pane_news_title[i],hot_pane_news_url[i])
+        # hot_pane_news_title[i] = hot_pane_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_pane_news',0)"%(hot_pane_news_title[i],hot_pane_news_url[i]))
         # conn.commit()
 
@@ -73,13 +75,14 @@ def hot_news():
 
     for i in range(len(online_news_url)):
         print(online_news_title[i],online_news_url[i])
-        cur.execute("insert into index_index values (default,'%s','%s','online_news',0)"%(online_news_title[i],online_news_url[i]))
-        conn.commit()
+        # online_news_title[i] = online_news_title[i].replace(" ",",")
+        # cur.execute("insert into index_index values (default,'%s','%s','online_news',0)"%(online_news_title[i],online_news_url[i]))
+        # conn.commit()
 
 def hot_pane_news():
     url = "http://www.china.com/"
 
-    data = requests.get(url)
+    data = requests.get(url,headers=headers)
     data.encoding="utf-8"
     data = data.text
     # print(data)
@@ -92,6 +95,7 @@ def hot_pane_news():
     # print(hot_pane_news_title,hot_pane_news_url)
     for i in range(5):
         print(hot_pane_news_title[i],hot_pane_news_url[i])
+        # hot_pane_news_title[i] = hot_pane_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_pane_news1',0)"%(hot_pane_news_title[i],hot_pane_news_url[i]))
         # conn.commit()
 
@@ -107,6 +111,7 @@ def hot_China_news():
 
     # for i in range(len(hot_China_news_url)):
     #     print(hot_China_news_title[i],hot_China_news_url[i])
+    #    # hot_China_news_title[i] = hot_China_news_title[i].replace(" ",",")
     #     cur.execute("insert into index_index values (default,'%s','%s','hot_China_news',0)"%(hot_China_news_title[i],hot_China_news_url[i]))
     #     conn.commit()
 
@@ -116,6 +121,7 @@ def hot_China_news():
 
     for i in range(len(hot_China_pic_news_imgurl)):
         print(hot_China_pic_news_title[i],hot_China_pic_news_url[i*2],hot_China_pic_news_imgurl[i])
+        # hot_China_pic_news_title[i] = hot_China_pic_news_title[i].replace(" ",",")
     #     cur.execute("insert into index_index values (default,'%s','%s','hot_China_pic_news','%s')"%(hot_China_pic_news_title[i],hot_China_pic_news_url[i*2],hot_China_pic_news_imgurl[i]))
     #     conn.commit()
 
@@ -125,6 +131,7 @@ def hot_China_news():
 
     for i in range(len(hot_China_pic_news_imgurl)):
         print(hot_China_pic_news_title[i],hot_China_pic_news_url[i*2],hot_China_pic_news_imgurl[i])
+        # hot_China_pic_news_title[i] = hot_China_pic_news_title[i].replace(" ",",")
     #     cur.execute("insert into index_index values (default,'%s','%s','hot_China_pic_news','%s')"%(hot_China_pic_news_title[i],hot_China_pic_news_url[i*2],hot_China_pic_news_imgurl[i]))
     #     conn.commit()
 
@@ -133,6 +140,7 @@ def hot_China_news():
 
     # for i in range(len(hot_China_click_news_title)):
     #     print(hot_China_click_news_title[i],hot_China_click_news_url[i])
+    #    # hot_China_click_news_title[i] = hot_China_click_news_title[i].replace(" ",",")
     #     cur.execute("insert into index_index values (default,'%s','%s','hot_China_click_news',0)"%(hot_China_click_news_title[i],hot_China_click_news_url[i]))
     #     conn.commit()
 
@@ -147,6 +155,7 @@ def hot_world_news():
     hot_world_news_title = data1.xpath('//*[@id="guojie"]/div[2]//a/text()')
     # for i in range(len(hot_world_news_url)):
     #     print(hot_world_news_title[i],hot_world_news_url[i])
+    #    # hot_world_news_title[i] = hot_world_news_title[i].replace(" ",",")
     #     cur.execute("insert into index_index values (default,'%s','%s','hot_world_news',0)"%(hot_world_news_title[i],hot_world_news_url[i]))
     #     conn.commit()
 
@@ -155,6 +164,7 @@ def hot_world_news():
     hot_world_pic_news_imgurl = data1.xpath('//*[@id="guojie"]/div[3]/div/div[2]/div//a//img/@src')
     # for i in range(len(hot_world_pic_news_imgurl)):
     #     print(hot_world_pic_news_title[i],hot_world_pic_news_url[i*2],hot_world_pic_news_imgurl[i])
+    #    # hot_world_pic_news_title[i] = hot_world_pic_news_title[i].replace(" ",",")
     #     cur.execute("insert into index_index values (default,'%s','%s','hot_world_pic_news','%s')"%(hot_world_pic_news_title[i],hot_world_pic_news_url[i*2],hot_world_pic_news_imgurl[i]))
     #     conn.commit()
 
@@ -163,6 +173,7 @@ def hot_world_news():
     hot_world_pic_news_imgurl = data1.xpath('//*[@id="guojie"]/div[4]/div/div[2]/div//a//img/@src')
     # for i in range(len(hot_world_pic_news_imgurl)):
     #     print(hot_world_pic_news_title[i],hot_world_pic_news_url[i*2],hot_world_pic_news_imgurl[i])
+    #    # hot_world_pic_news_title[i] = hot_world_pic_news_title[i].replace(" ",",")
     #     cur.execute("insert into index_index values (default,'%s','%s','hot_world_pic_news','%s')"%(hot_world_pic_news_title[i],hot_world_pic_news_url[i*2],hot_world_pic_news_imgurl[i]))
     #     conn.commit()
 
@@ -170,6 +181,7 @@ def hot_world_news():
     hot_world_click_news_title = data1.xpath('//*[@id="internal-hotword"]/div[2]//a/text()')
     # for i in range(len(hot_world_click_news_title)):
     #     print(hot_world_click_news_title[i],hot_world_click_news_url[i])
+    #    # hot_world_click_news_title[i] = hot_world_click_news_title[i].replace(" ",",")
     #     cur.execute("insert into index_index values (default,'%s','%s','hot_world_click_news',0)"%(hot_world_click_news_title[i],hot_world_click_news_url[i]))
     #     conn.commit()
 
@@ -184,6 +196,7 @@ def hot_enter_news():
     hot_enter_news_title = data1.xpath('//*[@id="yule"]/div[2]//a/text()')
     for i in range(len(hot_enter_news_url)):
         print(hot_enter_news_title[i],hot_enter_news_url[i])
+        # hot_enter_news_title[i] = hot_enter_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_enter_news',0)"%(hot_enter_news_title[i],hot_enter_news_url[i]))
         # conn.commit()
 
@@ -192,6 +205,7 @@ def hot_enter_news():
     hot_enter_pic_news_imgurl = data1.xpath('//*[@id="yule"]/div[3]/div/div[2]/div//a//img/@src')
     for i in range(len(hot_enter_pic_news_imgurl)):
         print(hot_enter_pic_news_title[i],hot_enter_pic_news_url[i*2],hot_enter_pic_news_imgurl[i])
+        # hot_enter_pic_news_title[i] = hot_enter_pic_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_enter_pic_news','%s')"%(hot_enter_pic_news_title[i],hot_enter_pic_news_url[i*2],hot_enter_pic_news_imgurl[i]))
         # conn.commit()
 
@@ -200,6 +214,7 @@ def hot_enter_news():
     hot_enter_pic_news_imgurl = data1.xpath('//*[@id="yule"]/div[4]/div/div[2]/div//a//img/@src')
     for i in range(len(hot_enter_pic_news_imgurl)):
         print(hot_enter_pic_news_title[i],hot_enter_pic_news_url[i*2],hot_enter_pic_news_imgurl[i])
+        # hot_enter_pic_news_title[i] = hot_enter_pic_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_enter_pic_news','%s')"%(hot_enter_pic_news_title[i],hot_enter_pic_news_url[i*2],hot_enter_pic_news_imgurl[i]))
         # conn.commit()
 
@@ -207,6 +222,7 @@ def hot_enter_news():
     hot_enter_click_news_title = data1.xpath('//*[@id="yule-aside-hotwords"]/div/ul//a/text()')
     for i in range(len(hot_enter_click_news_url)):
         print(hot_enter_click_news_title[i],hot_enter_click_news_url[i])
+        # hot_enter_click_news_title[i] = hot_enter_click_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_enter_click_news',0)"%(hot_enter_click_news_title[i],hot_enter_click_news_url[i]))
         # conn.commit()
     
@@ -215,6 +231,7 @@ def hot_enter_news():
     hot_enter_div_pic_news_imgurl = data1.xpath('//*[@id="sports-picwall"]/div/div/div//a//@src')
     for i in range(len(hot_enter_div_pic_news_imgurl)):
         print(hot_enter_div_pic_news_title[i],hot_enter_div_pic_news_url[i*2],hot_enter_div_pic_news_imgurl[i])
+        # hot_enter_div_pic_news_title[i] = hot_enter_div_pic_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_enter_div_pic_news','%s')"%(hot_enter_div_pic_news_title[i],hot_enter_div_pic_news_url[i*2],hot_enter_div_pic_news_imgurl[i]))
         # conn.commit()
 
@@ -230,6 +247,7 @@ def hot_sports_news():
 
     for i in range(len(hot_sports_news_url)):
         print(hot_sports_news_title[i],hot_sports_news_url[i])
+        # hot_sports_news_title[i] = hot_sports_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_sports_news',0)"%(hot_sports_news_title[i],hot_sports_news_url[i]))
         # conn.commit()
 
@@ -239,6 +257,7 @@ def hot_sports_news():
 
     for i in range(len(hot_sports_pic_news_imgurl)):
         print(hot_sports_pic_news_title[i],hot_sports_pic_news_url[i*2],hot_sports_pic_news_imgurl[i])
+        # hot_sports_pic_news_title[i] = hot_sports_pic_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_sports_pic_news','%s')"%(hot_sports_pic_news_title[i],hot_sports_pic_news_url[i*2],hot_sports_pic_news_imgurl[i]))
         # conn.commit()
 
@@ -248,6 +267,7 @@ def hot_sports_news():
 
     for i in range(len(hot_sports_pic_news_imgurl)):
         print(hot_sports_pic_news_title[i],hot_sports_pic_news_url[i*2],hot_sports_pic_news_imgurl[i])
+        # hot_sports_pic_news_title[i] = hot_sports_pic_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_sports_pic_news','%s')"%(hot_sports_pic_news_title[i],hot_sports_pic_news_url[i*2],hot_sports_pic_news_imgurl[i]))
         # conn.commit()
 
@@ -256,6 +276,7 @@ def hot_sports_news():
 
     for i in range(len(hot_sports_click_news_title)):
         print(hot_sports_click_news_title[i],hot_sports_click_news_url[i])
+        # hot_sports_click_news_title[i] = hot_sports_click_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_sports_click_news',0)"%(hot_sports_click_news_title[i],hot_sports_click_news_url[i]))
         # conn.commit()
 
@@ -271,6 +292,7 @@ def hot_tech_news():
 
     for i in range(len(hot_tech_news_url)):
         print(hot_tech_news_title[i],hot_tech_news_url[i])
+        # hot_tech_news_title[i] = hot_tech_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_tech_news',0)"%(hot_tech_news_title[i],hot_tech_news_url[i]))
         # conn.commit()
 
@@ -280,6 +302,7 @@ def hot_tech_news():
 
     for i in range(len(hot_tech_pic_news_imgurl)):
         print(hot_tech_pic_news_title[i],hot_tech_pic_news_url[i*2],hot_tech_pic_news_imgurl[i])
+        # hot_tech_pic_news_title[i] = hot_tech_pic_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_tech_pic_news','%s')"%(hot_tech_pic_news_title[i],hot_tech_pic_news_url[i*2],hot_tech_pic_news_imgurl[i]))
         # conn.commit()
 
@@ -288,6 +311,7 @@ def hot_tech_news():
     hot_tech_topic_pic_news_imgurl = data1.xpath('//*[@id="tech-aside-cell"]/div[2]/div/div[1]/a/img/@src')
     for i in range(len(hot_tech_topic_pic_news_url)):
         print(hot_tech_topic_pic_news_title[i],hot_tech_topic_pic_news_url[i],hot_tech_topic_pic_news_imgurl[i])
+        # hot_tech_topic_pic_news_title[i] = hot_tech_topic_pic_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_tech_topic_pic_news','%s')"%(hot_tech_topic_pic_news_title[i],hot_tech_topic_pic_news_url[i],hot_tech_topic_pic_news_imgurl[i]))
         # conn.commit()
     
@@ -295,6 +319,7 @@ def hot_tech_news():
     hot_tech_click_news_url = data1.xpath('//*[@id="tech-aside-zrdl"]/div/ul//a/@href')
     for i in range(len(hot_tech_click_news_title)):
         print(hot_tech_click_news_title[i],hot_tech_click_news_url[i])
+        # hot_tech_click_news_title[i] = hot_tech_click_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_tech_click_news',0)"%(hot_tech_click_news_title[i],hot_tech_click_news_url[i]))
         # conn.commit()
 
@@ -310,6 +335,7 @@ def hot_military_news():
 
     for i in range(len(hot_military_news_url)):
         print(hot_military_news_title[i],hot_military_news_url[i])
+        # hot_military_news_title[i] = hot_military_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_military_news',0)"%(hot_military_news_title[i],hot_military_news_url[i]))
         # conn.commit()
 
@@ -319,6 +345,7 @@ def hot_military_news():
 
     for i in range(len(hot_military_pic_news_imgurl)):
         print(hot_military_pic_news_title[i],hot_military_pic_news_url[i*2],hot_military_pic_news_imgurl[i])
+        # hot_military_pic_news_title[i] = hot_military_pic_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_military_pic_news','%s')"%(hot_military_pic_news_title[i],hot_military_pic_news_url[i*2],hot_military_pic_news_imgurl[i]))
         # conn.commit()
     
@@ -326,6 +353,7 @@ def hot_military_news():
     hot_military_click_news_url = data1.xpath('//*[@id="junshi"]/div[4]//a/@href')
     for i in range(len(hot_military_click_news_url)):
         print(hot_military_click_news_title[i],hot_military_click_news_url[i])
+        # hot_military_click_news_title[i] = hot_military_click_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_military_click_news',0)"%(hot_military_click_news_title[i],hot_military_click_news_url[i]))
         # conn.commit()
 
@@ -341,6 +369,7 @@ def hot_internet_news():
 
     for i in range(len(hot_internet_news_url)):
         print(hot_internet_news_title[i],hot_internet_news_url[i])
+        # hot_internet_news_title[i] = hot_internet_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_internet_news',0)"%(hot_internet_news_title[i],hot_internet_news_url[i]))
         # conn.commit()
 
@@ -350,6 +379,7 @@ def hot_internet_news():
 
     for i in range(len(hot_internet_pic_news_imgurl)):
         print(hot_internet_pic_news_title[i],hot_internet_pic_news_url[i*2],hot_internet_pic_news_imgurl[i])
+        # hot_internet_pic_news_title[i] = hot_internet_pic_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_internet_pic_news','%s')"%(hot_internet_pic_news_title[i],hot_internet_pic_news_url[i*2],hot_internet_pic_news_imgurl[i]))
         # conn.commit()
     
@@ -357,6 +387,7 @@ def hot_internet_news():
     hot_internet_click_news_url = data1.xpath('//*[@id="hulianwang"]/div[4]//a/@href')
     for i in range(len(hot_internet_click_news_url)):
         print(hot_internet_click_news_title[i],hot_internet_click_news_url[i])
+        # hot_internet_click_news_title[i] = hot_internet_click_news_title[i].replace(" ",",")
         # cur.execute("insert into index_index values (default,'%s','%s','hot_internet_click_news',0)"%(hot_internet_click_news_title[i],hot_internet_click_news_url[i]))
         # conn.commit()
 

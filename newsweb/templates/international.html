@@ -1,0 +1,316 @@
+<!--
+ * @Author: 华豪
+ * @Date: 2019-11-27 16:01:51
+ * @E-Mail: hh@huahaohh.cn
+ * @LastEditors: 华豪
+ * @LastEditTime: 2019-11-28 17:56:21
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国际</title>
+    <link rel="stylesheet" href="static/css/bgsize.css" />		
+    <link rel="stylesheet" href="static/css/main.css" />
+    <link rel="stylesheet" href="static/css/shutter.css">
+    <link rel="stylesheet" href="static/css/sports.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="static/css/china.css">
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/velocity.js"></script>
+    <script src="static/js/shutter.js"></script> 
+    <script>
+    $(function () {
+    $('.shutter').shutter({
+        shutterW: 665, // 容器宽度
+        shutterH: 340, // 容器高度
+        isAutoPlay: true, // 是否自动播放
+        playInterval: 3000, // 自动播放时间
+        curDisplay: 3, // 当前显示页
+        fullPage: false // 是否全屏展示
+    });
+    });
+    </script>
+
+</head>
+<body>
+    <div class="contaiter">		
+        <!--下面是导航菜单-->
+        <div class="navigator" >
+            <ul id="nav">
+                <li><a href="/">首页</a></li> &nbsp;&nbsp;
+                <li><a href="china">国内</a></li>&nbsp;&nbsp;
+                <li><a href="international" class="selected">国际</a></li>&nbsp;&nbsp;
+                <li><a href="#">娱乐</a></li>&nbsp;&nbsp;
+                <li><a href="sports">体育</a></li>&nbsp;&nbsp;
+                <li><a href="#">科技</a></li>&nbsp;&nbsp;
+                <li><a href="#">军事</a></li>&nbsp;&nbsp;
+                <li><a href="#">互联网</a></li>&nbsp;&nbsp;
+            </ul>
+        </div>
+        <div id="body">
+            <div class="column clearfix" id="col_toparea">
+            <!--下面是图片轮换-->
+                <div class="shutter toparea-carousel">
+                    <div class="imgplayer clearfix" id="imgplayer">
+                        <div class="shutter-img">
+                            {% for img_news in img_news %}
+                                <a href="{{ img_news.urls }}" data-shutter-title="{{ img_news.titles }}" target="_blank" style="cursor: pointer;"><img src="{{ img_news.imgurls }}"></a>
+                            {% endfor %}
+                        </div>
+                        <ul class="shutter-btn">
+                            <li class="prev"></li>
+                            <li class="next"></li>
+                        </ul>
+                        <!-- 设置默认第一张 -->
+                        <div class="shutter-desc">  
+                            <a href="{{ img_news.3.urls }}" target="_blank"><p>{{ img_news.3.titles }}</p></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="l-right-col">
+                    <div class="mod">
+                        <div class="hd">
+                            <h3>
+                                即时新闻
+                                <span class="dec">INSTANT NEWS</span>
+                            </h3>
+                        </div>
+                        <div class="bd">
+                            <div id="instant-news">
+                                <ul class="ulist mix-ulist">
+                                    {% if instant_news %}
+                                    {% for news in instant_news %}
+                                        <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column clearfix" id="col_focus">
+                <div class="l-left-col">
+                    <div class="column-title">
+                        <div class="column-title-border">
+                            <h2>
+                                <span class="subtitle">焦点新闻</span>
+                                <span class="cname">FOCAL NEWS</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="b-left">
+                        <ul class="ulist">
+                            {% if focal_news1 %}
+                            {% for news in focal_news1 %}
+                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <ul class="ulist">
+                            {% if focal_news2 %}
+                            {% for news in focal_news2 %}
+                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="ilist">
+                        <ul></ul>
+                    </div>
+                </div>
+                <div class="l-right-col">
+                    <div class="mod">
+                        <div class="hd">
+                            <h3>
+                                视频新闻
+                                <span class="dec">VIDEW NEWS</span>
+                            </h3>
+                        </div>
+                        <div class="bd">
+                            <div id="focus-videos">
+                                {% if focal_video_news %}
+                                {% for news in focal_video_news %}
+                                    <div class="topic">
+                                        <p class="picture">
+                                            <a href="{{ news.urls }}" target="_blank">
+                                                <img src="{{ news.imgurls }}">
+                                                <span class="play"></span>
+                                            </a>
+                                        </p>
+                                        <p class="title">
+                                            <a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a>
+                                        </p>
+                                    </div>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column clearfix" id="col_gangaotai">
+                <div class="l-left-col">
+                    <div class="column-title">
+                        <div class="column-title-border">
+                            <h2>
+                                <span class="subtitle">港澳台</span>
+                                <span class="cname">HK,MACAU&TAIWAN</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="b-left">
+                        <h4>台湾</h4>
+                        <ul class="ulist">
+                            {% if gangaotai_news1 %}
+                            {% for news in gangaotai_news1 %}
+                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <h4>港澳</h4>
+                        <ul class="ulist">
+                            {% if gangaotai_news2 %}
+                            {% for news in gangaotai_news2 %}
+                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="ilist">
+                        <ul>
+                            {% if gangaotai_pic_news %}
+                            {% for news in gangaotai_pic_news %}
+                                <li><a href="{{ news.urls }}" target="_blank">
+                                    <img src="{{ news.imgurls }}">
+                                    <span class="title">{{ news.titles }}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="l-right-col">
+                    <div class="mod">
+                        <div class="hd">
+                            <h3>
+                                台湾民生
+                                <span class="dec">TAIWAN LIVELIHOOD</span>
+                            </h3>
+                        </div>
+                        <div class="bd">
+                            <div id="twms-news">
+                                <ul class="ulist mix-ulist">
+                                    {% if gangaotai_click_news %}
+                                    {% for news in gangaotai_click_news %}
+                                        <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column clearfix" id="col_politics">
+                <div class="l-left-col">
+                    <div class="column-title">
+                        <div class="column-title-border">
+                            <h2>
+                                <span class="subtitle">时政要闻</span>
+                                <span class="cname">CURRENT NEWS</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="b-left">
+                        <ul class="ulist">
+                            {% if politics_news1 %}
+                            {% for news in politics_news1 %}
+                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                        <ul class="ulist">
+                            {% if politics_news2 %}
+                            {% for news in politics_news2 %}
+                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="ilist">
+                        <ul>
+                            {% if politics_pic_news %}
+                            {% for news in politics_pic_news %}
+                                <li><a href="{{ news.urls }}" target="_blank">
+                                    <img src="{{ news.imgurls }}">
+                                    <span class="title">{{ news.titles }}</span>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="l-right-col">
+                    <div class="mod">
+                        <div class="hd">
+                            <h3>
+                                历史档案
+                                <span class="dec">HISTORICAL NEWS</span>
+                            </h3>
+                        </div>
+                        <div class="bd">
+                            <div id="historical-news">
+                                <ul class="ulist mix-ulist">
+                                    {% if politics_click_news %}
+                                    {% for news in politics_click_news %}
+                                        <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column clearfix" id="col_latest">
+                <div class="column-title">
+                    <div class="column-title-border">
+                        <h2>
+                            <span class="subtitle">最新新闻</span>
+                            <span class="cname">LATEST NEWS</span>
+                        </h2>
+                    </div>
+                </div>
+                <div id="latest-news">
+                    <ul class="ulist" style="margin-right: 150px;">
+                        {% if latest_news1 %}
+                            {% for news in latest_news1 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                    <ul class="ulist">
+                        {% if latest_news2 %}
+                            {% for news in latest_news2 %}
+                                <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <table width="1024px" bgcolor="bisque" align="center">		
+            <tr height="60px" bgcolor="aquamarine" align="center">      	
+                <td style="font-size: 2em;">hh@huahaohh.cn</td>
+            </tr>
+        </table>
+    </div> 
+</body>
+</html>

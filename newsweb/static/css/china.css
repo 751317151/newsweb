@@ -1,0 +1,172 @@
+#col_toparea {
+    margin: 25px 0 26px;
+    height: 340px;
+    overflow: hidden;
+}
+.toparea-carousel {
+    float: left;
+    width: 665px;
+    height: 340px;
+    overflow: hidden;
+    margin: 0;
+}
+
+.mod {
+    padding-top: 0;
+    border: 0 none;
+}
+.mod .hd {
+    padding: 0;
+    height: 52px;
+    line-height: 52px;
+    border-bottom: 1px solid #ececec;
+    border-top: 2px solid #c7c7c7;
+    overflow: visible;
+}
+.mod .hd h3 {
+    position: relative;
+    padding-top: 6px;
+    border-top: 2px solid #069;
+    top: -2px;
+    padding-right: 5px;
+    font: 400 20px/26px "Microsoft YaHei",\5FAE\8F6F\96C5\9ED1,tahoma;
+    color: #069;
+    background: #fff;
+    text-align: left;
+    float: left;
+}
+.mod .hd h3 .dec {
+    display: block;
+    font: 400 9px/12px arial;
+    -webkit-font-smoothing: antialiased;
+    color: #999;
+    text-transform: uppercase;
+}
+#instant-news {
+    margin-top: 0;
+}
+#col_focus {
+    margin-bottom: 30px;
+}
+#col_focus, #col_local, #col_gangaotai, #col_politics {
+    height: 427px;
+    overflow: hidden;
+}
+.l-left-col {
+    position: relative;
+    width: 658px;
+}
+.column-title {
+    padding-bottom: 9px;
+    text-align: right;
+}
+.l-left-col .b-left {
+    width: 400px;
+    float: left;
+}
+.ilist {
+    position: absolute;
+    width: 240px;
+    right: 0;
+    top: 75px;
+    bottom: 0;
+}
+#focus-videos {
+    position: relative;
+    zoom: 1;
+    margin-top: 12px;
+    overflow: hidden;
+}
+#focus-videos .topic {
+    height: 76px;
+    background: 0 0;
+    margin: -1px 0 0;
+    padding: 7px 0 8px;
+    border-top: 1px dotted #ccc;
+}
+.mix-ulist li {
+    position: relative;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px dotted #ececec;
+    background-position: left -265px;
+}
+#imgplayer {
+    height: 340px;
+    width: 665px;
+    position: relative;
+    right: 0;
+    top: 0;
+    border: 0;
+    overflow: hidden;
+}
+.topic .picture {
+    float: left;
+    position: relative;
+    padding-right: 15px;
+}
+.topic .picture img {
+    height: 76px;
+    width: 114px;
+}
+.topic img {
+    border: 0;
+    padding: 0;
+}
+#focus-videos .topic .title {
+    padding-top: 12px;
+    line-height: 20px;
+}
+.topic .title a:link, .topic .title a:visited {
+    font-size: 14px;
+    line-height: 22px;
+    color: #000;
+}
+.topic .picture .play {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    height: 23px;
+    width: 23px;
+    background: url(//gss0.bdstatic.com/5foIcy0a2gI2n2jgoY3K/static/fisp_static/guonei/img/mod_topic/sp_icon_play_24_8e5b6db.png) no-repeat left center;
+}
+
+#col_gangaotai h4 {
+    margin-top: 10px;
+    margin-left: 11px;
+    font-weight: 700;
+    font-size: 15px;
+    color: red;
+}
+.ilist li {
+    position: relative;
+    line-height: 18px;
+    text-align: left;
+}
+.ilist li {
+    padding-top: 0;
+    margin-bottom: 28px;
+}
+.ilist li, .ilist li img {
+    height: 160px;
+    width: 240px;
+    overflow: hidden;
+}
+.ilist li img {
+    border: 0;
+    padding: 0;
+}
+.ilist li img {
+    display: block;
+}
+.ilist li a .title {
+    position: relative;
+    display: block;
+    height: 30px;
+    margin-top: -30px;
+    line-height: 30px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    background: rgba(0,0,0,.7);
+}
