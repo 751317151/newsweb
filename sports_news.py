@@ -3,7 +3,7 @@
 @Date: 2019-10-24 11:34:26
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-11-28 15:35:24
+@LastEditTime: 2019-11-29 15:12:24
 '''
 
 import requests
@@ -22,7 +22,7 @@ headers = {
 def top_news():
     url = "https://news.baidu.com/sports"
     # 基本新闻
-    data = requests.get(url,headers=headers).text
+    data = requests.get(url,headers=headers,verify=False).text
     data1 = etree.HTML(data)
 
     top_sports_news_url = data1.xpath('//*[@id="col_focus"]/div[1]//a/@href')
@@ -60,7 +60,7 @@ def top_news():
     NBA_news_title = data1.xpath('//*[@id="col_nba"]/div[1]/div[2]//a/text()')
 
     for i in range(12):
-        print(NBA_news_title[i],NBA_news_url[i])
+        print(NBA_news_title[i],NBA_news_url[i],verify=False)
         # NBA_news_title[i] = NBA_news_title[i].replace(" ",",")
         # cur.execute('insert into sports_sports values (default,"%s","%s","NBA_news",0)'%(NBA_news_title[i],NBA_news_url[i]))
         # conn.commit()

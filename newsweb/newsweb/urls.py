@@ -3,7 +3,7 @@
 @Date: 2019-10-25 09:29:27
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-11-28 17:52:15
+@LastEditTime: 2019-11-29 16:43:34
 '''
 """newsweb URL Configuration
 
@@ -27,11 +27,13 @@ from index import views as index_views
 from sports import views as sports_views
 from china import views as china_views
 from international import views as international_views
+from entertainment import views as entertainment_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index_views.index_news),
     path('china',china_views.china_news),
     path('international',international_views.international_news),
+    path('entertainment',entertainment_views.entertainment_news),
     path('sports', sports_views.sports_news),
 ]

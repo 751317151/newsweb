@@ -1,0 +1,31 @@
+.pic-list {
+    width: 290px;
+    overflow: hidden;
+}
+#focus-aside-news .pic-list {
+    margin-top: 21px;
+}
+.pic-list ul {
+    width: 330px;
+}
+.pic-list li, .pic-list li img {
+    width: 136px;
+}
+.pic-list li {
+    float: left;
+    height: 120px;
+    margin: 0 17px 0 0;
+    overflow: hidden;
+}
+.pic-list li img {
+    display: block;
+    height: 90px;
+}
+.pic-list li a .title {
+    display: block;
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}

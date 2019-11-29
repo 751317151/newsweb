@@ -3,7 +3,7 @@
 @Date: 2019-11-27 17:27:28
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-11-28 17:36:06
+@LastEditTime: 2019-11-29 15:14:29
 '''
 
 import requests
@@ -21,7 +21,7 @@ headers = {
 def top_news():
     url = "https://news.baidu.com/guonei"
     # 基本新闻
-    data = requests.get(url,headers=headers).text
+    data = requests.get(url,headers=headers,verify=False).text
     data1 = etree.HTML(data)
 
     # 图片新闻
@@ -57,7 +57,7 @@ def top_news():
 def focal_news():
     url = "https://news.baidu.com/guonei"
     # 基本新闻
-    data = requests.get(url,headers=headers).text
+    data = requests.get(url,headers=headers,verify=False).text
     data1 = etree.HTML(data)
 
     focal_news_title = data1.xpath('//*[@id="col_focus"]/div[1]/div[2]//a/text()')
@@ -81,7 +81,7 @@ def focal_news():
 def gangaotai_news():
     url = "http://news.baidu.com/widget?id=GangAoTai&channel=guonei"
     # 基本新闻
-    data = requests.get(url,headers=headers).text
+    data = requests.get(url,headers=headers,verify=False).text
     data1 = etree.HTML(data)
 
     gangaotai_news_title = data1.xpath('//*[@id="col_gangaotai"]/div[1]/div[2]//a/text()')
@@ -109,7 +109,7 @@ def gangaotai_news():
 def politics_news():
     url = "http://news.baidu.com/widget?id=ShiZheng&channel=guonei"
     # 基本新闻
-    data = requests.get(url,headers=headers).text
+    data = requests.get(url,headers=headers,verify=False).text
     data1 = etree.HTML(data)
 
     politics_news_title = data1.xpath('//*[@id="col_politics"]/div[1]/div[2]//a/text()')

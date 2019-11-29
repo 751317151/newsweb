@@ -3,7 +3,7 @@
 @Date: 2019-11-12 14:32:09
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-11-28 15:34:45
+@LastEditTime: 2019-11-29 15:13:55
 '''
 
 import requests
@@ -22,7 +22,7 @@ headers = {
 def hot_news():
     url = "http://news.baidu.com/"
 
-    data = requests.get(url,headers=headers).text
+    data = requests.get(url,headers=headers,verify=False).text
     # print(data)
     data1 = etree.HTML(data)
     # print(data)
@@ -82,7 +82,7 @@ def hot_news():
 def hot_pane_news():
     url = "http://www.china.com/"
 
-    data = requests.get(url,headers=headers)
+    data = requests.get(url,headers=headers,verify=False)
     data.encoding="utf-8"
     data = data.text
     # print(data)
@@ -102,7 +102,7 @@ def hot_pane_news():
 def hot_China_news():
     url = "http://news.baidu.com/widget?id=civilnews"
 
-    data = requests.get(url,headers=headers).text
+    data = requests.get(url,headers=headers,verify=False).text
     # print(data)
     data1 = etree.HTML(data)
     # print(data)
@@ -147,7 +147,7 @@ def hot_China_news():
 def hot_world_news():
     url = "http://news.baidu.com/widget?id=InternationalNews"
 
-    data = requests.get(url,headers=headers).text
+    data = requests.get(url,headers=headers,verify=False).text
     # print(data)
     data1 = etree.HTML(data)
 
@@ -188,7 +188,7 @@ def hot_world_news():
 def hot_enter_news():
     url = "http://news.baidu.com/widget?id=EnterNews"
 
-    data = requests.get(url,headers=headers).text
+    data = requests.get(url,headers=headers,verify=False).text
     # print(data)
     data1 = etree.HTML(data)
 
@@ -238,7 +238,7 @@ def hot_enter_news():
 def hot_sports_news():
     url = "http://news.baidu.com/widget?id=SportNews"
 
-    data = requests.get(url,headers=headers).text
+    data = requests.get(url,headers=headers,verify=False).text
     # print(data)
     data1 = etree.HTML(data)
     # print(data)
@@ -283,7 +283,7 @@ def hot_sports_news():
 def hot_tech_news():
     url = "http://news.baidu.com/widget?id=TechNews"
 
-    data = requests.get(url,headers=headers).text
+    data = requests.get(url,headers=headers,verify=False).text
     # print(data)
     data1 = etree.HTML(data)
     # print(data)
@@ -326,7 +326,7 @@ def hot_tech_news():
 def hot_military_news():
     url = "http://news.baidu.com/widget?id=MilitaryNews"
 
-    data = requests.get(url,headers=headers).text
+    data = requests.get(url,headers=headers,verify=False).text
     # print(data)
     data1 = etree.HTML(data)
     # print(data)
@@ -360,7 +360,7 @@ def hot_military_news():
 def hot_internet_news():
     url = "http://news.baidu.com/widget?id=InternetNews"
 
-    data = requests.get(url,headers=headers).text
+    data = requests.get(url,headers=headers,verify=False).text
     # print(data)
     data1 = etree.HTML(data)
     # print(data)

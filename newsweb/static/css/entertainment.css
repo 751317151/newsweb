@@ -1,0 +1,83 @@
+.b-left .ulist {
+    margin-top: -1px;
+    margin-bottom: 12px;
+    border-top: 1px dotted #ccc;
+}
+#col_gangaotai{
+    height: auto;
+}
+.pic-list {
+    width: 290px;
+    overflow: hidden;
+}
+.pic-list ul {
+    width: 330px;
+}
+.pic-list li, .pic-list li img {
+    width: 136px;
+}
+.pic-list li {
+    float: left;
+    height: 120px;
+    margin: 0 17px 0 0;
+    overflow: hidden;
+}
+#zongyi_video {
+    margin-top: 30px;
+}
+#col_tv{
+    height: 427px;
+    overflow: hidden;
+}
+#hotdramas {
+    position: relative;
+    margin-top: 8px;
+    height: 134px;
+    overflow: hidden;
+}
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+table, th, td {
+    vertical-align: middle;
+}
+#hotdramas table {
+    border: 0 none;
+    border-collapse: collapse;
+    width: 100%;
+}
+#hotdramas tr {
+    height: 36px;
+}
+#hotdramas td {
+    color: #666;
+    font: 12px/35px normal;
+    border-bottom: 1px dotted #ccc;
+    text-align: right;
+    width: 36px;
+}
+#hotdramas td.n {
+    padding-left: 12px;
+    text-align: left;
+    width: auto;
+}
+#hotdramas td.n {
+    background: url(//gss0.bdstatic.com/5foIcy0a2gI2n2jgoY3K/static/fisp_static/yule/enternews/focusentertainment/focusentertainment/top_bg_3e2d110.png) no-repeat left -266px;
+}
+#hotdramas td a, #hotdramas td a:link, #hotdramas td a:visited {
+    text-decoration: none;
+}
+#hotdramas td a:visited {
+    color: #333;
+}
+#hotdramas td.last {
+    padding-right: 21px;
+}
+#hot_recommend {
+    margin-top: 30px;
+}
+.mix-ulist li a:link {
+    /* text-align: right; */
+    font-size: 12px;
+}
