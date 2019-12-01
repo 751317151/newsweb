@@ -1,0 +1,79 @@
+#col_zgjq,#col_guojijq{
+    overflow: hidden;
+}
+#mil-video {
+    position: relative;
+    margin-top: 14px;
+    zoom: 1;
+    overflow: hidden;
+}
+#focus-aside-video .topic {
+    height: 76px;
+    background: 0 0;
+    margin: -1px 0 0;
+    padding: 7px 0 8px;
+    border-top: 1px dotted #ccc;
+}
+.topic .picture .play {
+    position: absolute;
+    left: 45px;
+    top: 30px;
+    height: 23px;
+    width: 23px;
+    background: url(//gss0.bdstatic.com/5foIcy0a2gI2n2jgoY3K/static/fisp_static/mil/img/mod_topic/sp_icon_play_24_8e5b6db.png) no-repeat left center;
+}
+#thjj-news {
+    margin-top: 21px;
+}
+#hot-article {
+    margin-top: 21px;
+}
+#hot-article li {
+    position: relative;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px dotted #ccc;
+}
+#col_jstp {
+    margin-bottom: 20px;
+}
+.pic-list {
+    width: 290px;
+    overflow: hidden;
+}
+#mil-picnews .pic-list {
+    margin-top: 12px;
+    width: 984px;
+}
+#mil-picnews .pic-list ul {
+    width: 1100px;
+}
+.pic-list li, .pic-list li img {
+    width: 136px;
+}
+.pic-list li {
+    float: left;
+    height: 120px;
+    margin: 0 17px 0 0;
+    overflow: hidden;
+}
+#mil-picnews .pic-list ul li {
+    margin-left: 10px;
+    margin-right: 20px;
+    height: 130px;
+}
+.pic-list li img {
+    display: block;
+    height: 90px;
+}
+.pic-list li a .title {
+    display: block;
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+#mil-picnews .pic-list ul li a .title {
+    overflow: hidden;
+}

@@ -3,7 +3,7 @@
 @Date: 2019-11-29 16:38:10
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-11-29 23:10:05
+@LastEditTime: 2019-11-30 18:52:42
 '''
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse
@@ -32,6 +32,21 @@ def entertainment_news(request):
         TV_pic_news = entertainment.objects.filter(abs_titles='TV_pic_news')
         hot_tv_news = entertainment.objects.filter(abs_titles='hot_tv_news')
         hot_tv_comments_news = entertainment.objects.filter(abs_titles='hot_tv_comments_news')
+        # 音乐
+        music_news = entertainment.objects.filter(abs_titles='music_news')
+        music_pic_news = entertainment.objects.filter(abs_titles='music_pic_news')
+        top_music_news1 = entertainment.objects.filter(abs_titles='top_music_news1')
+        top_music_news2 = entertainment.objects.filter(abs_titles='top_music_news2')
+        china_music_news1 = entertainment.objects.filter(abs_titles='china_music_news1')
+        china_music_news2 = entertainment.objects.filter(abs_titles='china_music_news2')
+        # 电影
+        variety_news = entertainment.objects.filter(abs_titles='variety_news')
+        variety_pic_news = entertainment.objects.filter(abs_titles='variety_pic_news')
+        variety_click_news = entertainment.objects.filter(abs_titles='variety_click_news')
+        # 图片
+        picture_news = entertainment.objects.filter(abs_titles='picture_news')
+        # 最新新闻
+        latest_news = entertainment.objects.filter(abs_titles='latest_news')
 
         contex = {
             # 热点
@@ -59,5 +74,25 @@ def entertainment_news(request):
             'TV_pic_news':TV_pic_news,
             'count':[hot_tv_news[:5],hot_tv_news[5:10],hot_tv_news[10:15],hot_tv_news[15:]],
             'hot_tv_comments_news':hot_tv_comments_news,
+            # 音乐
+            'music_news1':music_news[:6],
+            'music_news2':music_news[6:],
+            'music_pic_news':music_pic_news,
+            'top_music_news1':top_music_news1,
+            'top_music_news2':top_music_news2,
+            'top_music_news':zip(top_music_news1,top_music_news2),
+            'china_music_news1':china_music_news1,
+            'china_music_news2':china_music_news2,
+            'china_music_news':zip(china_music_news1,china_music_news2),
+            # 综艺
+            'variety_news1':variety_news[:6],
+            'variety_news2':variety_news[6:],
+            'variety_pic_news':variety_pic_news,
+            'variety_click_news':variety_click_news,
+            # 图片
+            'picture_news':picture_news,
+            # 最新新闻
+            'latest_news1':latest_news[:10],
+            'latest_news2':latest_news[10:],
         }
         return render(request,"entertainment.html",contex) 

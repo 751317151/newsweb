@@ -3,8 +3,9 @@
     margin-bottom: 12px;
     border-top: 1px dotted #ccc;
 }
-#col_gangaotai{
+#col_stars{
     height: auto;
+    overflow: hidden;
 }
 .pic-list {
     width: 290px;
@@ -16,6 +17,10 @@
 .pic-list li, .pic-list li img {
     width: 136px;
 }
+.pic-list li img {
+    display: block;
+    height: 90px;
+}
 .pic-list li {
     float: left;
     height: 120px;
@@ -25,9 +30,12 @@
 #zongyi_video {
     margin-top: 30px;
 }
-#col_tv{
+#col_tv,#col_music,#col_movie,#col_variety{
     height: 427px;
     overflow: hidden;
+}
+#col_picture{
+    margin-bottom: 20px;
 }
 #hotdramas {
     position: relative;
@@ -80,4 +88,88 @@ table, th, td {
 .mix-ulist li a:link {
     /* text-align: right; */
     font-size: 12px;
+}
+.newsongs {
+    height: 135px;
+    padding-top: 10px;
+    overflow: hidden;
+}
+.newsongs table {
+    border: 0 none;
+    border-collapse: collapse;
+    width: 100%;
+}
+.newsongs th, .newsongs td {
+    color: #333;
+    padding-left: 12px;
+    text-align: left;
+}
+.newsongs th {
+    height: 28px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.newsongs th {
+    font: 12px/20px normal;
+    color: red;
+}
+.newsongs th.n {
+    width: 45%;
+}
+.newsongs th.s {
+    width: 25%;
+}
+.newsongs th.l {
+    text-align: right;
+}
+.newsongs td {
+    height: 28px;
+}
+.newsongs td {
+    font: 12px/20px normal;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.newsongs td.l {
+    text-align: right;
+    vertical-align: middle;
+}
+.newsongs td.l a, .newsongs td.l a:link, .newsongs td.l a:visited {
+    background: url(//gss0.bdstatic.com/5foIcy0a2gI2n2jgoY3K/static/fisp_static/yule/img/mod_music/icon_music_play_03018f5.png) no-repeat left top;
+    background-image: -webkit-image-set(url(//gss0.bdstatic.com/5foIcy0a2gI2n2jgoY3K/static/fisp_static/yule/img/mod_music/icon_music_play_03018f5.png) 1x,url(//gss0.bdstatic.com/5foIcy0a2gI2n2jgoY3K/static/fisp_static/yule/img/mod_music/icon_music_play-2x_eb96b1e.png) 2x);
+    display: block;
+    height: 18px;
+    text-decoration: none;
+    width: 18px;
+    margin-left: 52px;
+}
+#music_gold_song {
+    margin-top: 26px;
+}
+#mil-picnews .pic-list {
+    margin-top: 12px;
+    width: 984px;
+}
+#mil-picnews .pic-list ul {
+    width: 1100px;
+}
+#mil-picnews .pic-list ul li {
+    margin-right: 21px;
+    width: 180px;
+    height: 160px;
+}
+#mil-picnews .pic-list ul li img {
+    height: 120px;
+    width: 180px;
+}
+.pic-list li a .title {
+    display: block;
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+#mil-picnews .pic-list ul li a .title {
+    overflow: hidden;
 }

@@ -3,7 +3,7 @@
 @Date: 2019-10-25 09:29:27
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-11-29 16:39:24
+@LastEditTime: 2019-12-01 14:37:06
 '''
 """
 Django settings for newsweb project.
@@ -49,6 +49,9 @@ INSTALLED_APPS = [
     'china',
     'international',
     'entertainment',
+    'technology',
+    'military',
+    'internet',
 ]
 
 MIDDLEWARE = [
