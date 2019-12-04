@@ -3,7 +3,7 @@
 @Date: 2019-10-24 11:34:26
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-11-29 15:12:24
+@LastEditTime: 2019-12-03 18:20:43
 '''
 
 import requests
@@ -27,11 +27,11 @@ def top_news():
 
     top_sports_news_url = data1.xpath('//*[@id="col_focus"]/div[1]//a/@href')
     top_sports_news_title = data1.xpath('//*[@id="col_focus"]/div[1]//a/text()')
-
+    print(len(top_sports_news_title))
     for i in range(20):
         print(top_sports_news_url[i],top_sports_news_title[i])
         # top_sports_news_url[i] = top_sports_news_url[i].replace(" ",",")
-        # cur.execute('insert into sports_sports values (default,"%s","%s",0,0)'%(top_sports_news_title[i],top_sports_news_url[i]))
+        # cur.execute('insert into sports_sports values (default,"%s","%s","top_sports_news",0)'%(top_sports_news_title[i],top_sports_news_url[i]))
         # conn.commit()
 
     # 四张图片新闻
@@ -58,11 +58,19 @@ def top_news():
     
     NBA_news_url = data1.xpath('//*[@id="col_nba"]/div[1]/div[2]//a/@href')
     NBA_news_title = data1.xpath('//*[@id="col_nba"]/div[1]/div[2]//a/text()')
-
     for i in range(12):
-        print(NBA_news_title[i],NBA_news_url[i],verify=False)
+        print(NBA_news_title[i],NBA_news_url[i])
         # NBA_news_title[i] = NBA_news_title[i].replace(" ",",")
         # cur.execute('insert into sports_sports values (default,"%s","%s","NBA_news",0)'%(NBA_news_title[i],NBA_news_url[i]))
+        # conn.commit()
+
+    video_news_imgurl = data1.xpath('//*[@id="sports-videos"]//img/@src')
+    video_news_title = data1.xpath('//*[@id="sports-videos"]/div/p[2]/a/text()')
+    video_news_url = data1.xpath('//*[@id="sports-videos"]/div/p[2]/a/@href')
+    for i in range(len(video_news_title)):
+        print(video_news_title[i],video_news_url[i],video_news_imgurl[i])
+        # video_news_title[i] = video_news_title[i].replace(" ",",")
+        # cur.execute('insert into sports_sports values (default,"%s","%s","video_news","%s")'%(video_news_title[i],video_news_url[i],video_news_imgurl[i]))
         # conn.commit()
 
 def world_football():
@@ -176,9 +184,12 @@ def latest_news():
         # conn.commit()
 
 if __name__ == '__main__':
-    # top_news()
-    # world_football()
-    # china_football()
-    # CBA()
-    # other_sports()
-    latest_news()
+    try:
+        top_news()
+        world_football()
+        china_football()
+        CBA()
+        other_sports()
+        latest_news()
+    except:
+        print("出错")

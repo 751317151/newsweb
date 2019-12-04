@@ -3,7 +3,7 @@
  * @Date: 2019-11-27 16:01:51
  * @E-Mail: hh@huahaohh.cn
  * @LastEditors: 华豪
- * @LastEditTime: 2019-12-01 14:42:01
+ * @LastEditTime: 2019-12-04 18:13:37
  -->
 <!DOCTYPE html>
 <html>
@@ -21,6 +21,9 @@
     <script src="static/js/jquery.min.js"></script>
     <script src="static/js/velocity.js"></script>
     <script src="static/js/shutter.js"></script> 
+    <script src="static/js/jquery-3.4.1.min.js"></script>
+    <script src="static/js/su.js"></script>
+    <script src="static/js/heart_click.js"></script>
     <script>
     $(function () {
     $('.shutter').shutter({
@@ -33,9 +36,20 @@
     });
     });
     </script>
-
+    <script type="text/javascript">
+        jQuery(document).ready(function($){
+        $('body').wpSuperSnow({
+        flakes: ['static/images/007.png','static/images/006.png','static/images/004.png','static/images/003.png','static/images/002.png','static/images/001.png'],
+        totalFlakes: '150',
+        zIndex: '999999',
+        maxSize: '30',
+        maxDuration: '20',
+        useFlakeTrans: false
+        });
+        });
+    </script>
 </head>
-<body>
+<body background="/static/images/background.jpg" style="background-attachment: fixed;">
     <div class="contaiter">		
         <!--下面是导航菜单-->
         <div class="navigator" >
@@ -47,7 +61,6 @@
                 <li><a href="sports">体育</a></li>&nbsp;&nbsp;
                 <li><a href="technology">科技</a></li>&nbsp;&nbsp;
                 <li><a href="military">军事</a></li>&nbsp;&nbsp;
-                <li><a href="internet">互联网</a></li>&nbsp;&nbsp;
             </ul>
         </div>
         <div id="body">
@@ -184,8 +197,8 @@
                         <ul>
                             {% if gangaotai_pic_news %}
                             {% for news in gangaotai_pic_news %}
-                                <li><a href="{{ news.urls }}" target="_blank">
-                                    <img src="{{ news.imgurls }}">
+                                <li><a referrerpolicy="" href="{{ news.urls }}" target="_blank">
+                                    <img referrerpolicy="no-referrer|origin|unsafe-url" src="static/images/china/{{ news.imgurls }}.jpg">
                                     <span class="title">{{ news.titles }}</span>
                                     </a>
                                 </li>
@@ -247,7 +260,7 @@
                             {% if politics_pic_news %}
                             {% for news in politics_pic_news %}
                                 <li><a href="{{ news.urls }}" target="_blank">
-                                    <img src="{{ news.imgurls }}">
+                                    <img src="static/images/china/{{ news.imgurls }}.jpg">
                                     <span class="title">{{ news.titles }}</span>
                                     </a>
                                 </li>
@@ -312,5 +325,23 @@
             </tr>
         </table>
     </div> 
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/gh/751317151/live2d-vv/autoload.js"></script>
+
+    <script type="text/javascript" charset="utf-8"  src="static/js/L2Dwidget.0.min.js"></script>
+    <script type="text/javascript" charset="utf-8"  src="static/js/L2Dwidget.min.js"></script>
+    <script type="text/javascript">
+        L2Dwidget.init({"display": {
+            "superSample": 2,
+            "width": 200,
+            "height": 400,
+                "position": "right",
+                    "hOffset": 0,
+            "vOffset": 0
+            }
+        });
+</script>
 </body>
 </html>

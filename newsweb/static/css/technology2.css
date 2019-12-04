@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+.l-left-col {
+    width: 90%;
+    float: left;
+}
+
+.b-left {
+    width: 50%;
+    float: left;
+}
+
+.b-right {
+    width: 30%;
+    float: right;
+}
+
+a:visited {
+    color: black;
+}
+
+a:link {
+    color: black;
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.mod h3 {
+    position: relative;
+    padding-right: 5px;
+    font: 400 20px/26px "Microsoft YaHei",\5FAE\8F6F\96C5\9ED1,tahoma;
+    color: #069;
+    background: #fff;
+    text-align: left;
+}
+
+.column {
+    /* margin-top: 10px; */
+    margin: 12px 0;
+    margin-bottom: 36px;
+}
+
+.column-title{
+    padding-bottom: 9px;
+    text-align: right;
+}
+
+.column-title .column-title-border{
+    border-bottom: 1px solid #ececec;
+    border-top: 2px solid #c7c7c7;
+    height: 52px;
+    line-height: 52px;
+}
+
+.column-title h2 .subtitle {
+    padding-right: 5px;
+}
+
+.column-title .column-title-border h2 .cname {
+    display: block;
+    font-weight: 400;
+    font-size: 9px;
+    line-height: 12px;
+    font-family: arial,sans-serif;
+    color: #999;
+    text-transform: uppercase;
+}
+
+#latest-news .ulist {
+    float: left;
+    width: 40%;
+    margin-bottom: 36px;
+}
+

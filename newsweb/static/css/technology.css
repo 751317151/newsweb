@@ -1,0 +1,273 @@
+#imgplayer {
+    height: 221px;
+    width: 280px;
+    position: relative;
+    right: 0;
+    top: 0;
+    border: 0;
+    overflow: hidden;
+}
+.l-left-col {
+    width: 280px;
+    margin-right: 28px;
+}
+#col_focus {
+    margin-top: 25px;
+    width: 984px;
+    height: 659px;
+}
+#col_focus {
+    margin-bottom: 16px;
+}
+#mod_internet {
+    margin-top: 18px;
+}
+#internet_news {
+    height: 350px;
+    overflow: hidden;
+}
+.shutter{
+    margin: 0%;
+}
+.mod {
+    padding-top: 0;
+    border: 0 none;
+}
+.mod .hd {
+    padding: 0;
+    height: 52px;
+    line-height: 52px;
+    border-bottom: 1px solid #ececec;
+    border-top: 2px solid #d9d9d9;
+    overflow: visible;
+}
+.mod .hd h3 {
+    position: relative;
+    padding-top: 6px;
+    border-top: 2px solid #069;
+    top: -2px;
+    padding-right: 5px;
+    font: 400 20px/26px "Microsoft YaHei",\5FAE\8F6F\96C5\9ED1,tahoma;
+    color: #069;
+    background: #fff;
+    text-align: left;
+    -webkit-font-smoothing: antialiased;
+}
+.mod .hd h3 .dec {
+    display: block;
+    font: 400 9px/12px arial;
+    -webkit-font-smoothing: antialiased;
+    color: #999;
+    text-transform: uppercase;
+}
+.ulist li {
+    height: 27px;
+    line-height: 27px;
+    padding-left: 8px;
+    background-image: url(//news.baidu.com/resource/css/../img/bg_warn.gif);
+    background-repeat: no-repeat;
+    background-position: left -255px;
+    overflow: hidden;
+}
+.mix-ulist li {
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px dotted #ececec;
+    background-position: left -265px;
+}
+.ulist li {
+    background: url(//gss0.bdstatic.com/5foIcy0a2gI2n2jgoY3K/static/fisp_static/tech/techial/focustechial/focustechial/top_bg_3e2d110.png) no-repeat left -270px;
+}
+.mix-ulist li {
+    background-position: left -265px;
+}
+.mod .ulist li a {
+    font-size: 12px;
+    margin: 0%;
+    margin-left: 10px;
+}
+.ulist li a {
+    font-size: 14px;
+    margin: 0%;
+    margin-left: 10px;
+}
+.l-middle-col {
+    float: left;
+    width: 370px;
+    margin-right: 28px;
+}
+.middle-focus-news {
+    position: relative;
+    margin-top: -22px;
+    overflow: hidden;
+    zoom: 1;
+}
+.fb-list {
+    padding: 8px 0;
+    border-top: 1px dotted #ccc;
+}
+.ulist {
+    margin-bottom: 4px;
+}
+.middle-focus-news .ulist {
+    margin-top: -1px;
+}
+.middle-focus-news ul:first-child li:first-child {
+    background: 0 0;
+    padding: 10px 0 0;
+    height: 40px;
+    line-height: 40px;
+    word-wrap: break-word;
+    word-break: break-all;
+    border-bottom: 1px dotted #ccc;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.middle-focus-news ul:first-child li:first-child a{
+    font: 700 18px/26px "微软雅黑",tahoma;
+    color: #069;
+    line-height: 36px;
+}
+.l-right-col {
+    width: 270px;
+    float: right;
+    overflow: hidden;
+}
+#focus-aside-video {
+    margin-top: 25px;
+}
+#kj_video {
+    position: relative;
+    margin-top: 14px;
+    height: 226px;
+    zoom: 1;
+    overflow: hidden;
+}
+.pic-list li, .pic-list li img {
+    width: 126px;
+}
+.column {
+    margin-bottom: 10px;
+}
+.column-title {
+    height: 52px;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+.column-title h2 {
+    float: left;
+    margin-right: 25px;
+}
+.column-title {
+    padding-bottom: 0;
+    text-align: 0;
+}
+.column-title .column-title-border {
+    border-bottom: none;
+    border-top: none;
+}
+
+.column-title h2, .column-title h2 a, .column-title h2 a:link, .column-title h2 a:active, .column-title h2 a:visited, .column-title h2 a:hover {
+    font: 400 26px/52px "Microsoft YaHei","\5FAE\8F6F\96C5\9ED1","\9ED1\4F53";
+    -webkit-font-smoothing: antialiased;
+    color: #069;
+}
+.column-title .line {
+    display: block;
+    overflow: hidden;
+    height: 25px;
+    border-bottom: 2px solid #d9d9d9;
+}
+#col_yejie,#col_shouji,#col_shuma,#col_kexue{
+    overflow: hidden;
+}
+#tongxin_news .bd, #news_3g .bd {
+    padding-top: 18px;
+    overflow: hidden;
+}
+#rwgs_news .bd {
+    height: 424px;
+}
+#rwgs_news_list {
+    margin-top: 10px;
+    height: 424px;
+    overflow: hidden;
+}
+.olist li {
+    height: 27px;
+    line-height: 27px;
+    padding: 4px 0;
+    border-bottom: 1px dotted #ccc;
+    overflow: hidden;
+}
+.olist li {
+    position: relative;
+}
+.olist li a {
+    font-size: 12px;
+}
+#new_cell .bd, #cell_iphone .bd, #cell_news .bd {
+    padding-top: 16px;
+    height: 142px;
+    overflow: hidden;
+}
+#new_cell .bd {
+    height: 138px;
+}
+.price-search {
+    float: right;
+    height: 28px;
+    border: 1px solid #ddd;
+    margin-top: 11px;
+    overflow: hidden;
+}
+.price-search input {
+    width: 80px;
+    height: 26px;
+    line-height: 26px;
+    margin: 0;
+    padding-left: 6px;
+    font-size: 12px;
+    color: #999;
+    border: 0;
+    vertical-align: top;
+}
+.price-search .price-search-txt {
+    float: left;
+    background: 0 0;
+}
+.price-search .price-search-btn {
+    float: right;
+    height: 28px;
+    width: 40px;
+    text-align: center;
+    line-height: 28px;
+    background: #f6f6f6;
+    vertical-align: top;
+    font-size: 12px;
+    border-left: 1px solid #ddd;
+}
+#sm_pbdn .bd, #sm_new .bd, #sm_ebook .bd {
+    padding-top: 16px;
+    height: 142px;
+    overflow: hidden;
+}
+#sm_new .bd {
+    height: 138px;
+}
+#kxts_video {
+    position: relative;
+    margin-top: 14px;
+    height: 226px;
+    zoom: 1;
+    overflow: hidden;
+}
+#hot_tophit {
+    margin-top: 38px;
+}
+#hot_tophit .bd {
+    padding-top: 0;
+}
+#col_latest {
+    margin: 16px 0 36px;
+}

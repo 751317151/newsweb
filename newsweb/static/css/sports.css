@@ -168,4 +168,57 @@ a:hover {
     width: 40%;
     margin-bottom: 36px;
 }
-
+#sports-videos {
+    position: relative;
+    zoom: 1;
+    overflow: hidden;
+}
+.topic {
+    margin-top: 8px;
+    font-size: 12px;
+}
+.topic {
+    position: relative;
+    height: 90px;
+    margin: 0 0 5px;
+    *margin-bottom: 2px;
+    background: #f6f7f8;
+    overflow: hidden;
+}
+#sports-videos .topic {
+    height: 76px;
+    background: 0 0;
+    margin: -1px 0 0;
+    padding: 7px 0 8px;
+    border-top: 1px dotted #ccc;
+}
+.topic .picture {
+    float: left;
+    position: relative;
+    padding-right: 15px;
+}
+.topic img {
+    border: 0;
+    padding: 0;
+}
+.topic .picture img {
+    height: 76px;
+    width: 114px;
+}
+.topic .picture .play {
+    position: absolute;
+    left: 45px;
+    top: 30px;
+    height: 23px;
+    width: 23px;
+    background: url(//gss0.bdstatic.com/5foIcy0a2gI2n2jgoY3K/static/fisp_static/sportnews/img/mod_topic/sp_icon_play_24_8e5b6db.png) no-repeat left center;
+}
+#sports-videos .topic .title {
+    padding-top: 12px;
+    line-height: 20px;
+}
+.topic .title a:link, .topic .title a:visited {
+    font-size: 14px;
+    line-height: 22px;
+    color: #000;
+}

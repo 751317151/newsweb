@@ -3,7 +3,7 @@
  * @Date: 2019-10-25 09:42:46
  * @E-Mail: hh@huahaohh.cn
  * @LastEditors: 华豪
- * @LastEditTime: 2019-12-01 14:42:41
+ * @LastEditTime: 2019-12-04 18:06:33
  -->
 <!DOCTYPE html>
 <html>
@@ -19,6 +19,9 @@
     <script src="static/js/jquery.min.js"></script>
     <script src="static/js/velocity.js"></script>
     <script src="static/js/shutter.js"></script> 
+    <script src="static/js/jquery-3.4.1.min.js"></script>
+    <script src="static/js/su.js"></script>
+    <script src="static/js/heart_click.js"></script>
     <script>
     $(function () {
     $('.shutter').shutter({
@@ -31,9 +34,26 @@
     });
     });
     </script>
-
+    <script type="text/javascript">
+        jQuery(document).ready(function($){
+        $('body').wpSuperSnow({
+        flakes: ['static/images/007.png','static/images/006.png','static/images/004.png','static/images/003.png','static/images/002.png','static/images/001.png'],
+        totalFlakes: '150',
+        zIndex: '999999',
+        maxSize: '30',
+        maxDuration: '20',
+        useFlakeTrans: false
+        });
+        });
+    </script>
+    <style>
+        .b-left .ulist {
+            margin-top: -1px;
+            margin-bottom: 12px;
+        }
+    </style>
 </head>
-<body>
+<body background="/static/images/background.jpg" style="background-attachment: fixed;">
     <div class="contaiter">		
         <!--下面是导航菜单-->
         <div class="navigator" >
@@ -45,7 +65,6 @@
                 <li><a href="sports" class="selected">体育</a></li>&nbsp;&nbsp;
                 <li><a href="technology">科技</a></li>&nbsp;&nbsp;
                 <li><a href="military">军事</a></li>&nbsp;&nbsp;
-                <li><a href="internet">互联网</a></li>&nbsp;&nbsp;
             </ul>
         </div>
         <!--下面是图片轮换-->
@@ -201,6 +220,10 @@
                             <span class="subtitle">NBA</span>
                             <span class="cname">NBA</span>
                         </h2>
+                        <h2 style="float: right;margin-right: 158px;">
+                            <span class="subtitle">体育视频</span>
+                            <span class="cname">SPORTS VIDEO</span>
+                        </h2>
                     </div>
                 </div>
                 <div class="b-left">
@@ -218,6 +241,27 @@
                         {% endfor %}
                         {% endif %}
                     </ul> 
+                </div>
+                <div class="b-right mod2">
+                    <div class="bd">
+                        <div id="sports-videos">
+                            {% if video_news %}
+                            {% for news in video_news %}
+                                <div class="topic">
+                                    <p class="picture">
+                                        <a href="{{ news.urls }}" target="_blank">
+                                            <img src="{{ news.imgurls }}">
+                                            <span class="play"></span>
+                                        </a>
+                                    </p>
+                                    <p class="title">
+                                        <a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a>
+                                    </p>
+                                </div>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -342,5 +386,23 @@
             </tr>
         </table>
     </div> 
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/gh/751317151/live2d-vv/autoload.js"></script>
+
+    <script type="text/javascript" charset="utf-8"  src="static/js/L2Dwidget.0.min.js"></script>
+    <script type="text/javascript" charset="utf-8"  src="static/js/L2Dwidget.min.js"></script>
+    <script type="text/javascript">
+        L2Dwidget.init({"display": {
+            "superSample": 2,
+            "width": 200,
+            "height": 400,
+                "position": "right",
+                    "hOffset": 0,
+            "vOffset": 0
+            }
+        });
+</script>
 </body>
 </html>

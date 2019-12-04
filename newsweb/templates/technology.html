@@ -3,7 +3,7 @@
  * @Date: 2019-11-27 16:01:51
  * @E-Mail: hh@huahaohh.cn
  * @LastEditors: 华豪
- * @LastEditTime: 2019-12-01 14:45:24
+ * @LastEditTime: 2019-12-04 18:13:16
  -->
 <!DOCTYPE html>
 <html>
@@ -15,28 +15,49 @@
     <link rel="stylesheet" href="static/css/bgsize.css" />		
     <link rel="stylesheet" href="static/css/main.css" />
     <link rel="stylesheet" href="static/css/shutter.css">
-    <link rel="stylesheet" href="static/css/sports.css">
     <link rel="stylesheet" href="static/css/index.css">
-    <link rel="stylesheet" href="static/css/china.css">
     <link rel="stylesheet" href="static/css/entertainment.css">
+    <link rel="stylesheet" href="static/css/technology2.css">
+    <link rel="stylesheet" href="static/css/technology.css">
     <script src="static/js/jquery.min.js"></script>
     <script src="static/js/velocity.js"></script>
     <script src="static/js/shutter.js"></script> 
+    <script src="static/js/jquery-3.4.1.min.js"></script>
+    <script src="static/js/su.js"></script>
+    <script src="static/js/heart_click.js"></script>
     <script>
     $(function () {
     $('.shutter').shutter({
-        shutterW: 665, // 容器宽度
-        shutterH: 340, // 容器高度
+        shutterW: 280, // 容器宽度
+        shutterH: 221, // 容器高度
         isAutoPlay: true, // 是否自动播放
         playInterval: 3000, // 自动播放时间
         curDisplay: 3, // 当前显示页
         fullPage: false // 是否全屏展示
     });
     });
+    function shouji(){
+        $("#cell_btn").attr("href", "//detail.zol.com.cn/index.php?c=HighSearch&subcateId=57&isCorp=1&keyword=" + $("#cell_txt").val());
+    }
+    function diannao(){
+        $("#pc_btn").attr("href", "//detail.zol.com.cn/index.php?c=HighSearch&subcateId=16&isCorp=1&keyword=" + $("#pc_txt").val());
+    }
+    </script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($){
+        $('body').wpSuperSnow({
+        flakes: ['static/images/007.png','static/images/006.png','static/images/004.png','static/images/003.png','static/images/002.png','static/images/001.png'],
+        totalFlakes: '150',
+        zIndex: '999999',
+        maxSize: '30',
+        maxDuration: '20',
+        useFlakeTrans: false
+        });
+        });
     </script>
 
 </head>
-<body>
+<body background="/static/images/background.jpg" style="background-attachment: fixed;">
     <div class="contaiter">		
         <!--下面是导航菜单-->
         <div class="navigator" >
@@ -48,249 +69,41 @@
                 <li><a href="sports">体育</a></li>&nbsp;&nbsp;
                 <li><a href="technology" class="selected">科技</a></li>&nbsp;&nbsp;
                 <li><a href="military">军事</a></li>&nbsp;&nbsp;
-                <li><a href="internet">互联网</a></li>&nbsp;&nbsp;
             </ul>
         </div>
-        <div id="body">
-            <div class="column clearfix" id="col_toparea">
-            <!--下面是图片轮换-->
-                <div class="shutter toparea-carousel">
-                    <div class="imgplayer clearfix" id="imgplayer">
-                        <div class="shutter-img">
-                            {% for img_news in img_news %}
-                                <a href="{{ img_news.urls }}" data-shutter-title="{{ img_news.titles }}" target="_blank" style="cursor: pointer;"><img src="{{ img_news.imgurls }}"></a>
-                            {% endfor %}
-                        </div>
-                        <ul class="shutter-btn">
-                            <li class="prev"></li>
-                            <li class="next"></li>
-                        </ul>
-                        <!-- 设置默认第一张 -->
-                        <div class="shutter-desc">  
-                            <a href="{{ img_news.3.urls }}" target="_blank"><p>{{ img_news.3.titles }}</p></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="l-right-col">
-                    <div class="mod">
-                        <div class="hd">
-                            <h3>
-                                即时新闻
-                                <span class="dec">INSTANT NEWS</span>
-                            </h3>
-                        </div>
-                        <div class="bd">
-                            <div id="instant-news">
-                                <ul class="ulist mix-ulist">
-                                    {% if instant_news %}
-                                    {% for news in instant_news %}
-                                        <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
-                                    {% endfor %}
-                                    {% endif %}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id="body" style="margin-top: 10px;">
             <div class="column clearfix" id="col_focus">
                 <div class="l-left-col">
-                    <div class="column-title">
-                        <div class="column-title-border">
-                            <h2>
-                                <span class="subtitle">焦点新闻</span>
-                                <span class="cname">FOCAL NEWS</span>
-                            </h2>
-                        </div>
-                    </div>
-                    <div class="b-left">
-                        <ul class="ulist">
-                            {% if focal_news1 %}
-                            {% for news in focal_news1 %}
-                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                        <ul class="ulist">
-                            {% if focal_news2 %}
-                            {% for news in focal_news2 %}
-                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                    </div>
-                    <div class="ilist">
-                        <ul>
-                            {% if focal_pic_news %}
-                            {% for news in focal_pic_news %}
-                                <li><a href="{{ news.urls }}" target="_blank">
-                                    <img src="{{ news.imgurls }}">
-                                    <span class="title">{{ news.titles }}</span>
-                                    </a>
-                                </li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-                <div class="l-right-col">
-                    <div class="mod">
-                        <div class="hd">
-                            <h3>
-                                百家专栏
-                                <span class="dec">BAIJIA</span>
-                            </h3>
-                        </div>
-                        <div class="bd">
-                            <div id="focus-videos">
-                                
+                    <!--下面是图片轮换-->
+                    <div class="shutter toparea-carousel">
+                        <div class="imgplayer clearfix" id="imgplayer">
+                            <div class="shutter-img">
+                                {% for img_news in img_news %}
+                                    <a href="{{ img_news.urls }}" data-shutter-title="{{ img_news.titles }}" target="_blank" style="cursor: pointer;"><img src="{{ img_news.imgurls }}"></a>
+                                {% endfor %}
+                            </div>
+                            <ul class="shutter-btn">
+                                <li class="prev"></li>
+                                <li class="next"></li>
+                            </ul>
+                            <!-- 设置默认第一张 -->
+                            <div class="shutter-desc">  
+                                <a href="{{ img_news.3.urls }}" target="_blank"><p>{{ img_news.3.titles }}</p></a>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="column clearfix" id="col_stars">
-                <div class="l-left-col">
-                    <div class="column-title">
-                        <div class="column-title-border">
-                            <h2>
-                                <span class="subtitle">明星</span>
-                                <span class="cname">STARS</span>
-                            </h2>
-                        </div>
-                    </div>
-                    <div class="b-left">
-                        <ul class="ulist">
-                            {% if star_news1 %}
-                            {% for news in star_news1 %}
-                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                        <ul class="ulist">
-                            {% if star_news2 %}
-                            {% for news in star_news2 %}
-                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                        <ul class="ulist">
-                            {% if star_news3 %}
-                            {% for news in star_news3 %}
-                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                    </div>
-                    <div class="ilist">
-                        <ul>
-                            {% if star_pic_news %}
-                            {% for news in star_pic_news %}
-                                <li><a href="{{ news.urls }}" target="_blank">
-                                    <img src="{{ news.imgurls }}">
-                                    <span class="title">{{ news.titles }}</span>
-                                    </a>
-                                </li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-                <div class="l-right-col">
-                    <div class="mod">
+                    <div class="mod" id="mod_internet">
                         <div class="hd">
                             <h3>
-                                传闻爆料
-                                <span class="dec">RUMOURS</span>
+                                互联网新闻
+                                <span class="dec">INTERNET NEWS</span>
                             </h3>
                         </div>
                         <div class="bd">
-                            <div id="twms-news">
+                            <div id="internet_news">
                                 <ul class="ulist mix-ulist">
-                                    {% if rumours_news %}
-                                    {% for news in rumours_news %}
-                                        <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
-                                    {% endfor %}
-                                    {% endif %}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mod" id="zongyi_video">
-                        <div class="hd">
-                            <h3>综艺视频</h3>
-                        </div>
-                        <div class="bd">
-                            <div class="pic-list">
-                                <ul>
-                                    {% if variety_video_news %}
-                                    {% for news in variety_video_news %}
-                                        <li><a href="{{ news.urls }}" target="_blank">
-                                            <img src="{{ news.imgurls }}">
-                                            <span class="title">{{ news.titles }}</span>
-                                            </a>
-                                        </li>
-                                    {% endfor %}
-                                    {% endif %}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column clearfix" id="col_movie">
-                <div class="l-left-col">
-                    <div class="column-title">
-                        <div class="column-title-border">
-                            <h2>
-                                <span class="subtitle">电影</span>
-                                <span class="cname">MOVIES</span>
-                            </h2>
-                        </div>
-                    </div>
-                    <div class="b-left">
-                        <ul class="ulist">
-                            {% if movie_news1 %}
-                            {% for news in movie_news1 %}
-                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                        <ul class="ulist">
-                            {% if movie_news2 %}
-                            {% for news in movie_news2 %}
-                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                    </div>
-                    <div class="ilist">
-                        <ul>
-                            {% if movie_pic_news %}
-                            {% for news in movie_pic_news %}
-                                <li><a href="{{ news.urls }}" target="_blank">
-                                    <img src="{{ news.imgurls }}">
-                                    <span class="title">{{ news.titles }}</span>
-                                    </a>
-                                </li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-                <div class="l-right-col">
-                    <div class="mod">
-                        <div class="hd">
-                            <h3>
-                                电影花絮
-                                <span class="dec">MOVIE FEATURES</span>
-                            </h3>
-                        </div>
-                        <div class="bd">
-                            <div id="historical-news">
-                                <ul class="ulist mix-ulist">
-                                    {% if movie_features_news %}
-                                    {% for news in movie_features_news %}
+                                    {% if internet_news %}
+                                    {% for news in internet_news %}
                                         <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
                                     {% endfor %}
                                     {% endif %}
@@ -299,104 +112,430 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="column clearfix" id="col_tv">
-                <div class="l-left-col">
-                    <div class="column-title">
-                        <div class="column-title-border">
-                            <h2>
-                                <span class="subtitle">电视</span>
-                                <span class="cname">TVS</span>
-                            </h2>
-                        </div>
-                    </div>
-                    <div class="b-left">
-                        <ul class="ulist">
-                            {% if TV_news1 %}
-                            {% for news in TV_news1 %}
-                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                        <ul class="ulist">
-                            {% if TV_news2 %}
-                            {% for news in TV_news2 %}
-                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                    </div>
-                    <div class="ilist">
-                        <ul>
-                            {% if TV_pic_news %}
-                            {% for news in TV_pic_news %}
-                                <li><a href="{{ news.urls }}" target="_blank">
-                                    <img src="{{ news.imgurls }}">
-                                    <span class="title">{{ news.titles }}</span>
-                                    </a>
+                <div class="l-middle-col">
+                    <div class="middle-focus-news">
+                        {% for news1 in middle_news %}
+                            <ul class="ulist fb-list">
+                            {% for news in news1 %}                 
+                                <li>
+                                    <a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a>
                                 </li>
                             {% endfor %}
-                            {% endif %}
-                        </ul>
+                            </ul>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="l-right-col">
                     <div class="mod">
                         <div class="hd">
                             <h3>
-                                热门剧集
-                                <span class="dec">HOT DRAMA SERIES</span>
+                                科学探索
+                                <span class="dec">SCIENCE DISCOVERY</span>
                             </h3>
                         </div>
                         <div class="bd">
-                            <div id="hotdramas">
-                                <table>
-                                    <tbody>
-                                        {% for i in count %}
-                                            <tr>
-                                                <td class="n">
-                                                    <a href="{{ i.0.urls }}" target="_blank">
-                                                        {{ i.0.titles }}
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ i.1.urls }}" target="_blank">
-                                                        {{ i.1.titles }}
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ i.2.urls }}" target="_blank">
-                                                        {{ i.2.titles }}
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ i.3.urls }}" target="_blank">
-                                                        {{ i.3.titles }}
-                                                    </a>
-                                                </td>
-                                                <td class="last">
-                                                    <a href="{{ i.4.urls }}" target="_blank">
-                                                        {{ i.4.titles }}
-                                                    </a>
-                                                </td>
-                                            </tr>
+                            <div id="kj_news">
+                                <ul class="ulist mix-ulist">
+                                    {% if science_news %}
+                                    {% for news in science_news %}
+                                        <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mod" id="focus-aside-video">
+                        <div class="hd">
+                            <h3>
+                                科技视频
+                                <span class="dec">TECHNOLOGICAL VIDEOS</span>
+                            </h3>
+                        </div>
+                        <div class="bd">
+                            <div id="kj_video">
+                                <div class="pic-list">
+                                    <ul>
+                                        {% if technology_video_news %}
+                                        {% for news in technology_video_news %}
+                                            <li><a href="{{ news.urls }}" target="_blank">
+                                                <img src="{{ news.imgurls }}">
+                                                <span class="title">{{ news.titles }}</span>
+                                                </a>
+                                            </li>
                                         {% endfor %}
-                                    </tbody>
-                                </table>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                <ul class="ulist mix-ulist">
+                                    {% if technology_news %}
+                                    {% for news in technology_news %}
+                                        <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="mod" id="hot_recommend">
+                </div>
+            </div>
+            <div class="column clearfix" id="col_yejie">
+                <div class="column-title">
+                    <div class="column-title-border">
+                        <h2>业界</h2>
+                        <span class="line"></span>
+                    </div>
+                </div>
+                <div class="l-left-col">
+                    <div class="mod" id="tongxin_news">
                         <div class="hd">
                             <h3>
-                                热门剧评
-                                <span class="dec">HOT DRAMA COMMENTS</span>
+                                通信
+                                <span class="dec">COMMUNICATION</span>
+                            </h3>
+                        </div> 
+                        <div class="bd">
+                            <ul class="ulist mix-ulist">
+                                {% if communication_news %}
+                                {% for news in communication_news %}
+                                    <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mod" id="news_3g">
+                        <div class="hd">
+                            <h3>
+                                5G
+                                <span class="dec">5G</span>
+                            </h3>
+                        </div> 
+                        <div class="bd">
+                            <ul class="ulist mix-ulist">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="l-middle-col">
+                    <div class="middle-focus-news">
+                        {% for news1 in middle_focus_news %}
+                            <ul class="ulist fb-list">
+                            {% for news in news1 %}                 
+                                <li>
+                                    <a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="l-right-col">
+                    <div class="mod" id="rwgs_news">
+                        <div class="hd">
+                            <h3>
+                                人物公司
+                                <span class="dec">FIGURES&COMPANIES</span>
+                            </h3>
+                        </div>
+                        <div class="bd">
+                            <div id="rwgs_news_list">
+                                <ul class="olist">
+                                    {% if company_news %}
+                                    {% for news in company_news %}
+                                        <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column clearfix" id="col_shouji">
+                <div class="column-title">
+                    <div class="column-title-border">
+                        <h2>手机</h2>
+                        <span class="line"></span>
+                    </div>
+                </div>
+                <div class="l-left-col">
+                    <div class="mod" id="cell_iphone">
+                        <div class="hd">
+                            <h3>
+                                iPhone
+                                <span class="dec">iPhone</span>
+                            </h3>
+                        </div> 
+                        <div class="bd">
+                            <ul class="ulist mix-ulist">
+                                {% if iphone_news %}
+                                {% for news in iphone_news %}
+                                    <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mod" id="cell_android">
+                        <div class="hd">
+                            <h3>
+                                Android
+                                <span class="dec">Android</span>
+                            </h3>
+                        </div> 
+                        <div class="bd">
+                            <ul class="ulist mix-ulist">
+                                {% if android_news %}
+                                {% for news in android_news %}
+                                    <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="l-middle-col">
+                    <div class="middle-focus-news">
+                        {% for news1 in shouji_middle_news %}
+                            <ul class="ulist fb-list">
+                            {% for news in news1 %}                 
+                                <li>
+                                    <a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="l-right-col">
+                    <div class="mod" id="new_cell">
+                        <div class="hd">
+                            <h3>
+                                手机新品
+                                <span class="dec">NEW MOBILE PHONE</span>
                             </h3>
                         </div>
                         <div class="bd">
                             <ul class="ulist mix-ulist">
-                                {% if hot_tv_comments_news %}
-                                {% for news in hot_tv_comments_news %}
+                                {% if shouji_right_news %}
+                                {% for news in shouji_right_news %}
+                                    <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mod" id="cell_aside_price">
+                        <div class="hd">
+                            <h3>
+                                手机报价排行
+                                <span class="dec">PRICE RANKING</span>
+                            </h3>
+                            <div class="price-search" id="cell_price_search">
+                                <input class="price-search-txt" type="text" value="" placeholder="产品或型号" id="cell_txt">
+                                <a href="" class="price-search-btn" id="cell_btn" onclick="shouji()" target="_blank">查询</a>
+                            </div>
+                        </div>
+                        <div class="bd">
+                            <div id="mobile-price">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column clearfix" id="col_shuma">
+                <div class="column-title">
+                    <div class="column-title-border">
+                        <h2>数码产品</h2>
+                        <span class="line"></span>
+                    </div>
+                </div>
+                <div class="l-left-col">
+                    <div class="mod" id="sm_pbdn">
+                        <div class="hd">
+                            <h3>
+                                平板电脑
+                                <span class="dec">PANEL COMPUTER</span>
+                            </h3>
+                        </div> 
+                        <div class="bd">
+                            <ul class="ulist mix-ulist">
+                                {% if panel_computer_news %}
+                                {% for news in panel_computer_news %}
+                                    <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mod" id="sm_ebook">
+                        <div class="hd">
+                            <h3>
+                                电子书
+                                <span class="dec">E-BOOK</span>
+                            </h3>
+                        </div> 
+                        <div class="bd">
+                            <ul class="ulist mix-ulist">
+                                {% if E_book_news %}
+                                {% for news in E_book_news %}
+                                    <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="l-middle-col">
+                    <div class="middle-focus-news">
+                        {% for news1 in shuma_middle_news %}
+                            <ul class="ulist fb-list">
+                            {% for news in news1 %}                 
+                                <li>
+                                    <a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="l-right-col">
+                    <div class="mod" id="sm_new">
+                        <div class="hd">
+                            <h3>
+                                电脑新品
+                                <span class="dec">NEW COMPUTER</span>
+                            </h3>
+                        </div>
+                        <div class="bd">
+                            <ul class="ulist mix-ulist">
+                                {% if new_computer_news %}
+                                {% for news in new_computer_news %}
+                                    <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mod" id="stock-aside-individua">
+                        <div class="hd">
+                            <h3>
+                                电脑报价排行
+                                <span class="dec">PRICE RANKING</span>
+                            </h3>
+                            <div class="price-search" id="pc_price_search">
+                                <input class="price-search-txt" type="text" value="" placeholder="产品或型号" id="pc_txt">
+                                <a href="" class="price-search-btn" id="pc_btn" onclick="diannao()" target="_blank">查询</a>
+                            </div>
+                        </div>
+                        <div class="bd">
+                            <div id="mobile-price">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column clearfix" id="col_kexue">
+                <div class="column-title">
+                    <div class="column-title-border">
+                        <h2>科学</h2>
+                        <span class="line"></span>
+                    </div>
+                </div>
+                <div class="l-left-col">
+                    <div class="mod" id="kx_yzts">
+                        <div class="hd">
+                            <h3>
+                                宇宙探索
+                                <span class="dec">UNIVERSE DISCOVERY</span>
+                            </h3>
+                        </div> 
+                        <div class="bd">
+                            <ul class="ulist mix-ulist">
+                                {% if universe_news %}
+                                {% for news in universe_news %}
+                                    <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mod" id="kx_lskg">
+                        <div class="hd">
+                            <h3>
+                                历史考古
+                                <span class="dec">HISTORICAL ARCHAEOLOGY</span>
+                            </h3>
+                        </div> 
+                        <div class="bd">
+                            <ul class="ulist mix-ulist">
+                                {% if history_news %}
+                                {% for news in history_news %}
+                                    <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                                {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="l-middle-col">
+                    <div class="middle-focus-news">
+                        {% for news1 in science_middle_news %}
+                            <ul class="ulist fb-list">
+                            {% for news in news1 %}                 
+                                <li>
+                                    <a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="l-right-col">
+                    <div class="mod" id="KX_VIDEO">
+                        <div class="hd">
+                            <h3>
+                                科学探索视频
+                                <span class="dec">SCIENCE DISCOVERY VIDEOS</span>
+                            </h3>
+                        </div>
+                        <div class="bd">
+                            <div id="kxts_video">
+                                <div class="pic-list">
+                                    <ul>
+                                        {% if science_discovery_video_news %}
+                                        {% for news in science_discovery_video_news %}
+                                            <li><a href="{{ news.urls }}" target="_blank">
+                                                <img src="{{ news.imgurls }}">
+                                                <span class="title">{{ news.titles }}</span>
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                <ul class="ulist mix-ulist">
+                                    {% if science_discovery_news %}
+                                    {% for news in science_discovery_news %}
+                                        <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mod" id="hot_tophit">
+                        <div class="hd">
+                            <h3>
+                                热门点击
+                                <span class="dec">HOT CLICKS</span>
+                            </h3>
+                        </div>
+                        <div class="bd">
+                            <ul class="ulist mix-ulist">
+                                {% if hot_click_news %}
+                                {% for news in hot_click_news %}
                                     <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
                                 {% endfor %}
                                 {% endif %}
@@ -405,221 +544,11 @@
                     </div>
                 </div>
             </div>
-            <div class="column clearfix" id="col_music">
-                <div class="l-left-col">
-                    <div class="column-title">
-                        <div class="column-title-border">
-                            <h2>
-                                <span class="subtitle">音乐</span>
-                                <span class="cname">MUSICS</span>
-                            </h2>
-                        </div>
-                    </div>
-                    <div class="b-left">
-                        <ul class="ulist">
-                            {% if music_news1 %}
-                            {% for news in music_news1 %}
-                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                        <ul class="ulist">
-                            {% if music_news2 %}
-                            {% for news in music_news2 %}
-                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                    </div>
-                    <div class="ilist">
-                        <ul>
-                            {% if music_pic_news %}
-                            {% for news in music_pic_news %}
-                                <li><a href="{{ news.urls }}" target="_blank">
-                                    <img src="{{ news.imgurls }}">
-                                    <span class="title">{{ news.titles }}</span>
-                                    </a>
-                                </li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-                <div class="l-right-col">
-                    <div class="mod" id="music_new_song">
-                        <div class="hd">
-                            <h3>
-                                新歌
-                                <span class="dec">NEW SONGS</span>
-                            </h3>
-                        </div>
-                        <div class="bd">
-                            <div class="newsongs">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <th class="n">歌曲名</th>
-                                            <th class="s">歌手名</th>
-                                            <th class="l">试听</th>
-                                        </tr>
-                                        {% for i,j in top_music_news %}
-                                            <tr>
-                                                <td class="n">
-                                                    <a href="{{ i.urls }}" target="_blank">
-                                                        {{ i.titles }}
-                                                    </a>
-                                                </td>
-                                                <td class="s">  
-                                                    <a href="{{ j.urls }}" target="_blank">
-                                                        {{ j.titles }}
-                                                    </a>
-                                                </td>
-                                                <td class="l">
-                                                    <a href="{{ i.urls }}" target="_blank">
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mod" id="music_gold_song">
-                        <div class="hd">
-                            <h3>
-                                中文金曲
-                                <span class="dec">RANKING</span>
-                            </h3>
-                        </div>
-                        <div class="bd">
-                            <div class="newsongs">
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <th class="n">歌曲名</th>
-                                            <th class="s">歌手名</th>
-                                            <th class="l">试听</th>
-                                        </tr>
-                                        {% for i,j in china_music_news %}
-                                            <tr>
-                                                <td class="n">
-                                                    <a href="{{ i.urls }}" target="_blank">
-                                                        {{ i.titles }}
-                                                    </a>
-                                                </td>
-                                                <td class="s">  
-                                                    <a href="{{ j.urls }}" target="_blank">
-                                                        {{ j.titles }}
-                                                    </a>
-                                                </td>
-                                                <td class="l">
-                                                    <a href="{{ i.urls }}" target="_blank">
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column clearfix" id="col_variety">
-                <div class="l-left-col">
-                    <div class="column-title">
-                        <div class="column-title-border">
-                            <h2>
-                                <span class="subtitle">综艺</span>
-                                <span class="cname">VARIETIES</span>
-                            </h2>
-                        </div>
-                    </div>
-                    <div class="b-left">
-                        <ul class="ulist">
-                            {% if variety_news1 %}
-                            {% for news in variety_news1 %}
-                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                        <ul class="ulist">
-                            {% if variety_news2 %}
-                            {% for news in variety_news2 %}
-                                <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                    </div>
-                    <div class="ilist">
-                        <ul>
-                            {% if variety_pic_news %}
-                            {% for news in variety_pic_news %}
-                                <li><a href="{{ news.urls }}" target="_blank">
-                                    <img src="{{ news.imgurls }}">
-                                    <span class="title">{{ news.titles }}</span>
-                                    </a>
-                                </li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-                <div class="l-right-col">
-                    <div class="mod">
-                        <div class="hd">
-                            <h3>
-                                热门点击
-                                <span class="dec">HOT CLICKS</span>
-                            </h3>
-                        </div>
-                        <div class="bd">
-                            <div id="historical-news">
-                                <ul class="ulist mix-ulist">
-                                    {% if variety_click_news %}
-                                    {% for news in variety_click_news %}
-                                        <li><a href="{{ news.urls }}" class="title" target="_blank">{{ news.titles }}</a></li>
-                                    {% endfor %}
-                                    {% endif %}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column clearfix" id="col_picture">
-                <div class="column-title">
-                    <div class="column-title-border">
-                        <h2>
-                            <span class="subtitle">图片新闻</span>
-                            <span class="cname">PICTURE NEWS</span>
-                        </h2>
-                    </div>
-                </div>
-                <div id="mil-picnews">
-                    <div class="pic-list">
-                        <ul>
-                            {% if picture_news %}
-                            {% for news in picture_news %}
-                                <li><a href="{{ news.urls }}" target="_blank">
-                                    <img src="{{ news.imgurls }}">
-                                    <span class="title">{{ news.titles }}</span>
-                                    </a>
-                                </li>
-                            {% endfor %}
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
             <div class="column clearfix" id="col_latest">
                 <div class="column-title">
                     <div class="column-title-border">
-                        <h2>
-                            <span class="subtitle">最新新闻</span>
-                            <span class="cname">LATEST NEWS</span>
-                        </h2>
+                        <h2>最新新闻</h2>
+                        <span class="line"></span>
                     </div>
                 </div>
                 <div id="latest-news">
@@ -647,5 +576,23 @@
             </tr>
         </table>
     </div> 
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/gh/751317151/live2d-vv/autoload.js"></script>
+
+    <script type="text/javascript" charset="utf-8"  src="static/js/L2Dwidget.0.min.js"></script>
+    <script type="text/javascript" charset="utf-8"  src="static/js/L2Dwidget.min.js"></script>
+    <script type="text/javascript">
+        L2Dwidget.init({"display": {
+            "superSample": 2,
+            "width": 200,
+            "height": 400,
+                "position": "right",
+                    "hOffset": 0,
+            "vOffset": 0
+            }
+        });
+</script>
 </body>
 </html>

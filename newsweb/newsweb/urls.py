@@ -3,7 +3,7 @@
 @Date: 2019-10-25 09:29:27
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-12-01 14:39:38
+@LastEditTime: 2019-12-03 16:49:42
 '''
 """newsweb URL Configuration
 
@@ -30,7 +30,6 @@ from international import views as international_views
 from entertainment import views as entertainment_views
 from military import views as military_views
 from technology import views as technology_views
-from internet import views as internet_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -41,5 +40,4 @@ urlpatterns = [
     path('sports', sports_views.sports_news),
     path('military',military_views.military_news),
     path('technology',technology_views.technology_news),
-    path('internet',internet_views.internet_news),
 ]

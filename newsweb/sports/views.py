@@ -3,7 +3,7 @@
 @Date: 2019-10-28 10:43:56
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-11-12 14:04:31
+@LastEditTime: 2019-12-03 17:57:08
 '''
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse
@@ -13,18 +13,15 @@ from sports.models import sports
 
 def sports_news(request):
     if request.method == "GET":
-        # print(123)
-        news = sports.objects.all()[:20]
-        # print(news)
-        # for i in news:
-        #     print(i.urls,i.titles)
-        img_news = sports.objects.exclude(imgurls= '0')  # 排除 '0' 的imgurl
-        # print(img_news)
+
+        news = sports.objects.filter(abs_titles='top_sports_news')
+        img_news = sports.objects.filter(abs_titles='tupian')
         world_football_news = sports.objects.filter(abs_titles='world_football')
         star_news = sports.objects.filter(abs_titles='star_news')
         china_football_news = sports.objects.filter(abs_titles='china_football')
         player_news = sports.objects.filter(abs_titles='player_news')
         NBA_news = sports.objects.filter(abs_titles='NBA_news')
+        video_news = sports.objects.filter(abs_titles='video_news')
         CBA_news = sports.objects.filter(abs_titles='CBA_news')
         focus_events = sports.objects.filter(abs_titles='focus_events')
         other_sports_news = sports.objects.filter(abs_titles='other_sports')
@@ -45,6 +42,7 @@ def sports_news(request):
             'NBA_news2':NBA_news[6:12],
             'CBA_news1':CBA_news[:6],
             'CBA_news2':CBA_news[6:12],
+            'video_news':video_news,
             'focus_events':focus_events,
             'other_sports_news1':other_sports_news[:6],
             'other_sports_news2':other_sports_news[6:12],
