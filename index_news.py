@@ -3,7 +3,7 @@
 @Date: 2019-11-12 14:32:09
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-12-04 15:52:20
+@LastEditTime: 2019-12-05 19:03:55
 '''
 
 import requests
@@ -34,7 +34,7 @@ def hot_news():
     for i in range(len(hot_news_url)):
         print(hot_news_url[i],hot_news_title[i],len(hot_news_url[i]))
         cur.execute('insert into index_index values (default,"%s","%s","hot_news",0)'%(hot_news_title[i],hot_news_url[i]))
-    conn.commit()
+        conn.commit()
 
     # 图片新闻
     pop1 = data.index('cpOptions_1.data.push')
@@ -81,17 +81,21 @@ def hot_news():
     conn.commit()
 
 def hot_pane_news():
-    url = "http://www.china.com/"
+    url = "https://www.chinanews.com/"
 
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36',
+        'referer': 'https://www.chinanews.com/'
+    }
     data = requests.get(url,headers=headers,verify=False)
     data.encoding="utf-8"
     data = data.text
     # print(data)
     data1 = etree.HTML(data)
 
-    # 热点要闻
-    hot_pane_news_url = data1.xpath('//*[@id="spotlight"]/div/div[1]//ul//li//a[1]/@href')
-    hot_pane_news_title = data1.xpath('//*[@id="spotlight"]/div/div[1]//ul//li//a[1]/text()')
+    # 热点要闻  
+    hot_pane_news_url = data1.xpath('//*[@id="daodu"]/div[@class="xwzxdd-dbt"]/h1/a/@href')
+    hot_pane_news_title = data1.xpath('//*[@id="daodu"]/div[@class="xwzxdd-dbt"]/h1/a/text()')
     
     cur.execute('delete from index_index where abs_titles="hot_pane_news1"')
     for i in range(5):
