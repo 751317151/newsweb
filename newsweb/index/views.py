@@ -3,7 +3,7 @@
 @Date: 2019-11-12 14:16:16
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-11-26 17:45:26
+@LastEditTime: 2019-12-12 22:40:55
 '''
 from django.shortcuts import render
 from index.models import index
@@ -103,6 +103,7 @@ def index_news(request):
             'hot_internet_pic_news':hot_internet_pic_news,
             'hot_internet_click_news1':hot_internet_click_news[:4],
             'hot_internet_click_news2':hot_internet_click_news[4:],
+            'username': request.session.get("username"),
         }
 
         return render(request,"index.html",contex)

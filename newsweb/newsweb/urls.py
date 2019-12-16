@@ -3,7 +3,7 @@
 @Date: 2019-10-25 09:29:27
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-12-03 16:49:42
+@LastEditTime: 2019-12-16 14:35:55
 '''
 """newsweb URL Configuration
 
@@ -30,10 +30,24 @@ from international import views as international_views
 from entertainment import views as entertainment_views
 from military import views as military_views
 from technology import views as technology_views
+from user import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index_views.index_news),
+    path('register',user_views.register),
+    path('check_uname',user_views.check_uname),
+    path('send_code',user_views.send_code),
+    path('login',user_views.login),
+    path('log_out',user_views.log_out),
+    path('china_count',user_views.china_count),
+    path('international_count',user_views.international_count),
+    path('entertainment_count',user_views.entertainment_count),
+    path('sport_count',user_views.sport_count),
+    path('technology_count',user_views.technology_count),
+    path('military_count',user_views.military_count),
+
+    path('user',user_views.user_news),
     path('china',china_views.china_news),
     path('international',international_views.international_news),
     path('entertainment',entertainment_views.entertainment_news),

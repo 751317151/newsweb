@@ -3,7 +3,7 @@
 @Date: 2019-12-01 14:30:10
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-12-01 16:04:17
+@LastEditTime: 2019-12-13 21:46:12
 '''
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse
@@ -58,5 +58,6 @@ def military_news(request):
             # 最新新闻
             'latest_news1':latest_news[:10],
             'latest_news2':latest_news[10:],
+            'username': request.session.get("username"),
         }
         return render(request,"military.html",contex) 

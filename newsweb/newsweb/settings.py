@@ -3,7 +3,7 @@
 @Date: 2019-10-25 09:29:27
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-12-03 16:49:20
+@LastEditTime: 2019-12-16 13:55:49
 '''
 """
 Django settings for newsweb project.
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'entertainment',
     'technology',
     'military',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -123,13 +124,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)

@@ -1,0 +1,132 @@
+<!--
+ * @Author: 华豪
+ * @Date: 2019-10-25 09:42:46
+ * @E-Mail: hh@huahaohh.cn
+ * @LastEditors: 华豪
+ * @LastEditTime: 2019-12-16 22:28:35
+ -->
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <meta charset="UTF-8">
+     <meta name="referrer" content="no-referrer"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>推荐</title>
+     <link rel="stylesheet" href="static/css/bgsize.css" />		
+     <link rel="stylesheet" href="static/css/main.css" />
+     <link rel="stylesheet" href="static/css/shutter.css">
+     <link rel="stylesheet" href="static/css/sports.css">
+     <link rel="stylesheet" href="static/css/index.css">
+     <link rel="stylesheet" href="static/css/log_reg.css">
+     <link rel="stylesheet" href="static/css/marq_words.css">
+     <script src="static/js/jquery.min.js"></script>
+     <script src="static/js/velocity.js"></script>
+     <script src="static/js/shutter.js"></script> 
+     <script src="static/js/su.js"></script>
+     <script src="static/js/heart_click.js"></script>
+    
+     <script type="text/javascript">
+         jQuery(document).ready(function($){
+         $('body').wpSuperSnow({
+         flakes: ['static/images/007.png','static/images/006.png','static/images/004.png','static/images/003.png','static/images/002.png','static/images/001.png'],
+         totalFlakes: '150',
+         zIndex: '999999',
+         maxSize: '30',
+         maxDuration: '20',
+         useFlakeTrans: false
+         });
+         });
+     </script>
+     <style>
+         .clearfix {
+             display: inline-block;
+         }
+     </style>
+ </head>
+ <body background="/static/images/background.jpg" style="background-attachment: fixed;">
+     <div class="contaiter">		
+         <!--下面是导航菜单-->
+         <div class="navigator">
+             <div style="float: left;">
+                 <ul id="nav">
+                     <li><a href="/">首页</a></li> &nbsp;&nbsp;
+                     <li><a href="user" class="selected">推荐</a></li> &nbsp;&nbsp;
+                     <li><a href="china">国内</a></li>&nbsp;&nbsp;
+                     <li><a href="international">国际</a></li>&nbsp;&nbsp;
+                     <li><a href="entertainment">娱乐</a></li>&nbsp;&nbsp;
+                     <li><a href="sports">体育</a></li>&nbsp;&nbsp;
+                     <li><a href="technology">科技</a></li>&nbsp;&nbsp;
+                     <li><a href="military">军事</a></li>&nbsp;&nbsp;
+                 </ul>
+             </div>
+             {% if username %}
+                 <div class="log_reg" style="float: right;">
+                     <h3 style="text-align: center;" class="log_out">
+                         欢迎您，{{ username }}
+                         <a href="log_out">注销</a>
+                     </h3>
+                     
+                 </div>
+             {% else %}
+                 <div class="log_reg" style="float: right;">
+                     <div style="text-align: center;">
+                         <a href="login">登陆</a>
+                         <a href="register">注册</a>
+                     </div>
+                 </div>
+             {% endif %}
+         </div>
+         <div id="body">
+             <div style="margin-top: 25px;">
+                 <div style="width: 80%; float: left;">
+                    <ul class="marq_words">
+                        {% if total_news %}
+                        {% for news in total_news %}
+                            <marquee onmouseout="this.start();" onmouseover="this.stop()" style="background-color: #A0EEE1;" behavior="alternate"><li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li></marquee>
+                        {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+                <div style="width: 15%;float: right;margin-left: 30px;">
+                    <h3 style="width: 20%;">浏览越多新闻</h3>
+                    <h3 style="width: 20%;">推荐更准确哦</h3>
+                </div>
+            </div>
+         </div>
+         <table style="margin-top: 100px;" width="1024px" bgcolor="bisque" align="center">		
+             
+         </table>
+         <div style="float: left;width: 1024px; background-color: bisque;">
+            <div style="float: left;margin-left: 100px;">
+                <img src="static/images/001.png">
+            </div>
+            <div style="float: left;margin-left: 100px;">
+                <img src="static/images/002.png">
+            </div> 
+            <div style="float: left;margin-left: 90px;margin-top: 50px;">
+                <p style="font-size: 2em;">hh@huahaohh.cn</p>
+             </div>
+             <div style="float: left;margin-left: 100px;">
+                 <img src="static/images/003.png">
+             </div>
+         </div>
+     </div> 
+ 
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+     <script src="https://cdn.jsdelivr.net/gh/751317151/live2d-vv/autoload.js"></script>
+ 
+     <script type="text/javascript" charset="utf-8"  src="static/js/L2Dwidget.0.min.js"></script>
+     <script type="text/javascript" charset="utf-8"  src="static/js/L2Dwidget.min.js"></script>
+     <script type="text/javascript">
+         L2Dwidget.init({"display": {
+             "superSample": 2,
+             "width": 200,
+             "height": 400,
+                 "position": "right",
+                     "hOffset": 0,
+             "vOffset": 0
+             }
+         });
+ </script>
+ </body>
+ </html>

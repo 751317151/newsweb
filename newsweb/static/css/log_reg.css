@@ -1,0 +1,21 @@
+.log_reg{
+    width: 270px;
+    height: 49.6px;
+}
+
+.log_reg a{
+    line-height: 49.6px;
+    font-size: 1.5em;
+    color: white;
+    text-decoration: underline;
+    margin-right: 5px;
+}
+.log_out{
+    font-size: 15px;;
+}
+.log_out a{
+    margin: 0%;
+    margin-left: 10px;
+    font-size: 15px;;
+    color: black;
+}

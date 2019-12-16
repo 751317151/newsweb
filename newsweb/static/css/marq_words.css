@@ -1,0 +1,21 @@
+#body{
+    overflow: hidden;
+}
+
+.marq_words li{
+    margin-top: 10px;
+    height: 30px;
+}
+
+.marq_words li a:visited{
+    text-decoration: none;
+}
+.marq_words li a{
+    font-size: 20px;
+}
+#body h3{
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 22px;
+    color:#69737b;
+}

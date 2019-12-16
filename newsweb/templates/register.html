@@ -1,0 +1,104 @@
+<!--
+ * @Author: 华豪
+ * @Date: 2019-10-25 09:42:46
+ * @E-Mail: hh@huahaohh.cn
+ * @LastEditors: 华豪
+ * @LastEditTime: 2019-12-16 15:32:13
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" href="static/css/bgsize.css" />	
+    <link rel="stylesheet" href="static/css/reset.css" />
+    <link rel="stylesheet" href="static/css/common.css" />
+    <link rel="stylesheet" href="static/css/font-awesome.min.css" />	
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/velocity.js"></script>
+    <script src="static/js/shutter.js"></script> 
+    <script src="static/js/su.js"></script>
+    <script src="static/js/heart_click.js"></script>
+    <script type="text/javascript" src="static/js/register.js" ></script>
+    
+    <script type="text/javascript">
+        jQuery(document).ready(function($){
+        $('body').wpSuperSnow({
+        flakes: ['static/images/007.png','static/images/006.png','static/images/004.png','static/images/003.png','static/images/002.png','static/images/001.png'],
+        totalFlakes: '150',
+        zIndex: '999999',
+        maxSize: '30',
+        maxDuration: '20',
+        useFlakeTrans: false
+        });
+        });
+    </script>
+</head>
+<body background="/static/images/background.jpg" style="background-attachment: fixed;">
+    <div style="width: 360px; height: 120px;">	
+    </div>
+    <div class="login_box">	
+        <div class="login_form">
+            <div class="login_title">
+                注册
+            </div>
+            <form action="register" method="post" id="form1" onsubmit="return false;">   
+                <div class="ececk_warning"><span class="ececk_warning_text"></span></div>    
+                <div class="form_text_ipt">
+                    <input name="email" id="email" type="email" placeholder="邮箱">
+                </div>
+                <div class="form_text_ipt">
+                    <input name="username" id="username" type="text" placeholder="用户名">
+                </div>
+                <div class="form_text_ipt">
+                    <input name="password" id="password" type="password" placeholder="密码">
+                </div>
+                <div class="form_text_ipt">
+                    <input name="password2" id="password2" type="password" placeholder="重复密码">
+                </div>
+                <div class="form_text_ipt">
+                    {% csrf_token %}
+                    <input name="code" id="code" type="text" placeholder="验证码">
+                    <button type="button" id="send_code">发送验证码</button>
+                </div>
+                
+                <div class="form_btn">
+                    <button type="submit" id="submit">注册</button>
+                </div>
+                <div class="form_reg_btn">
+                    <span>已有帐号？</span><a href="login">马上登录</a>
+                </div>
+            </form>
+            <div class="other_login">
+                <div class="left other_left">
+                    <span>其它登录方式</span>
+                </div>
+                <div class="right other_right">
+                    <a href="#"><i class="fa fa-qq fa-2x"></i></a>
+                    <a href="#"><i class="fa fa-weixin fa-2x"></i></a>
+                    <a href="#"><i class="fa fa-weibo fa-2x"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/gh/751317151/live2d-vv/autoload.js"></script>
+
+    <script type="text/javascript" charset="utf-8"  src="static/js/L2Dwidget.0.min.js"></script>
+    <script type="text/javascript" charset="utf-8"  src="static/js/L2Dwidget.min.js"></script>
+    <script type="text/javascript">
+        L2Dwidget.init({"display": {
+            "superSample": 2,
+            "width": 200,
+            "height": 400,
+                "position": "right",
+                    "hOffset": 0,
+            "vOffset": 0
+            }
+        });
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 @Date: 2019-12-01 14:31:22
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-12-03 16:19:28
+@LastEditTime: 2019-12-13 21:45:53
 '''
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse
@@ -77,5 +77,6 @@ def technology_news(request):
             'science_discovery_video_news':science_discovery_video_news,
             'science_discovery_news':science_discovery_news,
             'hot_click_news':hot_click_news,
+            'username': request.session.get("username"),
         }
         return render(request,"technology.html",contex) 

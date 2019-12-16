@@ -3,7 +3,7 @@
 @Date: 2019-10-28 10:43:56
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-12-03 17:57:08
+@LastEditTime: 2019-12-13 21:45:39
 '''
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse
@@ -48,6 +48,7 @@ def sports_news(request):
             'other_sports_news2':other_sports_news[6:12],
             'hot_articles':hot_articles,
             'latest_news1':latest_news[:10],
-            'latest_news2':latest_news[10:]
+            'latest_news2':latest_news[10:],
+            'username': request.session.get("username"),
             }
         return render(request,"sports.html",contex)

@@ -3,7 +3,7 @@
 @Date: 2019-11-27 15:48:22
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-11-28 17:44:24
+@LastEditTime: 2019-12-13 21:44:57
 '''
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse
@@ -51,5 +51,6 @@ def china_news(request):
             # 最新新闻
             'latest_news1':latest_news[:10],
             'latest_news2':latest_news[10:],
+            'username': request.session.get("username"),
         }
         return render(request,"china.html",contex)

@@ -3,7 +3,7 @@
  * @Date: 2019-10-25 09:42:46
  * @E-Mail: hh@huahaohh.cn
  * @LastEditors: 华豪
- * @LastEditTime: 2019-12-05 21:45:45
+ * @LastEditTime: 2019-12-16 22:26:34
  -->
 <!DOCTYPE html>
 <html>
@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="static/css/shutter.css">
     <link rel="stylesheet" href="static/css/sports.css">
     <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="static/css/log_reg.css">
     <script src="static/js/jquery.min.js"></script>
     <script src="static/js/velocity.js"></script>
     <script src="static/js/shutter.js"></script> 
@@ -55,16 +56,35 @@
 <body background="/static/images/background.jpg" style="background-attachment: fixed;">
     <div class="contaiter">		
         <!--下面是导航菜单-->
-        <div class="navigator" >
-            <ul id="nav">
-                <li><a href="/" class="selected">首页</a></li> &nbsp;&nbsp;
-                <li><a href="china">国内</a></li>&nbsp;&nbsp;
-                <li><a href="international">国际</a></li>&nbsp;&nbsp;
-                <li><a href="entertainment">娱乐</a></li>&nbsp;&nbsp;
-                <li><a href="sports">体育</a></li>&nbsp;&nbsp;
-                <li><a href="technology">科技</a></li>&nbsp;&nbsp;
-                <li><a href="military">军事</a></li>&nbsp;&nbsp;
-            </ul>
+        <div class="navigator">
+            <div style="float: left;">
+                <ul id="nav">
+                    <li><a href="/" class="selected">首页</a></li> &nbsp;&nbsp;
+                    <li><a href="user">推荐</a></li> &nbsp;&nbsp;
+                    <li><a href="china">国内</a></li>&nbsp;&nbsp;
+                    <li><a href="international">国际</a></li>&nbsp;&nbsp;
+                    <li><a href="entertainment">娱乐</a></li>&nbsp;&nbsp;
+                    <li><a href="sports">体育</a></li>&nbsp;&nbsp;
+                    <li><a href="technology">科技</a></li>&nbsp;&nbsp;
+                    <li><a href="military">军事</a></li>&nbsp;&nbsp;
+                </ul>
+            </div>
+            {% if username %}
+                <div class="log_reg" style="float: right;">
+                    <h3 style="text-align: center;" class="log_out">
+                        欢迎您，{{ username }}
+                        <a href="log_out">注销</a>
+                    </h3>
+                    
+                </div>
+            {% else %}
+                <div class="log_reg" style="float: right;">
+                    <div style="text-align: center;">
+                        <a href="login">登陆</a>
+                        <a href="register">注册</a>
+                    </div>
+                </div>
+            {% endif %}
         </div>
         <!--下面是图片轮换-->
         <div class="shutter">
@@ -173,13 +193,13 @@
                     <div class="column-title-home">
                         <div class="column-title-border">
                             <h2>
-                                <a href="#">国内</a>
+                                <a href="/china">国内</a>
                                 <span class="cname">China</span>
                             </h2>
                         </div>
                     </div>
                     <div class="l-left-col1 col-mod">
-                        <ul class="ulist focuslistnews">
+                        <ul class="ulist">
                             {% if hot_China_news1 %}
                             {% for news in hot_China_news1 %}
                                 <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
@@ -274,7 +294,7 @@
                     <div class="column-title-home">
                         <div class="column-title-border">
                             <h2>
-                                <a href="#">国际</a>
+                                <a href="/international">国际</a>
                                 <span class="cname">World</span>
                             </h2>
                         </div>
@@ -382,7 +402,7 @@
                     <div class="column-title-home">
                         <div class="column-title-border">
                             <h2>
-                                <a href="#">娱乐</a>
+                                <a href="/entertainment">娱乐</a>
                                 <span class="cname">Entertainment</span>
                             </h2>
                         </div>
@@ -498,7 +518,7 @@
                     <div class="column-title-home">
                         <div class="column-title-border">
                             <h2>
-                                <a href="#">体育</a>
+                                <a href="/sports">体育</a>
                                 <span class="cname">Sports</span>
                             </h2>
                         </div>
@@ -599,7 +619,7 @@
                     <div class="column-title-home">
                         <div class="column-title-border">
                             <h2>
-                                <a href="#">科技</a>
+                                <a href="/technology">科技</a>
                                 <span class="cname">Technology</span>
                             </h2>
                         </div>
@@ -695,7 +715,7 @@
                     <div class="column-title-home">
                         <div class="column-title-border">
                             <h2>
-                                <a href="#">军事</a>
+                                <a href="/military">军事</a>
                                 <span class="cname">Military</span>
                             </h2>
                         </div>
@@ -787,7 +807,7 @@
                     <div class="column-title-home">
                         <div class="column-title-border">
                             <h2>
-                                <a href="#">互联网</a>
+                                <a>互联网</a>
                                 <span class="cname">Internet</span>
                             </h2>
                         </div>
@@ -875,10 +895,22 @@
             </div>
         </div>
         <table width="1024px" bgcolor="bisque" align="center">		
-            <tr height="60px" bgcolor="aquamarine" align="center">      	
-                <td style="font-size: 2em;">hh@huahaohh.cn</td>
-            </tr>
+             
         </table>
+        <div style="float: left;width: 1024px; background-color: bisque;">
+           <div style="float: left;margin-left: 100px;">
+               <img src="static/images/001.png">
+           </div>
+           <div style="float: left;margin-left: 100px;">
+               <img src="static/images/002.png">
+           </div> 
+           <div style="float: left;margin-left: 90px;margin-top: 50px;">
+               <p style="font-size: 2em;">hh@huahaohh.cn</p>
+            </div>
+            <div style="float: left;margin-left: 100px;">
+                <img src="static/images/003.png">
+            </div>
+        </div>
     </div> 
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
