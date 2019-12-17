@@ -3,7 +3,7 @@
 @Date: 2019-10-24 11:34:26
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-12-05 18:59:59
+@LastEditTime: 2019-12-17 15:07:39
 '''
 
 import requests
@@ -28,11 +28,14 @@ def top_news():
 
     top_sports_news_url = data1.xpath('//*[@id="col_focus"]/div[1]//a/@href')
     top_sports_news_title = data1.xpath('//*[@id="col_focus"]/div[1]//a/text()')
-    cur.execute('delete from sports_sports where abs_titles="top_sports_news"')
-    for i in range(20):
-        print(top_sports_news_url[i],top_sports_news_title[i])
-        cur.execute('insert into sports_sports values (default,"%s","%s","top_sports_news",0)'%(top_sports_news_title[i],top_sports_news_url[i]))
-    conn.commit()
+    try:
+        cur.execute('delete from sports_sports where abs_titles="top_sports_news"')
+        for i in range(20):
+            print(top_sports_news_url[i],top_sports_news_title[i])
+            cur.execute('insert into sports_sports values (default,"%s","%s","top_sports_news",0)'%(top_sports_news_title[i],top_sports_news_url[i]))
+        conn.commit()
+    except:
+        conn.rollback()
 
     # 四张图片新闻
     pop1 = data.index('cpOptions_1.data.push')
@@ -42,36 +45,45 @@ def top_news():
     urls = list(filter(lambda x:'"url"' in x,data2.split('\n')))
     imgurls = list(filter(lambda x:"imgUrl" in x,data2.split('\n')))
     abs_titles = list(filter(lambda x:"abs" in x,data2.split('\n')))
-    cur.execute('delete from sports_sports where abs_titles="tupian"')
-    for i in range(len(titles)):
-        title = titles[i].strip()[:-1].split(":")[-1]
-        abs_title = abs_titles[i].strip().split(":")[-1]
-        url = "http:////" + urls[2*i].strip()[:-1].split(":")[-1].replace('\\','').strip('\/\/')[:-1]
-        imgurl = "http:////" + imgurls[i].strip()[:-1].split(":")[-1].replace('\\','').strip('\/\/')[:-1]
+    try:
+        cur.execute('delete from sports_sports where abs_titles="tupian"')
+        for i in range(len(titles)):
+            title = titles[i].strip()[:-1].split(":")[-1]
+            abs_title = abs_titles[i].strip().split(":")[-1]
+            url = "http:////" + urls[2*i].strip()[:-1].split(":")[-1].replace('\\','').strip('\/\/')[:-1]
+            imgurl = "http:////" + imgurls[i].strip()[:-1].split(":")[-1].replace('\\','').strip('\/\/')[:-1]
 
-        print(title)
-        print(url)
-        print(abs_title)
-        print(imgurl)
-        cur.execute('insert into sports_sports values (default,%s,"%s","tupian","%s")'%(title,url,imgurl))
-    conn.commit()
+            print(title)
+            print(url)
+            print(abs_title)
+            print(imgurl)
+            cur.execute('insert into sports_sports values (default,%s,"%s","tupian","%s")'%(title,url,imgurl))
+        conn.commit()
+    except:
+        conn.rollback()
     
     NBA_news_url = data1.xpath('//*[@id="col_nba"]/div[1]/div[2]//a/@href')
     NBA_news_title = data1.xpath('//*[@id="col_nba"]/div[1]/div[2]//a/text()')
-    cur.execute('delete from sports_sports where abs_titles="NBA_news"')
-    for i in range(12):
-        print(NBA_news_title[i],NBA_news_url[i])
-        cur.execute('insert into sports_sports values (default,"%s","%s","NBA_news",0)'%(NBA_news_title[i],NBA_news_url[i]))
-    conn.commit()
+    try:
+        cur.execute('delete from sports_sports where abs_titles="NBA_news"')
+        for i in range(12):
+            print(NBA_news_title[i],NBA_news_url[i])
+            cur.execute('insert into sports_sports values (default,"%s","%s","NBA_news",0)'%(NBA_news_title[i],NBA_news_url[i]))
+        conn.commit()
+    except:
+        conn.rollback()
 
     video_news_imgurl = data1.xpath('//*[@id="sports-videos"]//img/@src')
     video_news_title = data1.xpath('//*[@id="sports-videos"]/div/p[2]/a/text()')
     video_news_url = data1.xpath('//*[@id="sports-videos"]/div/p[2]/a/@href')
-    cur.execute('delete from sports_sports where abs_titles="video_news"')
-    for i in range(len(video_news_title)):
-        print(video_news_title[i],video_news_url[i],video_news_imgurl[i])
-        cur.execute('insert into sports_sports values (default,"%s","%s","video_news","%s")'%(video_news_title[i],video_news_url[i],video_news_imgurl[i]))
-    conn.commit()
+    try:
+        cur.execute('delete from sports_sports where abs_titles="video_news"')
+        for i in range(len(video_news_title)):
+            print(video_news_title[i],video_news_url[i],video_news_imgurl[i])
+            cur.execute('insert into sports_sports values (default,"%s","%s","video_news","%s")'%(video_news_title[i],video_news_url[i],video_news_imgurl[i]))
+        conn.commit()
+    except:
+        conn.rollback()
 
 def world_football():
     url = 'https://news.baidu.com/widget?id=WorldSoccerNews&channel=sports&t=1573377253196'
@@ -83,18 +95,23 @@ def world_football():
 
     star_news_url = data1.xpath('//*[@id="star-news"]//a/@href')
     star_news_title = data1.xpath('//*[@id="star-news"]//a/text()')
-
-    cur.execute('delete from sports_sports where abs_titles="world_football"')
-    for i in range(12):
-        print(world_football_title[i],world_football_url[i])
-        cur.execute('insert into sports_sports values (default,"%s","%s","world_football",0)'%(world_football_title[i],world_football_url[i]))
-    conn.commit()
+    try:
+        cur.execute('delete from sports_sports where abs_titles="world_football"')
+        for i in range(12):
+            print(world_football_title[i],world_football_url[i])
+            cur.execute('insert into sports_sports values (default,"%s","%s","world_football",0)'%(world_football_title[i],world_football_url[i]))
+        conn.commit()
+    except:
+        conn.rollback()
     
-    cur.execute('delete from sports_sports where abs_titles="star_news"')
-    for i in range(8):
-        print(star_news_title[i],star_news_url[i])
-        cur.execute('insert into sports_sports values (default,"%s","%s","star_news",0)'%(star_news_title[i],star_news_url[i]))
-    conn.commit()
+    try:
+        cur.execute('delete from sports_sports where abs_titles="star_news"')
+        for i in range(8):
+            print(star_news_title[i],star_news_url[i])
+            cur.execute('insert into sports_sports values (default,"%s","%s","star_news",0)'%(star_news_title[i],star_news_url[i]))
+        conn.commit()
+    except:
+        conn.rollback()
 
 def china_football():
     url = 'http://news.baidu.com/widget?id=ChinaSoccerNews&channel=sports&t=1573456554645'
@@ -107,17 +124,23 @@ def china_football():
     player_news_url = data1.xpath('//*[@id="player-trends"]//a/@href')
     player_news_title = data1.xpath('//*[@id="player-trends"]//a/text()')
 
-    cur.execute('delete from sports_sports where abs_titles="china_football"')
-    for i in range(12):
-        print(china_football_title[i],china_football_url[i])
-        cur.execute('insert into sports_sports values (default,"%s","%s","china_football",0)'%(china_football_title[i],china_football_url[i]))
-    conn.commit()
+    try:
+        cur.execute('delete from sports_sports where abs_titles="china_football"')
+        for i in range(12):
+            print(china_football_title[i],china_football_url[i])
+            cur.execute('insert into sports_sports values (default,"%s","%s","china_football",0)'%(china_football_title[i],china_football_url[i]))
+        conn.commit()
+    except:
+        conn.rollback()
     
-    cur.execute('delete from sports_sports where abs_titles="player_news"')
-    for i in range(8):
-        print(player_news_title[i],player_news_url[i])
-        cur.execute('insert into sports_sports values (default,"%s","%s","player_news",0)'%(player_news_title[i],player_news_url[i]))
-    conn.commit()
+    try:
+        cur.execute('delete from sports_sports where abs_titles="player_news"')
+        for i in range(8):
+            print(player_news_title[i],player_news_url[i])
+            cur.execute('insert into sports_sports values (default,"%s","%s","player_news",0)'%(player_news_title[i],player_news_url[i]))
+        conn.commit()
+    except:
+        conn.rollback()
 
 def CBA():
     url = 'http://news.baidu.com/widget?id=CbaNews&channel=sports&t=1573459692944'
@@ -130,17 +153,23 @@ def CBA():
     focus_events_url = data1.xpath('//*[@id="focus-events"]//a/@href')
     focus_events_title = data1.xpath('//*[@id="focus-events"]//a/text()')
 
-    cur.execute('delete from sports_sports where abs_titles="CBA_news"')
-    for i in range(12):
-        print(CBA_news_title[i],CBA_news_url[i])
-        cur.execute('insert into sports_sports values (default,"%s","%s","CBA_news",0)'%(CBA_news_title[i],CBA_news_url[i]))
-    conn.commit()
+    try:
+        cur.execute('delete from sports_sports where abs_titles="CBA_news"')
+        for i in range(12):
+            print(CBA_news_title[i],CBA_news_url[i])
+            cur.execute('insert into sports_sports values (default,"%s","%s","CBA_news",0)'%(CBA_news_title[i],CBA_news_url[i]))
+        conn.commit()
+    except:
+        conn.rollback()
     
-    cur.execute('delete from sports_sports where abs_titles="focus_events"')
-    for i in range(8):
-        print(focus_events_title[i],focus_events_url[i])
-        cur.execute('insert into sports_sports values (default,"%s","%s","focus_events",0)'%(focus_events_title[i],focus_events_url[i]))
-    conn.commit()
+    try:
+        cur.execute('delete from sports_sports where abs_titles="focus_events"')
+        for i in range(8):
+            print(focus_events_title[i],focus_events_url[i])
+            cur.execute('insert into sports_sports values (default,"%s","%s","focus_events",0)'%(focus_events_title[i],focus_events_url[i]))
+        conn.commit()
+    except:
+        conn.rollback()
 
 def other_sports():
     url = 'http://news.baidu.com/widget?id=OtherNews&channel=sports&t=1573459692963'
@@ -153,17 +182,23 @@ def other_sports():
     hot_articles_url = data1.xpath('//*[@id="hot-article"]/ul/li//a[1]/@href')
     hot_articles_title = data1.xpath('//*[@id="hot-article"]/ul/li//a[1]/text()')
 
-    cur.execute('delete from sports_sports where abs_titles="other_sports"')
-    for i in range(12):
-        print(other_sports_title[i],other_sports_url[i])
-        cur.execute('insert into sports_sports values (default,"%s","%s","other_sports",0)'%(other_sports_title[i],other_sports_url[i]))
-    conn.commit()
+    try:
+        cur.execute('delete from sports_sports where abs_titles="other_sports"')
+        for i in range(12):
+            print(other_sports_title[i],other_sports_url[i])
+            cur.execute('insert into sports_sports values (default,"%s","%s","other_sports",0)'%(other_sports_title[i],other_sports_url[i]))
+        conn.commit()
+    except:
+        conn.rollback()
     
-    cur.execute('delete from sports_sports where abs_titles="hot_articles"')
-    for i in range(8):
-        print(hot_articles_title[i],hot_articles_url[i])
-        cur.execute('insert into sports_sports values (default,"%s","%s","hot_articles",0)'%(hot_articles_title[i],hot_articles_url[i]))
-    conn.commit()
+    try:
+        cur.execute('delete from sports_sports where abs_titles="hot_articles"')
+        for i in range(8):
+            print(hot_articles_title[i],hot_articles_url[i])
+            cur.execute('insert into sports_sports values (default,"%s","%s","hot_articles",0)'%(hot_articles_title[i],hot_articles_url[i]))
+        conn.commit()
+    except:
+        conn.rollback()
 
 def latest_news():
     url = 'http://news.baidu.com/widget?id=LatestNews&channel=sports&t=1573462748116'
@@ -172,11 +207,14 @@ def latest_news():
 
     latest_news_url = data1.xpath('//*[@id="latest-news"]//a/@href')
     latest_news_title = data1.xpath('//*[@id="latest-news"]//a/text()')
-    cur.execute('delete from sports_sports where abs_titles="latest_news"')
-    for i in range(len(latest_news_url)):
-        print(latest_news_title[i],latest_news_url[i])
-        cur.execute('insert into sports_sports values (default,"%s","%s","latest_news",0)'%(latest_news_title[i],latest_news_url[i]))
-    conn.commit()
+    try:
+        cur.execute('delete from sports_sports where abs_titles="latest_news"')
+        for i in range(len(latest_news_url)):
+            print(latest_news_title[i],latest_news_url[i])
+            cur.execute('insert into sports_sports values (default,"%s","%s","latest_news",0)'%(latest_news_title[i],latest_news_url[i]))
+        conn.commit()
+    except:
+        conn.rollback()
 
 if __name__ == '__main__':
     try:
