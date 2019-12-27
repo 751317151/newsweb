@@ -3,7 +3,7 @@
 @Date: 2019-12-10 21:38:56
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-12-16 16:44:15
+@LastEditTime: 2019-12-27 19:55:17
 '''
 from django.http import HttpResponse,JsonResponse,HttpResponseRedirect
 from django.shortcuts import render, redirect, reverse
@@ -47,6 +47,9 @@ def user_news(request):
                 military_count = 1
 
                 total_count = 10
+                flag = False
+            else:
+                flag = True
 
             china_count = int(china_count/total_count * 20)
             international_count = int(international_count/total_count * 20)
@@ -54,6 +57,9 @@ def user_news(request):
             sport_count = int(sport_count/total_count * 20)
             technology_count = int(technology_count/total_count * 20)
             military_count = int(military_count/total_count * 20)
+
+            if flag:
+                total_count = china_count + international_count + entertainment_count + sport_count + technology_count + military_count
 
             china_news = china.objects.filter(abs_titles="latest_news").order_by("?")
             international_news = international.objects.filter(abs_titles="latest_news").order_by('?')
@@ -71,7 +77,6 @@ def user_news(request):
             # print(china_news,sports_news,666)
             total_news = china_news + international_news + entertainment_news + sports_news + technology_news + military_news
             total_news = random.sample(total_news,total_count)
-            # print(total_news,total_count)
 
             contex={
                 'total_news': total_news,
