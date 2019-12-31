@@ -2,8 +2,8 @@
 @Author: 华豪
 @Date: 2019-12-10 21:38:56
 @E-Mail: hh@huahaohh.cn
-@LastEditors: 华豪
-@LastEditTime: 2019-12-27 19:55:17
+@LastEditors  : 华豪
+@LastEditTime : 2019-12-31 15:13:59
 '''
 from django.http import HttpResponse,JsonResponse,HttpResponseRedirect
 from django.shortcuts import render, redirect, reverse
@@ -86,6 +86,7 @@ def user_news(request):
         else:
             return HttpResponseRedirect("/login")
 
+@csrf_exempt
 def register(request):
     if request.method == "GET":
         return render(request,"register.html") 
@@ -110,12 +111,14 @@ def register(request):
             elif username == tu[1]:
                 data["err2"] = 1
                 return JsonResponse(data)
-
-        if request.session.get("verify_code") == int(code):
-            user.objects.create(email=email,username=username,password=password)
-            return JsonResponse(data)
+        if code:
+            if request.session.get("verify_code") == int(code):
+                user.objects.create(email=email,username=username,password=password)
+                return JsonResponse(data)
+            else:
+                data["err3"] = 1
+                return JsonResponse(data)
         else:
-            data["err3"] = 1
             return JsonResponse(data)
 
 def check_uname(request):

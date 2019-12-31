@@ -10,6 +10,46 @@ $(function(){
 		$('.ececk_warning').hide();
 	});
 
+	$("#email").blur(function(){
+		var email = $('#email').val();
+		$.ajax({
+			type: "POST",
+			url: "/register",
+			data:{
+				"email":email
+			},
+			success: function(data){
+				if (data["err"] === 0){
+
+				} else if (data["err"] === 1) {
+					$('#regist_echeck').show();
+					$('#regist_echeck_text').text('该邮箱已经注册!');
+					return flase;
+				}
+			}
+		});
+	});
+
+	$("#username").blur(function(){
+		var username = $('#username').val();
+		$.ajax({
+			type: "POST",
+			url: "/register",
+			data:{
+				"username":username
+			},
+			success: function(data){
+				if (data["err2"] === 0){
+
+				} else if (data["err2"] === 1) {
+					$('#regist_echeck').show();
+					$('#regist_echeck_text').text('用户名已经注册！');
+					return flase;
+				}
+			}
+		});
+	});
+
 	$("#send_code").click(function() {
 		var email = $('#email').val();
 		var username = $('#username').val();

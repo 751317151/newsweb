@@ -2,8 +2,8 @@
  * @Author: 华豪
  * @Date: 2019-10-25 09:42:46
  * @E-Mail: hh@huahaohh.cn
- * @LastEditors: 华豪
- * @LastEditTime: 2019-12-16 15:32:13
+ * @LastEditors  : 华豪
+ * @LastEditTime : 2019-12-31 17:25:23
  -->
 <!DOCTYPE html>
 <html>
@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="static/css/bgsize.css" />	
     <link rel="stylesheet" href="static/css/reset.css" />
     <link rel="stylesheet" href="static/css/common.css" />
-    <link rel="stylesheet" href="static/css/font-awesome.min.css" />	
+    <link rel="stylesheet" href="static/css/font-awesome.min.css" />
+    <link rel="icon" href="static/images/logo.ico" type="image/x-icon" />	
     <script src="static/js/jquery.min.js"></script>
     <script src="static/js/velocity.js"></script>
     <script src="static/js/shutter.js"></script> 
@@ -45,7 +46,9 @@
                 注册
             </div>
             <form action="register" method="post" id="form1" onsubmit="return false;">   
-                <div class="ececk_warning"><span class="ececk_warning_text"></span></div>    
+                {% csrf_token %}
+
+                <div class="ececk_warning" id="regist_echeck"><span class="ececk_warning_text" id="regist_echeck_text"></span></div>    
                 <div class="form_text_ipt">
                     <input name="email" id="email" type="email" placeholder="邮箱">
                 </div>
@@ -59,7 +62,6 @@
                     <input name="password2" id="password2" type="password" placeholder="重复密码">
                 </div>
                 <div class="form_text_ipt">
-                    {% csrf_token %}
                     <input name="code" id="code" type="text" placeholder="验证码">
                     <button type="button" id="send_code">发送验证码</button>
                 </div>
