@@ -2,8 +2,8 @@
  * @Author: 华豪
  * @Date: 2019-11-27 16:01:51
  * @E-Mail: hh@huahaohh.cn
- * @LastEditors  : 华豪
- * @LastEditTime : 2019-12-31 17:25:38
+ * @LastEditors: 华豪
+ * @LastEditTime: 2020-03-01 16:59:59
  -->
 <!DOCTYPE html>
 <html>
@@ -27,22 +27,22 @@
     <script src="static/js/su.js"></script>
     <script src="static/js/heart_click.js"></script>
     <script>
-    $(function () {
-    $('.shutter').shutter({
-        shutterW: 280, // 容器宽度
-        shutterH: 221, // 容器高度
-        isAutoPlay: true, // 是否自动播放
-        playInterval: 3000, // 自动播放时间
-        curDisplay: 3, // 当前显示页
-        fullPage: false // 是否全屏展示
-    });
-    });
-    function shouji(){
-        $("#cell_btn").attr("href", "//detail.zol.com.cn/index.php?c=HighSearch&subcateId=57&isCorp=1&keyword=" + $("#cell_txt").val());
-    }
-    function diannao(){
-        $("#pc_btn").attr("href", "//detail.zol.com.cn/index.php?c=HighSearch&subcateId=16&isCorp=1&keyword=" + $("#pc_txt").val());
-    }
+        $(function () {
+            $('.shutter').shutter({
+                shutterW: 280, // 容器宽度
+                shutterH: 221, // 容器高度
+                isAutoPlay: true, // 是否自动播放
+                playInterval: 3000, // 自动播放时间
+                curDisplay: 3, // 当前显示页
+                fullPage: false // 是否全屏展示
+            });
+        });
+        function shouji(){
+            window.open("http://detail.zol.com.cn/index.php?c=HighSearch&subcateId=57&isCorp=1&keyword=" + $("#cell_txt").val());
+        }
+        function diannao(){
+            window.open("http://detail.zol.com.cn/index.php?c=HighSearch&subcateId=16&isCorp=1&keyword=" + $("#pc_txt").val());
+        }
     </script>
     <script type="text/javascript">
         jQuery(document).ready(function($){
@@ -355,7 +355,7 @@
                             </h3>
                             <div class="price-search" id="cell_price_search">
                                 <input class="price-search-txt" type="text" value="" placeholder="产品或型号" id="cell_txt">
-                                <a href="" class="price-search-btn" id="cell_btn" onclick="shouji()" target="_blank">查询</a>
+                                <input class="price-search-btn" id="cell_btn" onclick="shouji()" type="button" value="查询">
                             </div>
                         </div>
                         <div class="bd">
@@ -447,7 +447,7 @@
                             </h3>
                             <div class="price-search" id="pc_price_search">
                                 <input class="price-search-txt" type="text" value="" placeholder="产品或型号" id="pc_txt">
-                                <a href="" class="price-search-btn" id="pc_btn" onclick="diannao()" target="_blank">查询</a>
+                                <input class="price-search-btn" id="pc_btn" onclick="diannao()" type="button" value="查询">
                             </div>
                         </div>
                         <div class="bd">
