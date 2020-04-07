@@ -2,8 +2,8 @@
 @Author: 华豪
 @Date: 2019-12-10 21:38:56
 @E-Mail: hh@huahaohh.cn
-@LastEditors  : 华豪
-@LastEditTime : 2019-12-31 15:13:59
+@LastEditors: 华豪
+@LastEditTime: 2020-04-07 17:27:08
 '''
 from django.http import HttpResponse,JsonResponse,HttpResponseRedirect
 from django.shortcuts import render, redirect, reverse
@@ -78,9 +78,17 @@ def user_news(request):
             total_news = china_news + international_news + entertainment_news + sports_news + technology_news + military_news
             total_news = random.sample(total_news,total_count)
 
+            # 关键词
+            count_list = [china_count, international_count, entertainment_count, sport_count, technology_count, military_count]
+            keyword_list = ["国内","国际","娱乐","体育","科技","军事"]
+
+            keyword_index = count_list.index(max(count_list))
+            keyword = keyword_list[keyword_index]
+
             contex={
                 'total_news': total_news,
                 'username': username,
+                'keyword': keyword,
             }
             return render(request,"user.html",contex) 
         else:
