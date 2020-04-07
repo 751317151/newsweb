@@ -2,8 +2,8 @@
  * @Author: 华豪
  * @Date: 2019-10-25 09:42:46
  * @E-Mail: hh@huahaohh.cn
- * @LastEditors  : 华豪
- * @LastEditTime : 2019-12-31 17:23:53
+ * @LastEditors: 华豪
+ * @LastEditTime: 2020-03-25 13:52:59
  -->
 <!DOCTYPE html>
 <html>
@@ -410,15 +410,15 @@
                     </div>
                     <div class="l-left-col1 col-mod">
                         <ul class="ulist focuslistnews">
-                            {% if hot_world_news1 %}
-                            {% for news in hot_world_news1 %}
+                            {% if hot_enter_news1 %}
+                            {% for news in hot_enter_news1 %}
                                 <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
                             {% endfor %}
                             {% endif %}
                         </ul>
                         <ul class="ulist focuslistnews">
-                            {% if hot_world_news2 %}
-                            {% for news in hot_world_news2 %}
+                            {% if hot_enter_news2 %}
+                            {% for news in hot_enter_news2 %}
                                 <li><a href="{{ news.urls }}" target="_blank">{{ news.titles }}</a></li>
                             {% endfor %}
                             {% endif %}
