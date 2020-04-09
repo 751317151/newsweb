@@ -24,7 +24,7 @@ $(function(){
 				} else if (data["err"] === 1) {
 					$('#regist_echeck').show();
 					$('#regist_echeck_text').text('该邮箱已经注册!');
-					return flase;
+					return false;
 				}
 			}
 		});
@@ -44,7 +44,7 @@ $(function(){
 				} else if (data["err2"] === 1) {
 					$('#regist_echeck').show();
 					$('#regist_echeck_text').text('用户名已经注册！');
-					return flase;
+					return false;
 				}
 			}
 		});
@@ -120,7 +120,7 @@ $(function(){
 					console.log("1111111111111")
 					$('.ececk_warning').show();
 					$('.ececk_warning_text').text('该邮箱已经注册！')
-					return flase;
+					return false;
 				}
 			}
 		});
@@ -225,7 +225,7 @@ $(function(){
 				} else if (data["err"] === 1) {
 					$('.ececk_warning').show();
 					$('.ececk_warning_text').text('用户名或密码错误!')
-					return flase;
+					return false;
 				}
 			}
 		});
