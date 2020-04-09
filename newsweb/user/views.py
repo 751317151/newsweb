@@ -3,7 +3,7 @@
 @Date: 2019-12-10 21:38:56
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2020-04-07 17:27:08
+@LastEditTime: 2020-04-09 15:23:59
 '''
 from django.http import HttpResponse,JsonResponse,HttpResponseRedirect
 from django.shortcuts import render, redirect, reverse
@@ -94,6 +94,7 @@ def user_news(request):
         else:
             return HttpResponseRedirect("/login")
 
+
 @csrf_exempt
 def register(request):
     if request.method == "GET":
@@ -119,6 +120,13 @@ def register(request):
             elif username == tu[1]:
                 data["err2"] = 1
                 return JsonResponse(data)
+        
+        email1 = request.session.get("email")
+        print(email1,email,333444)
+        if email1 !=None and email1 != email:
+            data["err"] = 2
+            return JsonResponse(data)
+
         if code:
             if request.session.get("verify_code") == int(code):
                 user.objects.create(email=email,username=username,password=password)
@@ -147,12 +155,14 @@ def check_uname(request):
     for l in user_list:
         if username in l[0]:
             data['err2'] = 1
+    if username == "":
+        data['err2'] = 0
     return JsonResponse(data)
 
 @csrf_exempt
 def send_code(request):
     email = request.POST["email"]
-    print(email)
+    request.session["email"] = email
     data = {
         'err':1,
         'desc': "请重新发送!"

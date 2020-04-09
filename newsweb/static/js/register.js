@@ -203,7 +203,11 @@ $(function(){
 				} else if (data["err"] === 1) {
 					$('.ececk_warning').show();
 					$('.ececk_warning_text').text('该邮箱已经注册！')
-					return flase;
+					return false;
+				} else if (data["err"] === 2) {
+					$('.ececk_warning').show();
+					$('.ececk_warning_text').text('邮箱发生更改！')
+					return false;
 				}
 			}
 		});
