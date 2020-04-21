@@ -3,7 +3,7 @@
 @Date: 2019-10-25 09:29:27
 @E-Mail: hh@huahaohh.cn
 @LastEditors: 华豪
-@LastEditTime: 2019-12-16 14:35:55
+@LastEditTime: 2020-04-21 13:56:04
 '''
 """newsweb URL Configuration
 
@@ -23,6 +23,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.views import static  ##新增
+from django.conf import settings  ##新增
+from django.conf.urls import url  ##新增
+
 from index import views as index_views
 from sports import views as sports_views
 from china import views as china_views
@@ -34,6 +38,8 @@ from user import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^static/(?P<path>.*)$', static.serve,{'document_root': settings.STATIC_ROOT}, name='static'),
+
     path('',index_views.index_news),
     path('register',user_views.register),
     path('check_uname',user_views.check_uname),
